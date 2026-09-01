@@ -131,13 +131,16 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   51%{transform-origin:bottom}100%{transform:scaleY(.2);transform-origin:bottom}}
 
 /* ================= شريط العملاء ================= */
-.marquee{overflow:hidden;background:#fff;padding:30px 0}
+.marquee{overflow:hidden;background:rgba(255,255,255,.03);border-block:1px solid rgba(255,255,255,.08);
+  padding:30px 0;direction:ltr;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .marquee-track{display:flex;gap:66px;width:max-content;animation:slide 34s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee img{height:44px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.55;
-  transition:filter .3s,opacity .3s,transform .3s}
-.marquee img:hover{filter:none;opacity:1;transform:scale(1.08)}
+.marquee img{height:46px;width:auto;object-fit:contain;opacity:.62;
+  filter:brightness(0) invert(1);transition:filter .4s var(--ease),opacity .4s,transform .4s var(--ease)}
+.marquee img:hover{filter:none;opacity:1;transform:scale(1.12)}
 
 /* ================= الخدمات: ألواح تتمدّد ================= */
 .panels{display:flex;gap:14px;height:min(560px,72vh)}
@@ -207,8 +210,8 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 @media(max-width:900px){#wprev{display:none}}
 
 /* ================= المؤثرون: المحور والمدارات ================= */
-.hubwrap{position:relative;height:min(620px,86vw);display:grid;place-items:center;margin-top:20px}
-.hub{position:relative;width:min(560px,84vw);height:min(560px,84vw);display:grid;place-items:center}
+.hubwrap{position:relative;height:min(800px,92vw);display:grid;place-items:center;margin-top:10px}
+.hub{position:relative;width:min(760px,90vw);height:min(760px,90vw);display:grid;place-items:center}
 .rings{position:absolute;inset:0;pointer-events:none}
 .rings i{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px dashed rgba(255,255,255,.14)}
 .rings i:nth-child(1){width:46%;height:46%;animation:spin 34s linear infinite}
@@ -295,8 +298,10 @@ body[data-scene="contact"]  #scene .g3{transform:translate(0,-24vh);opacity:1}
 /* حواف منحنية بين الأقسام الفاتحة والداكنة */
 .light{border-radius:44px 44px 0 0}
 .light + .sec:not(.light),.light + section:not(.light){margin-top:-2px}
-.light::after{content:'';position:absolute;inset-block-end:-54px;inset-inline:0;height:56px;
-  background:inherit;border-radius:0 0 50% 50% / 0 0 100% 100%;pointer-events:none}
+.light:has(+ .sec:not(.light))::after,
+.light:has(+ footer)::after{content:'';position:absolute;
+  inset-block-end:-54px;inset-inline:0;height:56px;background:inherit;
+  border-radius:0 0 50% 50% / 0 0 100% 100%;pointer-events:none}
 
 /* ================= مستطيلات المنصات ================= */
 .ptrack{direction:ltr;overflow:hidden;padding:10px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
@@ -592,12 +597,38 @@ footer.site a:hover{color:#fff}
 <!-- ============================ العملاء ============================ -->
 <div class="marquee">
   <div class="marquee-track">
-    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي"><img src="assets/logos/mos.png" alt="وزارة الرياضة">
-    <img src="assets/logos/momah.svg" alt="وزارة البلديات والإسكان"><img src="assets/logos/sama.png" alt="البنك المركزي السعودي">
-    <img src="assets/logos/qemah.png" alt="قمة للمزادات"><img src="assets/logos/mojaz.png" alt="موجز">
-    <img src="assets/logos/culinary.png" alt=""><img src="assets/logos/mos.png" alt="">
-    <img src="assets/logos/momah.svg" alt=""><img src="assets/logos/sama.png" alt="">
-    <img src="assets/logos/qemah.png" alt=""><img src="assets/logos/mojaz.png" alt="">
+    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي" loading="lazy">
+    <img src="assets/logos/mos.png" alt="وزارة الرياضة" loading="lazy">
+    <img src="assets/logos/momah.svg" alt="وزارة البلديات والإسكان" loading="lazy">
+    <img src="assets/logos/sama.png" alt="البنك المركزي السعودي" loading="lazy">
+    <img src="assets/logos/gea.svg" alt="الهيئة العامة للترفيه" loading="lazy">
+    <img src="assets/logos/elm.svg" alt="علم" loading="lazy">
+    <img src="assets/logos/qemah.png" alt="قمة للمزادات" loading="lazy">
+    <img src="assets/logos/cocacola.svg" alt="كوكاكولا" loading="lazy">
+    <img src="assets/logos/lays.svg" alt="ليز" loading="lazy">
+    <img src="assets/logos/mcdonalds.svg" alt="ماكدونالدز" loading="lazy">
+    <img src="assets/logos/adidas.svg" alt="أديداس" loading="lazy">
+    <img src="assets/logos/newbalance.svg" alt="نيو بالانس" loading="lazy">
+    <img src="assets/logos/ikea.svg" alt="إيكيا" loading="lazy">
+    <img src="assets/logos/dominos.svg" alt="دومينوز" loading="lazy">
+    <img src="assets/logos/jahez.svg" alt="جاهز" loading="lazy">
+    <img src="assets/logos/rollsroyce.svg" alt="رولز رويس" loading="lazy">
+    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي" loading="lazy">
+    <img src="assets/logos/mos.png" alt="وزارة الرياضة" loading="lazy">
+    <img src="assets/logos/momah.svg" alt="وزارة البلديات والإسكان" loading="lazy">
+    <img src="assets/logos/sama.png" alt="البنك المركزي السعودي" loading="lazy">
+    <img src="assets/logos/gea.svg" alt="الهيئة العامة للترفيه" loading="lazy">
+    <img src="assets/logos/elm.svg" alt="علم" loading="lazy">
+    <img src="assets/logos/qemah.png" alt="قمة للمزادات" loading="lazy">
+    <img src="assets/logos/cocacola.svg" alt="كوكاكولا" loading="lazy">
+    <img src="assets/logos/lays.svg" alt="ليز" loading="lazy">
+    <img src="assets/logos/mcdonalds.svg" alt="ماكدونالدز" loading="lazy">
+    <img src="assets/logos/adidas.svg" alt="أديداس" loading="lazy">
+    <img src="assets/logos/newbalance.svg" alt="نيو بالانس" loading="lazy">
+    <img src="assets/logos/ikea.svg" alt="إيكيا" loading="lazy">
+    <img src="assets/logos/dominos.svg" alt="دومينوز" loading="lazy">
+    <img src="assets/logos/jahez.svg" alt="جاهز" loading="lazy">
+    <img src="assets/logos/rollsroyce.svg" alt="رولز رويس" loading="lazy">
   </div>
 </div>
 
@@ -923,7 +954,7 @@ footer.site a:hover{color:#fff}
 </section>
 
 <!-- ============================ الأرقام ============================ -->
-<section style="padding:0 0 clamp(60px,8vw,100px);background:var(--paper)">
+<section class="light" style="padding:0 0 clamp(60px,8vw,100px);border-radius:0">
   <div class="wrap">
     <div class="band rv">
       <div><b class="cnt" data-to="7195" data-pre="+">+0</b><span data-en="Videos produced">فيديو منتَج</span></div>
@@ -1496,16 +1527,16 @@ $$('#panels .panel').forEach(p => {
   const TOP = ['d7oomysnap','mjrmgems','az_binfahad','ibrahimbasha','abdullahk5','salman1dh','hind_alfawzan'];
   const byHandle = Object.fromEntries(INF.map(x => [x.handle, x]));
   const picks = [...new Set(TOP.map(hh => byHandle[hh]).filter(Boolean)
-    .concat(INF.filter(x => x.img)))].slice(0, 7);
-  const R = () => hub.clientWidth * (innerWidth < 560 ? .40 : .38);
+    .concat(INF.filter(x => x.img)))].slice(0, innerWidth < 700 ? 7 : 10);
+  const R = () => hub.clientWidth * (innerWidth < 560 ? .42 : .46);
   const nodes = picks.map((p, i) => {
     const el = document.createElement('a');
     el.className = 'node'; el.href = p.url; el.target = '_blank'; el.rel = 'noopener';
-    el.innerHTML = `<img src="${p.img}" alt="${p.name}" loading="lazy"><span class="nm">${p.name}</span>`;
+    el.innerHTML = `<img src="${p.img}" alt="${p.name}"><span class="nm">${p.name}</span>`;
     // مواضع فيزيائية صريحة: inset-inline في RTL يعاكس الحساب
     el.style.cssText += 'position:absolute;left:0;top:0;right:auto;margin:0';
     hub.appendChild(el);
-    return {el, a0: (i / picks.length) * Math.PI * 2, sp: .00012 + (i % 3) * .00005, r: .82 + (i % 3) * .16};
+    return {el, a0: (i / picks.length) * Math.PI * 2, sp: .00011 + (i % 3) * .00004, r: .74 + (i % 3) * .19};
   });
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   svg.appendChild(path);
@@ -1652,20 +1683,18 @@ addEventListener('keydown', e => { if (e.key === 'Escape') closeRoster(); });
 // رابط ممر — عدّله هنا وينطبق على كل المنصات المرتبطة به
 const MAMAR = '#';
 const PLATFORMS = [
-  {s:'koorashow',   n:'كورة شو',      en:'Koora Show',    d:'منصة إعلام رياضي سعودية بجمهورها وصنّاع محتواها.', de:'A Saudi sports media platform.', u:'https://koorashow.com'},
+  {f:'koorashow.svg', s:'koorashow',   n:'كورة شو',      en:'Koora Show',    d:'منصة إعلام رياضي سعودية بجمهورها وصنّاع محتواها.', de:'A Saudi sports media platform.', u:'https://koorashow.com'},
   {s:'matchesgoals',n:'Matches Goals',en:'Matches Goals', d:'بيانات المباريات وأبرز اللقطات لجمهور كرة القدم.',   de:'Match data and highlights.',     u:MAMAR},
   {s:'jawlah',      n:'جولة',        en:'Jawlah',        d:'جولات وتغطيات رياضية بالفيديو القصير.',            de:'Sports rounds in short video.',  u:MAMAR},
   {s:'midrab',      n:'مضرب',        en:'Midrab',        d:'منصة مجتمعية حول رياضات المضرب.',                  de:'Racket sports community.',       u:MAMAR},
-  {s:'dakkah',      n:'دكة',         en:'Dakkah',        d:'محتوى الرأي وحوار الجماهير.',                      de:'Fan opinion content.',           u:MAMAR},
-  {s:'hankah',      n:'حنكة',        en:'Hankah',        d:'محتوى ترفيهي بطابع تنافسي.',                       de:'Competitive entertainment.',     u:MAMAR},
-  {s:'ratm',        n:'رتم',         en:'Ratm',          d:'محتوى ثقافي ومعاصر لجمهور أصغر سناً.',             de:'Culture and lifestyle.',         u:MAMAR},
-  {s:'mamar',       n:'ممر',         en:'Mamar',         d:'نظام إدارة العمل الداخلي: المهام والعملاء والتقارير.', de:'Our internal work management system.', u:MAMAR},
+  {f:'dakkah.svg', s:'dakkah',      n:'دكة',         en:'Dakkah',        d:'محتوى الرأي وحوار الجماهير.',                      de:'Fan opinion content.',           u:MAMAR},
+  {f:'hankah.svg', s:'hankah',      n:'حنكة',        en:'Hankah',        d:'محتوى ترفيهي بطابع تنافسي.',                       de:'Competitive entertainment.',     u:MAMAR},
+  {f:'ratm.svg', s:'ratm',        n:'رتم',         en:'Ratm',          d:'محتوى ثقافي ومعاصر لجمهور أصغر سناً.',             de:'Culture and lifestyle.',         u:MAMAR},
+  {f:'mamar.svg', s:'mamar',       n:'ممر',         en:'Mamar',         d:'نظام إدارة العمل الداخلي: المهام والعملاء والتقارير.', de:'Our internal work management system.', u:MAMAR},
 ];
 const pcard = x => `
   <a class="pcard" href="${x.u}" ${x.u === '#' ? '' : 'target="_blank" rel="noopener"'}>
-    <span class="mk">${x.s === 'mamar'
-      ? '<b style="font-family:var(--font-display);font-size:1.2rem;color:#C7AFF6">ممر</b>'
-      : `<img src="assets/platforms/${x.s}.png" alt="${x.n}">`}</span>
+    <span class="mk"><img src="assets/platforms/${x.f || x.s + '.png'}" alt="${x.n}"></span>
     <span>
       <h3 data-en="${x.en}">${x.n}</h3>
       <p data-en="${x.de}">${x.d}</p>
@@ -1695,17 +1724,6 @@ document.body.dataset.scene = 'hero';
     const b = r.getBoundingClientRect();
     const p = Math.max(0, Math.min(1, (innerHeight - b.top) / (innerHeight * .9)));
     r.style.transform = `scale(${(.88 + p * .12).toFixed(3)})`;
-  };
-  addEventListener('scroll', upd, {passive:true}); upd();
-})();
-
-/* ================= شريط الأرقام يميل مع التمرير ================= */
-(function bandTilt(){
-  const b = $('.band'); if (!b || reduce) return;
-  const upd = () => {
-    const r = b.getBoundingClientRect();
-    const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;   // -1 .. 1
-    b.style.transform = `perspective(900px) rotateX(${(p * 7).toFixed(2)}deg)`;
   };
   addEventListener('scroll', upd, {passive:true}); upd();
 })();
