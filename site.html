@@ -101,14 +101,12 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .stats b{display:block;font-family:var(--font-display);font-size:clamp(1.8rem,3.6vw,2.9rem);line-height:1}
 .stats span{font-size:.82rem;color:rgba(255,255,255,.55)}
 
-.float-stack{position:relative;min-height:440px;perspective:900px}
-@media(max-width:980px){.float-stack{min-height:360px;margin-top:20px}}
+.float-stack{position:relative;min-height:330px}
+@media(max-width:980px){.float-stack{min-height:300px;margin-top:20px}}
 .fcard{position:absolute;background:rgba(23,16,41,.72);border:1px solid rgba(255,255,255,.12);
-  border-radius:var(--r-lg);padding:18px;backdrop-filter:blur(14px);box-shadow:0 26px 60px rgba(0,0,0,.5);
-  will-change:transform}
+  border-radius:var(--r-lg);padding:18px;backdrop-filter:blur(14px);box-shadow:0 26px 60px rgba(0,0,0,.5)}
 .fcard-1{inset-inline-start:0;top:6px;width:min(300px,86%)}
-.fcard-2{inset-inline-end:0;top:158px;width:min(276px,80%)}
-.fcard-3{inset-inline-start:30px;bottom:0;width:min(292px,84%)}
+.fcard-2{inset-inline-end:0;top:150px;width:min(276px,80%)}
 .fcard .row{display:flex;align-items:center;gap:10px}
 .fcard .k{font-family:var(--font-display);font-size:1.9rem;line-height:1}
 .fcard .t{font-size:.78rem;color:rgba(255,255,255,.55)}
@@ -571,7 +569,7 @@ footer.site a:hover{color:#fff}
       </div>
 
       <div class="float-stack" aria-hidden="true">
-        <div class="fcard fcard-1" data-depth="14">
+        <div class="fcard fcard-1">
           <div class="t" data-en="Live campaign">حملة قيد التشغيل</div>
           <div class="row" style="justify-content:space-between;align-items:flex-end;margin-top:6px">
             <div class="k">25.8M</div><div class="t" style="color:#7DD87D">▲ 18%</div>
@@ -584,7 +582,7 @@ footer.site a:hover{color:#fff}
           </div>
           <div class="t" data-en="Views across Snapchat and TikTok">مشاهدة عبر سناب شات وتيك توك</div>
         </div>
-        <div class="fcard fcard-2" data-depth="22">
+        <div class="fcard fcard-2">
           <div class="t" data-en="Influencer network">شبكة المؤثرين</div>
           <div class="avatars" style="margin:10px 0">
             <img src="assets/avatars/az_binfahad.jpg" alt=""><img src="assets/avatars/hind_alfawzan.jpg" alt="">
@@ -596,16 +594,7 @@ footer.site a:hover{color:#fff}
             <div class="t" data-en="ready to brief">جاهزون للتكليف</div>
           </div>
         </div>
-        <div class="fcard fcard-3" data-depth="10">
-          <div class="row" style="justify-content:space-between">
-            <div><div class="t" data-en="Cost per view">تكلفة المشاهدة</div>
-              <div class="k" style="font-size:1.5rem">0.011 <span style="font-size:.8rem">SAR</span></div></div>
-            <div><div class="t" data-en="Engagement">التفاعل</div>
-              <div class="k" style="font-size:1.5rem;color:var(--g-500)">7.4%</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </div>
   </div>
 </section>
 
@@ -1484,29 +1473,6 @@ $$('.cnt').forEach(el => cio.observe(el));
         ctx.strokeStyle = `rgba(216,180,90,${(1 - md/190)*.5})`; ctx.lineWidth = .9; ctx.stroke(); }
     }
     requestAnimationFrame(draw);
-  })();
-})();
-
-/* ================= بارالاكس بطاقات البطل ================= */
-(function parallax(){
-  const stack = $('.float-stack'); if (!stack || reduce) return;
-  const cards = $$('.fcard', stack);
-  let tx = 0, ty = 0, cx = 0, cy = 0, active = true;
-  // تُقاس نسبة الماوس مرة واحدة، ثم تُلاحق بنعومة بدل القفز مع كل حركة
-  addEventListener('mousemove', e => {
-    tx = e.clientX / innerWidth - .5;
-    ty = e.clientY / innerHeight - .5;
-  }, {passive:true});
-  new IntersectionObserver(es => es.forEach(e => active = e.isIntersecting), {threshold:.05})
-    .observe(stack);
-  (function loop(){
-    if (active) {
-      cx = lerp(cx, tx, .06); cy = lerp(cy, ty, .06);   // ملاحقة بطيئة تلغي القفزة
-      cards.forEach(c => { const d = +c.dataset.depth;
-        c.style.transform = `translate3d(${(-cx*d).toFixed(2)}px,${(-cy*d).toFixed(2)}px,0)`
-          + ` rotateX(${(cy*2.5).toFixed(2)}deg) rotateY(${(-cx*2.5).toFixed(2)}deg)`; });
-    }
-    requestAnimationFrame(loop);
   })();
 })();
 
