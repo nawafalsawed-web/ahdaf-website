@@ -41,8 +41,8 @@
 
   /* ---------- خطوط ---------- */
   --font-display:'Saudi Serif','Playfair Display',Georgia,serif;
-  --font-body:'IBM Plex Sans Arabic','Inter',-apple-system,'Segoe UI',sans-serif;
-  --font-label:'Inter','IBM Plex Sans Arabic',sans-serif;
+  --font-body:'Saudi Serif','Playfair Display',Georgia,serif;
+  --font-label:'Saudi Serif','Playfair Display',Georgia,serif;
 
   /* ---------- سلم الحجم (clamp = يستجيب للشاشة) ---------- */
   --fs-display:clamp(2.6rem,6.4vw,5.6rem);
