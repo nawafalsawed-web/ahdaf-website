@@ -11,10 +11,14 @@
    أهداف · تصوّر تفاعلي
    كل قسم له حركة خاصة به: خطوط، مدارات، رسم بالتمرير، معاينة تتبع المؤشر
    ================================================================ */
+html{overflow-x:hidden}
 body{background:var(--dark);color:#fff;overflow-x:hidden}
 ::selection{background:var(--s-500);color:#fff}
 section{position:relative}
 .sec{padding:clamp(72px,10vw,140px) 0}
+@media(max-width:700px){.sec{padding:56px 0}
+  .sec-head{margin-bottom:26px}
+  .pcard{width:80vw}}
 .light{background:var(--paper);color:var(--ink)}
 .light .label{color:var(--n-500)}
 
@@ -243,7 +247,10 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0;
   transition:transform .5s var(--ease),box-shadow .5s}
 .hubbtn:hover{transform:scale(1.06);box-shadow:0 0 0 1px rgba(255,255,255,.32),0 36px 90px rgba(130,77,235,.7)}
-.hubbtn b{font-family:var(--font-display);font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1;display:block}
+.hubbtn b{font-family:var(--font-display);font-size:clamp(1.25rem,3.4vw,2.3rem);line-height:1;display:block}
+@media(max-width:700px){.hubbtn{width:30vw;height:30vw}.hubbtn span{font-size:.7rem}
+  .hubwrap{height:min(560px,96vw)}.hub{width:96vw;height:96vw}
+  .node .nm{display:none}}
 .hubbtn span{font-size:.84rem;color:rgba(255,255,255,.85);display:block;margin:0;font-weight:600}
 .hubbtn::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(130,77,235,.5);
   animation:ring 3s ease-out infinite}
@@ -283,7 +290,7 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .pf.tiktok{background:#fff;color:#111}
 
 /* ================= طبقة المشهد: كل قسم يدخلك جوّاً جديداً ================= */
-#scene{position:fixed;inset:0;z-index:0;pointer-events:none;background:var(--dark);
+#scene{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;background:var(--dark);
   transition:background 1.2s var(--ease)}
 #scene i{position:absolute;border-radius:50%;filter:blur(10px);
   transition:transform 1.6s var(--ease),opacity 1.6s var(--ease),background 1.6s var(--ease)}
@@ -1511,14 +1518,17 @@ $$('#panels .panel').forEach(p => {
 /* ================= محور المؤثرين ================= */
 (function hub(){
   const hub = $('#hub'), svg = $('#hublines'); if (!hub) return;
+  const MOB = innerWidth < 700;
   // عدّل هذي القائمة بأسماء الأعلى عندك، والباقي يكمل تلقائياً
   const TOP = ['d7oomysnap','mjrmgems','az_binfahad','ibrahimbasha','abdullahk5','salman1dh','hind_alfawzan'];
   const byHandle = Object.fromEntries(INF.map(x => [x.handle, x]));
   const picks = [...new Set(TOP.map(hh => byHandle[hh]).filter(Boolean)
-    .concat(INF.filter(x => x.img)))].slice(0, innerWidth < 700 ? 9 : innerWidth < 1100 ? 14 : 20);
-  const R = () => hub.clientWidth * (innerWidth < 560 ? .40 : .44);
+    .concat(INF.filter(x => x.img)))].slice(0, MOB ? 9 : innerWidth < 1100 ? 14 : 20);
+  const R = () => hub.clientWidth * (MOB ? .42 : .44);
   // ثلاثة مدارات: الداخلي أكبر حجماً، والخارجي أصغر، لإحساس بالعمق
-  const RINGS = [{r:.44, size:92, sp:.00016}, {r:.78, size:72, sp:-.00011}, {r:1.10, size:56, sp:.00008}];
+  const RINGS = MOB
+    ? [{r:.62, size:50, sp:.00016}, {r:.88, size:42, sp:-.00011}, {r:1.06, size:34, sp:.00008}]
+    : [{r:.44, size:92, sp:.00016}, {r:.78, size:72, sp:-.00011}, {r:1.10, size:56, sp:.00008}];
   const perRing = [[], [], []];
   picks.forEach((p, i) => perRing[i % 3].push(p));
   const nodes = [];
@@ -1527,7 +1537,7 @@ $$('#panels .panel').forEach(p => {
     const el = document.createElement('a');
     el.className = 'node'; el.href = p.url; el.target = '_blank'; el.rel = 'noopener';
     el.innerHTML = `<img src="${p.img}" alt="${p.name}"><span class="nm">${p.name}</span>`;
-    const size = ring.size + ((j % 3) - 1) * 7;            // تفاوت داخل المدار نفسه
+    const size = ring.size + ((j % 3) - 1) * (MOB ? 4 : 7);            // تفاوت داخل المدار نفسه
     el.style.cssText += `position:absolute;left:0;top:0;right:auto;margin:0;width:${size}px;height:${size}px`;
     hub.appendChild(el);
     nodes.push({el, a0: (j / list.length) * Math.PI * 2 + ri * .5, sp: ring.sp, r: ring.r});
