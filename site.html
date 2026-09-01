@@ -263,6 +263,66 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .pf.snap{background:#FFFC00;color:#1a1a00}
 .pf.tiktok{background:#fff;color:#111}
 
+/* ================= طبقة المشهد: كل قسم يدخلك جوّاً جديداً ================= */
+#scene{position:fixed;inset:0;z-index:0;pointer-events:none;background:var(--dark);
+  transition:background 1.2s var(--ease)}
+#scene i{position:absolute;border-radius:50%;filter:blur(10px);
+  transition:transform 1.6s var(--ease),opacity 1.6s var(--ease),background 1.6s var(--ease)}
+#scene .g1{width:70vw;height:70vw;background:radial-gradient(circle,rgba(76,1,146,.55),transparent 68%)}
+#scene .g2{width:56vw;height:56vw;background:radial-gradient(circle,rgba(130,77,235,.42),transparent 70%)}
+#scene .g3{width:40vw;height:40vw;background:radial-gradient(circle,rgba(216,180,90,.18),transparent 70%)}
+#scene .grain{position:absolute;inset:0;width:auto;height:auto;border-radius:0;filter:none;opacity:.16;
+  background-image:radial-gradient(rgba(255,255,255,.55) .5px,transparent .5px);background-size:4px 4px}
+body[data-scene="hero"]     #scene .g1{transform:translate(18vw,-22vh)}
+body[data-scene="hero"]     #scene .g2{transform:translate(-42vw,-10vh)}
+body[data-scene="hero"]     #scene .g3{transform:translate(10vw,60vh);opacity:.7}
+body[data-scene="reel"]     #scene .g1{transform:translate(-30vw,20vh)}
+body[data-scene="reel"]     #scene .g2{transform:translate(46vw,44vh)}
+body[data-scene="reel"]     #scene .g3{transform:translate(-20vw,-30vh);opacity:1}
+body[data-scene="inf"]      #scene .g1{transform:translate(6vw,10vh) scale(1.15)}
+body[data-scene="inf"]      #scene .g2{transform:translate(-24vw,52vh)}
+body[data-scene="inf"]      #scene .g3{transform:translate(38vw,-16vh);opacity:.9}
+body[data-scene="plat"]     #scene .g1{transform:translate(-46vw,-14vh)}
+body[data-scene="plat"]     #scene .g2{transform:translate(38vw,26vh) scale(1.2)}
+body[data-scene="plat"]     #scene .g3{transform:translate(-6vw,70vh);opacity:.8}
+body[data-scene="contact"]  #scene{background:#0B0813}
+body[data-scene="contact"]  #scene .g1{transform:translate(30vw,40vh) scale(1.1)}
+body[data-scene="contact"]  #scene .g2{transform:translate(-36vw,-6vh)}
+body[data-scene="contact"]  #scene .g3{transform:translate(0,-24vh);opacity:1}
+.sec,.hero,footer.site{position:relative;z-index:1}
+.hero,.sec:not(.light){background:transparent}
+
+/* حواف منحنية بين الأقسام الفاتحة والداكنة */
+.light{border-radius:44px 44px 0 0}
+.light + .sec:not(.light),.light + section:not(.light){margin-top:-2px}
+.light::after{content:'';position:absolute;inset-block-end:-54px;inset-inline:0;height:56px;
+  background:inherit;border-radius:0 0 50% 50% / 0 0 100% 100%;pointer-events:none}
+
+/* ================= مستطيلات المنصات ================= */
+.ptrack{direction:ltr;overflow:hidden;padding:10px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.prow{display:flex;gap:16px;width:max-content;direction:ltr;animation:pslide 44s linear infinite}
+.prow.rev{animation-direction:reverse;animation-duration:52s}
+.ptrack:hover .prow{animation-play-state:paused}
+@keyframes pslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.pcard{direction:rtl;width:min(360px,78vw);flex:none;display:flex;gap:16px;align-items:center;padding:18px 20px;
+  border-radius:var(--r-lg);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.11);
+  transition:transform .45s var(--ease),background .45s,border-color .45s,box-shadow .45s;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .45s;
+  background:radial-gradient(120% 100% at 20% 0%,rgba(130,77,235,.42),transparent 72%)}
+.pcard:hover{transform:translateY(-6px);border-color:rgba(130,77,235,.6);
+  box-shadow:0 22px 60px rgba(76,1,146,.45);background:rgba(255,255,255,.08)}
+.pcard:hover::before{opacity:1}
+.pcard>*{position:relative}
+.pcard .mk{width:64px;height:64px;flex:none;border-radius:16px;display:grid;place-items:center;
+  background:#fff;border:1px solid rgba(255,255,255,.16);transition:transform .45s var(--ease)}
+.pcard:hover .mk{transform:scale(1.06)}
+.pcard .mk img{max-width:46px;max-height:38px;object-fit:contain}
+.pcard h3{font-size:1.05rem;margin-bottom:3px}
+.pcard p{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.5}
+.pcard .go{font-size:.76rem;color:#C7AFF6;font-weight:600;margin-top:7px;display:inline-block}
+.pcard .soon{font-size:.72rem;color:rgba(255,255,255,.38);margin-top:7px;display:inline-block}
+
 /* ================= سلة الترشيح وخانة الطلب ================= */
 .inf{position:relative;cursor:pointer}
 .inf.sel{background:rgba(130,77,235,.22);border-color:var(--s-400);box-shadow:0 0 34px rgba(130,77,235,.45)}
@@ -430,6 +490,7 @@ footer.site a:hover{color:#fff}
 </head>
 <body>
 <div id="bar"></div>
+<div id="scene"><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="grain"></i></div>
 
 <!-- ============================ الهيدر ============================ -->
 <header id="hdr">
@@ -467,7 +528,7 @@ footer.site a:hover{color:#fff}
 </header>
 
 <!-- ============================ البطل ============================ -->
-<section class="hero" id="top">
+<section class="hero" id="top" data-scene="hero">
   <canvas id="net"></canvas>
   <div class="wrap">
     <div class="hero-grid">
@@ -618,7 +679,7 @@ footer.site a:hover{color:#fff}
 </section>
 
 <!-- ============================ الشوريل ============================ -->
-<section class="sec">
+<section class="sec" data-scene="reel">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow"><i></i><span data-en="Showreel">الشوريل</span></span>
@@ -681,7 +742,7 @@ footer.site a:hover{color:#fff}
 <div id="wprev"><img id="wprevimg" src="assets/works/walimah-cover.jpg" alt=""></div>
 
 <!-- ============================ المؤثرون: المحور ============================ -->
-<section class="sec" id="influencers">
+<section class="sec" id="influencers" data-scene="inf">
   <div class="wrap">
     <div class="sec-head rv" style="text-align:center;margin-inline:auto">
       <span class="eyebrow"><i></i><span data-en="Influencer network">شبكة المؤثرين</span></span>
@@ -810,41 +871,17 @@ footer.site a:hover{color:#fff}
 </div>
 
 <!-- ============================ المنصات ============================ -->
-<section class="sec" id="ecosystem">
+<section class="sec" id="ecosystem" data-scene="plat">
   <div class="wrap">
     <div class="sec-head rv">
       <span class="eyebrow"><i></i><span data-en="The Ahdaf ecosystem">منظومة أهداف</span></span>
       <h2 data-en="Our platforms">منصاتنا</h2>
       <p data-en="Products we own and operate, where we test what we recommend.">منتجات نملكها ونشغّلها، وفيها نجرّب ما نوصي به.</p>
     </div>
-    <div class="eco-grid">
-      <article class="eco rv"><div class="mark"><img src="assets/platforms/koorashow.png" alt="كورة شو"></div>
-        <div><h3 data-en="Koora Show">كورة شو</h3><p data-en="Saudi sports media platform.">منصة إعلام رياضي سعودية.</p>
-        <div class="go" data-en="Visit ←">زيارة ←</div></div></article>
-      <article class="eco rv d1"><div class="mark"><img src="assets/platforms/matchesgoals.png" alt="Matches Goals"></div>
-        <div><h3>Matches Goals</h3><p data-en="Match data and highlights.">بيانات المباريات وأبرز اللقطات.</p>
-        <div class="go" data-en="Visit ←">زيارة ←</div></div></article>
-      <article class="eco rv d2"><div class="mark"><img src="assets/platforms/jawlah.png" alt="جولة"></div>
-        <div><h3 data-en="Jawlah">جولة</h3><p data-en="Sports rounds in short video.">جولات رياضية بالفيديو القصير.</p>
-        <div class="go" data-en="Visit ←">زيارة ←</div></div></article>
-      <article class="eco rv d3"><div class="mark"><img src="assets/platforms/midrab.png" alt="مضرب"></div>
-        <div><h3 data-en="Midrab">مضرب</h3><p data-en="Racket sports community.">مجتمع رياضات المضرب.</p>
-        <div class="go" data-en="Visit ←">زيارة ←</div></div></article>
-      <article class="eco rv"><div class="mark"><img src="assets/platforms/dakkah.png" alt="دكة"></div>
-        <div><h3 data-en="Dakkah">دكة</h3><p data-en="Fan opinion content.">محتوى رأي الجماهير.</p>
-        <div class="go" data-en="Visit ←">زيارة ←</div></div></article>
-      <article class="eco rv d1"><div class="mark"><img src="assets/platforms/hankah.png" alt="حنكة"></div>
-        <div><h3 data-en="Hankah">حنكة</h3><p data-en="Competitive entertainment.">ترفيه تنافسي.</p>
-        <div class="go" data-en="Visit ←">زيارة ←</div></div></article>
-      <article class="eco rv d2"><div class="mark"><img src="assets/platforms/ratm.png" alt="رتم"></div>
-        <div><h3 data-en="Ratm">رتم</h3><p data-en="Culture and lifestyle.">ثقافة ونمط حياة.</p>
-        <div class="go" data-en="Visit ←">زيارة ←</div></div></article>
-      <article class="eco rv d3" style="border-color:rgba(130,77,235,.45)">
-        <div class="mark" style="font-family:var(--font-display);font-size:1.4rem;color:#C7AFF6">والي جوجل</div>
-        <div><h3 data-en="Wali Google">خرائط جوجل</h3><p data-en="Reviews, data accuracy, local ranking.">التقييمات ودقّة البيانات والترتيب المحلي.</p>
-        <a class="go" style="opacity:1" href="https://ahdaf-maps.com/" target="_blank" rel="noopener">ahdaf-maps.com ←</a></div></article>
-    </div>
   </div>
+
+  <div class="ptrack rv" id="ptrack1"><div class="prow"></div></div>
+  <div class="ptrack rv" id="ptrack2"><div class="prow rev"></div></div>
 </section>
 
 <!-- ============================ المنهجية ============================ -->
@@ -898,7 +935,7 @@ footer.site a:hover{color:#fff}
 </section>
 
 <!-- ============================ تواصل ============================ -->
-<section class="sec" id="contact">
+<section class="sec" id="contact" data-scene="contact">
   <div class="wrap">
     <div class="contact-grid">
       <div class="rv">
@@ -1472,13 +1509,19 @@ $$('#panels .panel').forEach(p => {
   });
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   svg.appendChild(path);
+  let spread = 0;   // العقد تنطلق من المركز عند أول ظهور
+  new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) {
+    const t0 = performance.now();
+    (function ease(t){ const k = Math.min(1, (t - t0) / 1100);
+      spread = 1 - Math.pow(1 - k, 3); if (k < 1) requestAnimationFrame(ease); })(t0);
+    o.disconnect(); } }), {threshold:.3}).observe(hub);
   function frame(t){
     const W = hub.clientWidth, H = hub.clientHeight;
     const cx = W / 2, cy = H / 2, base = R();
     let d = '';
     nodes.forEach(n => {
       const a = n.a0 + t * n.sp * (n.r > 1.05 ? -1 : 1);
-      const rr = base * n.r + Math.sin(t * .0009 + n.a0) * 12;
+      const rr = (base * n.r + Math.sin(t * .0009 + n.a0) * 12) * spread;
       const x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr;
       n.el.style.left = (x - n.el.offsetWidth / 2) + 'px';
       n.el.style.top  = (y - n.el.offsetHeight / 2) + 'px';
@@ -1603,6 +1646,68 @@ addEventListener('keydown', e => { if (e.key === 'Escape') closeRoster(); });
       s.classList.toggle('hit', sr.top < innerHeight * .72);
     });
   }, {passive:true});
+})();
+
+/* ================= المنصات: مستطيلات ماشية ================= */
+// رابط ممر — عدّله هنا وينطبق على كل المنصات المرتبطة به
+const MAMAR = '#';
+const PLATFORMS = [
+  {s:'koorashow',   n:'كورة شو',      en:'Koora Show',    d:'منصة إعلام رياضي سعودية بجمهورها وصنّاع محتواها.', de:'A Saudi sports media platform.', u:'https://koorashow.com'},
+  {s:'matchesgoals',n:'Matches Goals',en:'Matches Goals', d:'بيانات المباريات وأبرز اللقطات لجمهور كرة القدم.',   de:'Match data and highlights.',     u:MAMAR},
+  {s:'jawlah',      n:'جولة',        en:'Jawlah',        d:'جولات وتغطيات رياضية بالفيديو القصير.',            de:'Sports rounds in short video.',  u:MAMAR},
+  {s:'midrab',      n:'مضرب',        en:'Midrab',        d:'منصة مجتمعية حول رياضات المضرب.',                  de:'Racket sports community.',       u:MAMAR},
+  {s:'dakkah',      n:'دكة',         en:'Dakkah',        d:'محتوى الرأي وحوار الجماهير.',                      de:'Fan opinion content.',           u:MAMAR},
+  {s:'hankah',      n:'حنكة',        en:'Hankah',        d:'محتوى ترفيهي بطابع تنافسي.',                       de:'Competitive entertainment.',     u:MAMAR},
+  {s:'ratm',        n:'رتم',         en:'Ratm',          d:'محتوى ثقافي ومعاصر لجمهور أصغر سناً.',             de:'Culture and lifestyle.',         u:MAMAR},
+  {s:'mamar',       n:'ممر',         en:'Mamar',         d:'نظام إدارة العمل الداخلي: المهام والعملاء والتقارير.', de:'Our internal work management system.', u:MAMAR},
+];
+const pcard = x => `
+  <a class="pcard" href="${x.u}" ${x.u === '#' ? '' : 'target="_blank" rel="noopener"'}>
+    <span class="mk">${x.s === 'mamar'
+      ? '<b style="font-family:var(--font-display);font-size:1.2rem;color:#C7AFF6">ممر</b>'
+      : `<img src="assets/platforms/${x.s}.png" alt="${x.n}">`}</span>
+    <span>
+      <h3 data-en="${x.en}">${x.n}</h3>
+      <p data-en="${x.de}">${x.d}</p>
+      ${x.u === '#'
+        ? '<span class="soon" data-en="Link coming soon">الرابط قريباً</span>'
+        : '<span class="go" data-en="Enter the platform →">ادخل المنصة ←</span>'}
+    </span>
+  </a>`;
+const half = Math.ceil(PLATFORMS.length / 2);
+const rowA = PLATFORMS.slice(0, half), rowB = PLATFORMS.slice(half);
+const loop = arr => [...arr, ...arr, ...arr, ...arr, ...arr, ...arr];   // ست نسخ = ثلاث في كل نصف
+$('#ptrack1 .prow').innerHTML = loop(rowA).map(pcard).join('');
+$('#ptrack2 .prow').innerHTML = loop(rowB).map(pcard).join('');
+
+/* ================= تبديل المشهد مع التمرير ================= */
+const sceneIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) document.body.dataset.scene = e.target.dataset.scene;
+}), {threshold:.35});
+$$('[data-scene]').forEach(el => sceneIO.observe(el));
+document.body.dataset.scene = 'hero';
+
+/* ================= الشوريل يتمدّد مع النزول ================= */
+(function reelZoom(){
+  const r = $('.reel'); if (!r || reduce) return;
+  r.style.transformOrigin = 'center';
+  const upd = () => {
+    const b = r.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (innerHeight - b.top) / (innerHeight * .9)));
+    r.style.transform = `scale(${(.88 + p * .12).toFixed(3)})`;
+  };
+  addEventListener('scroll', upd, {passive:true}); upd();
+})();
+
+/* ================= شريط الأرقام يميل مع التمرير ================= */
+(function bandTilt(){
+  const b = $('.band'); if (!b || reduce) return;
+  const upd = () => {
+    const r = b.getBoundingClientRect();
+    const p = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;   // -1 .. 1
+    b.style.transform = `perspective(900px) rotateX(${(p * 7).toFixed(2)}deg)`;
+  };
+  addEventListener('scroll', upd, {passive:true}); upd();
 })();
 
 /* ================= القائمة والجوال ================= */
