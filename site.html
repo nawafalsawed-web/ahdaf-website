@@ -189,7 +189,19 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
   background:linear-gradient(0deg,rgba(10,7,17,.92),transparent)}
 .reel .cap b{font-family:var(--font-display);font-size:1.05rem;font-weight:700}
-.reel .cap i{font-style:normal}
+.reel .cap i{font-style:normal;font-size:.8rem;color:#C7AFF6;font-weight:600}
+/* صندوق تشغيل المقطع */
+#lb{position:fixed;inset:0;z-index:95;background:rgba(8,5,14,.94);backdrop-filter:blur(14px);
+  display:grid;place-items:center;padding:28px;opacity:0;pointer-events:none;
+  transition:opacity .4s var(--ease)}
+#lb.on{opacity:1;pointer-events:auto}
+#lb .box{width:min(1100px,94vw);aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid rgba(255,255,255,.16);box-shadow:0 40px 100px rgba(0,0,0,.6);background:#000}
+#lb iframe{width:100%;height:100%;border:0}
+#lb .x{position:absolute;inset-block-start:22px;inset-inline-end:26px;width:46px;height:46px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.24);background:transparent;color:#fff;
+  font-size:1.2rem;cursor:pointer}
+#lb .x:hover{background:rgba(255,255,255,.12)}
 .reel-note{margin-top:18px;color:rgba(255,255,255,.55);font-size:.88rem}
 
 /* ================= الأعمال: قائمة بمعاينة تتبع المؤشر ================= */
@@ -500,6 +512,7 @@ footer.site a:hover{color:#fff}
 </head>
 <body>
 <div id="bar"></div>
+<div id="lb"><button class="x" aria-label="إغلاق">✕</button><div class="box"></div></div>
 <div id="scene"><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="grain"></i></div>
 
 <!-- ============================ الهيدر ============================ -->
@@ -724,30 +737,33 @@ footer.site a:hover{color:#fff}
     </div>
 
     <div class="reels rv" id="reels">
-      <a class="reel" href="#" data-title="شوريل أهداف" data-en-title="Ahdaf showreel">
+      <a class="reel" data-drive="13y81_KdSCeV0dU6RkNwjd6KLVwVePfZg"
+         href="https://drive.google.com/file/d/13y81_KdSCeV0dU6RkNwjd6KLVwVePfZg/view" target="_blank" rel="noopener">
         <img src="assets/works/momah-event.jpg" alt="">
         <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
         <span class="cap">
-          <b data-en="Ahdaf showreel">شوريل أهداف</b>
-          <i class="badge-idea">◆ <span data-en="Clip pending">بانتظار المقطع</span></i>
+          <b data-en="Municipalities & Housing event">فعالية البلديات والإسكان</b>
+          <i class="go" data-en="Play ←">تشغيل ←</i>
         </span>
       </a>
 
-      <a class="reel" href="#" data-title="حفل قمة الأول">
+      <a class="reel" data-drive="10aTW01DqGMoNP3K-GbLVV_PxY_gmGlaZ"
+         href="https://drive.google.com/file/d/10aTW01DqGMoNP3K-GbLVV_PxY_gmGlaZ/view" target="_blank" rel="noopener">
         <img src="assets/works/qemah-event.jpg" alt="">
         <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
         <span class="cap">
           <b data-en="Qimmah gala, first edition">حفل قمة الأول</b>
-          <i class="badge-idea">◆ <span data-en="Clip pending">بانتظار المقطع</span></i>
+          <i class="go" data-en="Play ←">تشغيل ←</i>
         </span>
       </a>
 
-      <a class="reel" href="#" data-title="حفل قمة الثاني">
+      <a class="reel" href="https://drive.google.com/drive/folders/1vfKWKtXipqJ9w0KGmnA51erDfBpwmbhk"
+         target="_blank" rel="noopener">
         <img src="assets/works/qemah-event.jpg" alt="">
         <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
         <span class="cap">
           <b data-en="Qimmah gala, second edition">حفل قمة الثاني</b>
-          <i class="badge-idea">◆ <span data-en="Clip pending">بانتظار المقطع</span></i>
+          <i class="go" data-en="Open the album ←">افتح الألبوم ←</i>
         </span>
       </a>
     </div>
@@ -1711,6 +1727,19 @@ const rowA = PLATFORMS.slice(0, half), rowB = PLATFORMS.slice(half);
 const loop = arr => [...arr, ...arr, ...arr, ...arr, ...arr, ...arr];   // ست نسخ = ثلاث في كل نصف
 $('#ptrack1 .prow').innerHTML = loop(rowA).map(pcard).join('');
 $('#ptrack2 .prow').innerHTML = loop(rowB).map(pcard).join('');
+
+/* ================= تشغيل المقاطع داخل الصفحة ================= */
+const lb = $('#lb'), lbBox = $('#lb .box');
+$$('.reel[data-drive]').forEach(r => r.addEventListener('click', e => {
+  e.preventDefault();
+  lbBox.innerHTML = `<iframe src="https://drive.google.com/file/d/${r.dataset.drive}/preview"
+    allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+  lb.classList.add('on'); document.body.style.overflow = 'hidden';
+}));
+const closeLb = () => { lb.classList.remove('on'); lbBox.innerHTML = ''; document.body.style.overflow = ''; };
+$('#lb .x').addEventListener('click', closeLb);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('on')) closeLb(); });
 
 /* ================= تبديل المشهد مع التمرير ================= */
 const sceneIO = new IntersectionObserver(es => es.forEach(e => {
