@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نظام تصميم أهداف · Ahdaf Design System v1.0</title>
+<link rel="icon" href="assets/ahdaf-logo-sm.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+  body{background:#0B0813;color:#fff;font-family:var(--font-body)}
+  .shell{max-width:1320px;margin:0 auto;padding:clamp(16px,3vw,34px)}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+       margin-bottom:26px}
+  .top img{height:38px}
+  .top .meta{font-family:var(--font-label);font-size:.72rem;letter-spacing:.14em;
+             text-transform:uppercase;color:rgba(255,255,255,.45)}
+  .frame{background:linear-gradient(180deg,#171029,#100B1D);border:1px solid rgba(255,255,255,.09);
+         border-radius:var(--r-xl);padding:clamp(14px,2vw,24px)}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(12,1fr)}
+  .panel{background:#fff;color:var(--ink);border-radius:var(--r-lg);padding:20px;overflow:hidden}
+  .panel.dark{background:#161022;color:#fff;border:1px solid rgba(255,255,255,.08)}
+  .panel h3{font-family:var(--font-label);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+            color:var(--n-500);font-weight:600;margin-bottom:14px}
+  .panel.dark h3{color:rgba(255,255,255,.45)}
+  .c4{grid-column:span 4}.c3{grid-column:span 3}.c6{grid-column:span 6}
+  .c8{grid-column:span 8}.c12{grid-column:span 12}.c5{grid-column:span 5}.c7{grid-column:span 7}
+  @media(max-width:900px){.c4,.c3,.c6,.c8,.c5,.c7{grid-column:span 12}}
+
+  /* ألوان */
+  .swatch span:last-child,.hex{direction:ltr;unicode-bidi:isolate}
+  .swatch{border-radius:var(--r-md);padding:16px;color:#fff;display:flex;
+          align-items:flex-start;justify-content:space-between;font-family:var(--font-label);
+          font-size:.78rem;font-weight:600;letter-spacing:.02em}
+  .ramp{display:flex;gap:3px;margin-top:8px}
+  .ramp span{flex:1;height:34px;border-radius:5px;position:relative}
+  .ramp span::after{content:attr(data-k);position:absolute;inset-inline-start:0;bottom:-16px;
+                    font-size:.55rem;color:var(--n-400);font-family:var(--font-label)}
+  .ramp-wrap{margin-bottom:20px}
+  .hexrow{display:flex;justify-content:space-between;font-size:.68rem;color:var(--n-500);
+          font-family:var(--font-label);margin-top:22px}
+
+  /* خطوط */
+  .aa{font-family:var(--font-display);font-size:5.4rem;line-height:1;margin:6px 0 4px}
+  .aa.body{font-family:var(--font-body);font-weight:500}
+  .aa.label{font-family:var(--font-label);font-size:3.4rem;font-weight:600}
+  .fontmeta{display:flex;justify-content:space-between;font-family:var(--font-label);
+            font-size:.7rem;color:var(--n-500);border-top:1px solid var(--line);padding-top:10px;margin-top:12px}
+  .scale li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+            padding:9px 0;border-bottom:1px dashed var(--line)}
+  .scale{list-style:none;margin:0;padding:0}
+  .scale b{font-family:var(--font-display);font-weight:700}
+  .scale code{font-family:var(--font-label);font-size:.68rem;color:var(--n-500);white-space:nowrap}
+
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .stack{display:flex;flex-direction:column;gap:14px}
+  .bar{height:9px;border-radius:var(--r-full);background:var(--n-100);overflow:hidden}
+  .bar i{display:block;height:100%;border-radius:var(--r-full);background:linear-gradient(90deg,var(--p-500),var(--s-500))}
+  .tokenbox{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line);
+            font-family:var(--font-label);font-size:.74rem;color:var(--n-600)}
+  .tokenbox .demo{width:56px;height:38px;background:var(--p-50);border:1px solid var(--p-100);flex:none}
+  .stat{font-family:var(--font-display);font-size:2.6rem;font-weight:700;line-height:1;
+        background:linear-gradient(120deg,var(--p-500),var(--s-500));-webkit-background-clip:text;
+        background-clip:text;color:transparent}
+  .avatars{display:flex}
+  .avatars img{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2.5px solid #fff;
+               margin-inline-start:-12px}
+  .avatars img:first-child{margin:0}
+  .do{border-inline-start:3px solid #16A34A;padding-inline-start:12px}
+  .dont{border-inline-start:3px solid #DC2626;padding-inline-start:12px}
+  .logo-demo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .logo-demo div{border-radius:var(--r-md);display:grid;place-items:center;padding:22px;min-height:110px}
+  .note{font-size:.8rem;color:var(--n-500);line-height:1.6}
+  .panel.dark .note{color:rgba(255,255,255,.55)}
+  .grain{position:relative}
+  .grain::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+     background-image:radial-gradient(rgba(255,255,255,.5) .5px,transparent .5px);
+     background-size:4px 4px;opacity:.14}
+  footer{color:rgba(255,255,255,.4);font-size:.78rem;text-align:center;padding:32px 0 8px}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <div class="top">
+    <img src="assets/ahdaf-logo-white.png" alt="أهداف">
+    <div>
+      <div style="font-family:var(--font-display);font-size:1.5rem;font-weight:700">نظام تصميم أهداف</div>
+      <div class="meta">Ahdaf Design System · v1.0 · 2026</div>
+    </div>
+    <div class="meta">نربط الإبداع بالهدف</div>
+  </div>
+
+  <div class="frame grain">
+    <div class="grid">
+
+      <!-- ================= الألوان ================= -->
+      <section class="panel c4">
+        <h3>Color · الألوان</h3>
+
+        <div class="ramp-wrap">
+          <div class="swatch" style="background:#4C0192"><span>Primary · بنفسجي أهداف</span><span>#4C0192</span></div>
+          <div class="ramp">
+            <span data-k="50" style="background:#F4F0F8"></span><span data-k="100" style="background:#E6DBF0"></span>
+            <span data-k="200" style="background:#CDB8E0"></span><span data-k="300" style="background:#AE8DCE"></span>
+            <span data-k="400" style="background:#8552B5"></span><span data-k="500" style="background:#4C0192"></span>
+            <span data-k="600" style="background:#40027A"></span><span data-k="700" style="background:#340462"></span>
+            <span data-k="800" style="background:#280549"></span><span data-k="900" style="background:#1B0630"></span>
+          </div>
+          <div class="hexrow"><span>لون الشعار والأزرار الأساسية</span><span>10 درجات</span></div>
+        </div>
+
+        <div class="ramp-wrap">
+          <div class="swatch" style="background:#824DEB"><span>Secondary · بنفسجي مضيء</span><span>#824DEB</span></div>
+          <div class="ramp">
+            <span data-k="50" style="background:#F8F4FE"></span><span data-k="100" style="background:#EEE6FC"></span>
+            <span data-k="200" style="background:#DCCDF9"></span><span data-k="300" style="background:#C7AFF6"></span>
+            <span data-k="400" style="background:#AA86F1"></span><span data-k="500" style="background:#824DEB"></span>
+            <span data-k="600" style="background:#6C41C3"></span><span data-k="700" style="background:#57349B"></span>
+            <span data-k="800" style="background:#402771"></span><span data-k="900" style="background:#291A47"></span>
+          </div>
+          <div class="hexrow"><span>التدرجات والروابط والحالات النشطة</span><span>10 درجات</span></div>
+        </div>
+
+        <div class="ramp-wrap">
+          <div class="swatch" style="background:#353F40"><span>Tertiary · فحمي</span><span>#353F40</span></div>
+          <div class="ramp">
+            <span data-k="50" style="background:#F3F3F4"></span><span data-k="100" style="background:#E3E4E4"></span>
+            <span data-k="200" style="background:#C6C9CA"></span><span data-k="300" style="background:#A4A9A9"></span>
+            <span data-k="400" style="background:#767C7D"></span><span data-k="500" style="background:#353F40"></span>
+            <span data-k="600" style="background:#2D3537"></span><span data-k="700" style="background:#262B2E"></span>
+            <span data-k="800" style="background:#1D2124"></span><span data-k="900" style="background:#15161B"></span>
+          </div>
+          <div class="hexrow"><span>النصوص والأسطح الداكنة</span><span>10 درجات</span></div>
+        </div>
+
+        <div class="ramp-wrap">
+          <div class="swatch" style="background:#6B7280"><span>Neutral · رمادي</span><span>#6B7280</span></div>
+          <div class="ramp">
+            <span data-k="50" style="background:#F6F7F7"></span><span data-k="100" style="background:#EAEBED"></span>
+            <span data-k="200" style="background:#D6D8DB"></span><span data-k="300" style="background:#BCC0C6"></span>
+            <span data-k="400" style="background:#9A9FA9"></span><span data-k="500" style="background:#6B7280"></span>
+            <span data-k="600" style="background:#5A5F6B"></span><span data-k="700" style="background:#484C57"></span>
+            <span data-k="800" style="background:#363841"></span><span data-k="900" style="background:#23242C"></span>
+          </div>
+          <div class="hexrow"><span>الحدود والخلفيات والنص الثانوي</span><span>10 درجات</span></div>
+        </div>
+
+        <div class="ramp-wrap" style="margin-bottom:0">
+          <div class="swatch" style="background:#D8B45A;color:#2a2210"><span>Gold · لمسة تمييز</span><span>#D8B45A</span></div>
+          <div class="ramp">
+            <span data-k="300" style="background:#EDDDB5"></span><span data-k="400" style="background:#E4CC8F"></span>
+            <span data-k="500" style="background:#D8B45A"></span><span data-k="600" style="background:#B3954C"></span>
+            <span data-k="700" style="background:#8E763F"></span>
+          </div>
+          <div class="hexrow"><span>للشارات والأرقام المميزة فقط، بحدود 5% من الصفحة</span><span></span></div>
+        </div>
+      </section>
+
+      <!-- ================= الخطوط ================= -->
+      <section class="panel c4">
+        <h3>Typography · الخطوط</h3>
+
+        <div style="border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px">
+          <div class="label">Headline · العناوين</div>
+          <div class="aa">Aa أهداف</div>
+          <div class="fontmeta"><span>Saudi Serif Bold</span><span>‎-1% tracking · 1.18 line</span></div>
+        </div>
+
+        <div style="border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px">
+          <div class="label">Body · المتن</div>
+          <div class="aa body">Aa أهداف</div>
+          <div class="fontmeta"><span>IBM Plex Sans Arabic 400/500</span><span>1.7 line-height</span></div>
+        </div>
+
+        <div style="margin-bottom:16px">
+          <div class="label">Label · الملصقات واللاتيني</div>
+          <div class="aa label">Aa Ahdaf</div>
+          <div class="fontmeta"><span>Inter 600</span><span>+14% tracking · UPPERCASE</span></div>
+        </div>
+
+        <ul class="scale">
+          <li><b style="font-size:2.1rem">عنوان البطل</b><code>clamp 2.6→5.6rem</code></li>
+          <li><b style="font-size:1.6rem">عنوان قسم</b><code>clamp 2.1→3.6rem</code></li>
+          <li><b style="font-size:1.25rem">عنوان فرعي</b><code>clamp 1.7→2.6rem</code></li>
+          <li><b style="font-size:1.05rem">عنوان كرت</b><code>clamp 1.25→1.6rem</code></li>
+          <li><span style="font-family:var(--font-body)">نص افتتاحي</span><code>clamp 1.05→1.25rem</code></li>
+          <li><span style="font-family:var(--font-body);font-size:.9rem">نص عادي</span><code>16px / 1.7</code></li>
+          <li><span class="label">ملصق صغير</span><code>12px / .14em</code></li>
+        </ul>
+      </section>
+
+      <!-- ================= المكوّنات ================= -->
+      <section class="panel c4">
+        <h3>Components · المكوّنات</h3>
+        <div class="stack">
+          <div class="row">
+            <button class="btn btn-primary">احجز استشارة</button>
+            <button class="btn btn-secondary">تصفّح الأعمال</button>
+          </div>
+          <div class="row">
+            <button class="btn btn-inverted">نظام أهداف</button>
+            <button class="btn btn-outlined">حمّل الملف</button>
+            <button class="btn btn-ghost">اعرف أكثر ←</button>
+          </div>
+
+          <div class="field">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#9A9FA9" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+            <input placeholder="ابحث عن مؤثر، خدمة، أو عمل…">
+          </div>
+
+          <div class="row">
+            <span class="chip is-on">الكل</span>
+            <span class="chip">مؤثرين</span>
+            <span class="chip">إنتاج</span>
+            <span class="chip">فعاليات</span>
+            <span class="badge-idea">◆ مقترح</span>
+          </div>
+
+          <div class="row">
+            <button class="iconbtn" aria-label="الرئيسية"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg></button>
+            <button class="iconbtn" aria-label="بحث"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+            <button class="iconbtn" aria-label="الحساب"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></button>
+            <button class="iconbtn" style="background:var(--brand);color:#fff" aria-label="تشغيل"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+            <button class="iconbtn" style="background:#25D366;color:#fff" aria-label="واتساب"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.2-6.4M20 4v4h-4"/></svg></button>
+          </div>
+
+          <div>
+            <div class="label" style="margin-bottom:8px">Stat · كرت رقم</div>
+            <div class="stat">+3,700</div>
+            <div class="note">مؤثر في شبكة أهداف</div>
+            <div class="bar" style="margin-top:12px"><i style="width:78%"></i></div>
+          </div>
+
+          <div>
+            <div class="label" style="margin-bottom:8px">Avatars · صف المؤثرين</div>
+            <div class="avatars">
+              <img src="assets/avatars/az_binfahad.jpg" alt=""><img src="assets/avatars/hind_alfawzan.jpg" alt="">
+              <img src="assets/avatars/e5bll.jpg" alt=""><img src="assets/avatars/arwa_naseer.jpg" alt="">
+              <img src="assets/avatars/ibrahimbasha.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= التوكنز ================= -->
+      <section class="panel c4">
+        <h3>Tokens · الزوايا والمسافات والظلال</h3>
+        <div class="tokenbox"><span class="demo" style="border-radius:8px"></span> r-sm · 8px · الحقول الصغيرة</div>
+        <div class="tokenbox"><span class="demo" style="border-radius:14px"></span> r-md · 14px · الصور والوسوم</div>
+        <div class="tokenbox"><span class="demo" style="border-radius:22px"></span> r-lg · 22px · الكروت</div>
+        <div class="tokenbox"><span class="demo" style="border-radius:32px"></span> r-xl · 32px · الأقسام</div>
+        <div class="tokenbox"><span class="demo" style="border-radius:999px"></span> r-full · الأزرار والشيبس</div>
+        <div class="tokenbox" style="border:0;padding-top:16px">
+          <span class="demo" style="border-radius:14px;box-shadow:var(--sh-3);background:#fff"></span> sh-3 · ظل بنفسجي للكروت المرفوعة
+        </div>
+        <div class="note" style="margin-top:6px">
+          سلم المسافات: 4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96 · 128. الحركة: 350ms بمنحنى
+          <code style="font-family:var(--font-label)">cubic-bezier(.22,.9,.28,1)</code>، ورفع 2px عند المرور فقط.
+        </div>
+      </section>
+
+      <!-- ================= الشعار ================= -->
+      <section class="panel c4">
+        <h3>Logo · استخدام الشعار</h3>
+        <div class="logo-demo">
+          <div style="background:#fff;border:1px solid var(--line)"><img src="assets/ahdaf-logo.png" style="max-height:44px;width:auto" alt=""></div>
+          <div style="background:#0E0A16"><img src="assets/ahdaf-logo-white.png" style="max-height:44px;width:auto" alt=""></div>
+          <div style="background:var(--p-500)"><img src="assets/ahdaf-logo-white.png" style="max-height:44px;width:auto" alt=""></div>
+          <div style="background:var(--p-50)"><img src="assets/ahdaf-logo.png" style="max-height:44px;width:auto" alt=""></div>
+        </div>
+        <div class="stack" style="margin-top:16px">
+          <div class="do note"><b>افعل:</b> بنفسجي على الخلفيات الفاتحة، أبيض على الداكنة، ومساحة حرة حول الشعار لا تقل عن ارتفاع الحرف.</div>
+          <div class="dont note"><b>لا تفعل:</b> تلوين الشعار بلون آخر، وضعه على صورة مزدحمة بلا طبقة تعتيم، أو تشويه نسبه.</div>
+        </div>
+      </section>
+
+      <!-- ================= الوضع الداكن ================= -->
+      <section class="panel dark c4">
+        <h3>Dark Surface · السطح الداكن</h3>
+        <div class="note" style="margin-bottom:14px">
+          خلفية الموقع الداكنة <b class="hex" style="color:#fff">#0E0A16</b> مع طبقة <b class="hex" style="color:#fff">#171029</b> للكروت،
+          والحدود بيضاء بشفافية 12%. البنفسجي يظهر كتوهّج لا كمساحة صلبة.
+        </div>
+        <div style="background:#171029;border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);
+                    padding:18px;box-shadow:0 20px 50px rgba(76,1,146,.35)">
+          <div class="label" style="color:rgba(255,255,255,.45)">CASE STUDY</div>
+          <div style="font-family:var(--font-display);font-size:1.35rem;margin:6px 0">مهرجان الوليمة للطعام السعودي</div>
+          <div style="font-family:var(--font-display);font-size:2rem;color:var(--g-500)">+13,067,000</div>
+          <div class="note">مشاهدة عبر منصات الحملة</div>
+        </div>
+        <div class="row" style="margin-top:16px">
+          <button class="btn btn-primary">ابدأ مشروعك</button>
+          <button class="btn btn-outlined" style="color:#fff;border-color:rgba(255,255,255,.25)">شاهد الأعمال</button>
+        </div>
+      </section>
+
+      <!-- ================= الشبكة ================= -->
+      <section class="panel c12">
+        <h3>Grid & Rhythm · الشبكة والإيقاع</h3>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:12px;margin-bottom:14px">
+          <div style="grid-column:span 12;height:8px;background:var(--p-100);border-radius:4px"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(12,1fr);gap:12px">
+          <div style="grid-column:span 7;background:var(--p-50);border:1px dashed var(--p-200);border-radius:var(--r-md);padding:16px">
+            <div class="label">7 أعمدة</div><div class="note">المحتوى الأساسي: عنوان + نص + دعوة</div>
+          </div>
+          <div style="grid-column:span 5;background:var(--n-50);border:1px dashed var(--n-200);border-radius:var(--r-md);padding:16px">
+            <div class="label">5 أعمدة</div><div class="note">الصورة أو البيانات المصاحبة</div>
+          </div>
+        </div>
+        <div class="note" style="margin-top:14px">
+          شبكة 12 عموداً بعرض أقصى 1220px وحشوة جانبية من 18px إلى 32px. المسافة بين الأقسام 96px على الشاشات
+          الكبيرة و64px على الجوال. القاعدة: لا يزيد عرض سطر النص عن 65 حرفاً.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer>نظام تصميم أهداف · الملف مرتبط بـ <code>assets/tokens.css</code>، أي تعديل على المتغيّرات ينعكس على الموقع كاملاً.</footer>
+</div>
+</body>
+</html>

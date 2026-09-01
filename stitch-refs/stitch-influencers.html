@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="dark" dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>شبكتنا - أهداف</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&amp;family=Ibm+Plex+Sans:wght@400;500;600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#4C0192',
+                            dark: '#0E0A16',
+                            light: '#FFFFFF'
+                        }
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    fontFamily: {
+                        "headline": ["Public Sans"],
+                        "display": ["Public Sans"],
+                        "body": ["Ibm Plex Sans"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0E0A16;
+            color: white;
+            font-family: 'Ibm Plex Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .font-headline {
+            font-family: 'Public Sans', sans-serif;
+        }
+        .font-label {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        /* Custom Scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0E0A16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4C0192;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6a05cd;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="bg-[#0E0A16] border-b border-white/10 w-full z-50 sticky top-0 flex flex-row-reverse justify-between items-center px-6 py-4 h-16">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-white font-headline">شبكتنا</span>
+</div>
+<div class="flex-1 max-w-md mx-8">
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-full py-2 px-4 pr-10 text-white focus:outline-none focus:border-[#4C0192] transition-colors font-body text-sm" placeholder="ابحث عن مؤثر..." type="text"/>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-white/50">search</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-white hover:text-[#4C0192] transition-colors p-2 active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-white hover:text-[#4C0192] transition-colors p-2 active:scale-95 duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</nav>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar (Selection Basket) -->
+<aside class="fixed right-0 top-16 h-[calc(100vh-4rem)] w-64 bg-[#0E0A16] border-l border-white/10 shadow-xl flex flex-col p-4 z-40">
+<div class="flex flex-col h-full">
+<div class="mb-6 flex items-center gap-3 border-b border-white/10 pb-4">
+<img class="w-10 h-10 rounded-full object-cover border border-[#4C0192]" data-alt="A modern, abstract dark logo for Ahdaf Agency featuring a stylized A and bold typography in deep violet and pristine white on a dark background. The design is sleek, professional, and corporate." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVO_rLOT-3QU3xqVRmOapm6WK_vcGntShF9jpKxVdaz7ZDZePy1ImCtvwbOz1pkrkmBnVM38rReolFd5I19lJdsmqymg4MFFrG2ScDqGZQkk8LDRqNCNjK71JNxqTmK8z24tsEc20ZbkCF-r2mTGytefzCsxaT1Lpy_Mh5ZppLniOG_o1TqWldPESoA3-mW25lE-TBf1F7uvmoAUM_9kUHISfxZtQNzReYZkXdmtSsfS2VNO4lkcaEgp1Zg0ossuMveRAXhFZS_7Ng"/>
+<div>
+<h2 class="font-headline text-lg font-bold text-white">أهداف</h2>
+<p class="font-body text-xs text-white/60">وكالة تسويق</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<h3 class="font-headline text-md font-bold mb-4 text-white/90">سلة الاختيار (3)</h3>
+<div class="space-y-3">
+<!-- Basket Item 1 -->
+<div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg border border-white/10">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A cinematic, high-fashion portrait of a young Arab male influencer wearing stylish modern streetwear. Neon purple rim lighting highlights his features against a deep, moody dark background. Confident expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUq9zzS55exWkzbLccu6RuNDYO0Qk2Y_Cjrp4DX4Q5thM3BsDpj-xjot_0OBbOtcV7SRJx1INGYfLmEULYJt7ZW7iyQgpqRYo68mU_kRw3q3-XUSW_5_p6W1Q3l18BAurtUt35Ff2JRTcTCFlycj8UzCnU3tqFuKKeqK_4mR_Uv0fC3lmuNC2tDzPrFg-ol_XJi4MRU7tAmgPGySfeZOVq7JIGsWm71mbsYxUk4v43XFB73gjGY7OAjNLS2nNjWWWDrbWFovKR2OWZ"/>
+<div class="flex-1">
+<p class="text-sm font-bold text-white">أحمد خالد</p>
+<p class="text-xs text-white/60">Snapchat</p>
+</div>
+<button class="text-red-400 hover:text-red-300">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<!-- Basket Item 2 -->
+<div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg border border-white/10">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A cinematic, high-fashion portrait of an elegant Arab female influencer wearing a modern chic abaya. Soft, glamorous studio lighting with subtle violet accents on a deep dark background. Elegant and poised." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeig7DdFCm__nS_rvOQwIX9wrPFbx1oY2lymWSo52cBDwlpnj0JTko5DTwaCHRFIhW3h9Rw_cnTGYTG1IPCtX2ZV3YYnHr42qLGvUHugsOpFbzQwIZF6dVFDwC_LMFUzT4GhZ7mDs-Lonpw6tO9eoNSLxGtGDFBC69CmYUeNWTYXGIxJ6xxdhFWs9KuO81qgftBNVGoruDWvzeUkNlBOvp1L786OOpFoHWaScpC7zsJHDtjc3I89i_NAupCa3tZ01KrO4CrCJuAW7E"/>
+<div class="flex-1">
+<p class="text-sm font-bold text-white">سارة محمد</p>
+<p class="text-xs text-white/60">TikTok</p>
+</div>
+<button class="text-red-400 hover:text-red-300">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+<!-- Basket Item 3 -->
+<div class="flex items-center gap-3 bg-white/5 p-2 rounded-lg border border-white/10">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="A dynamic, energetic portrait of a young Arab male gamer/influencer with RGB headphones. Vibrant purple and blue neon lighting in a dark room setting. Enthusiastic expression, gaming vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvKY1rcVhv-iP3Mt1dMm3IiIKjPYzamAA3CsPs3uirLCxjHUUxX7eKX1GIvIuZl2mX34f5S8Qq3G3jY7qu2dOPvCIMeM6WJZ6huiYmdw1PxAmYp1b18h749R1lsZGhLl1bIVrvncQFcaQYgPrg9iIgeybXNIubF4XnGbAeUVBlGvFYMZZx8wPCBN9cUCxdk048RLzgM79pSgsCi2Q_RYUk__IOUVsfb9CMGyVGoqDC1MG22kQgM_y9_O0sR7pY6QEcJ7tr0qoHSyKP"/>
+<div class="flex-1">
+<p class="text-sm font-bold text-white">عمر علي</p>
+<p class="text-xs text-white/60">YouTube</p>
+</div>
+<button class="text-red-400 hover:text-red-300">
+<span class="material-symbols-outlined text-sm">close</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-auto pt-4 border-t border-white/10">
+<button class="w-full bg-[#4C0192] hover:bg-[#6a05cd] text-white font-bold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 active:scale-95 duration-200">
+<span>إرسال الطلب</span>
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 mr-64 p-8 overflow-y-auto h-[calc(100vh-4rem)]">
+<!-- Header Section -->
+<header class="mb-10">
+<h1 class="font-headline text-5xl font-black text-white mb-3">اكتشف أفضل المؤثرين</h1>
+<p class="font-body text-lg text-white/60 max-w-2xl">شبكة واسعة من صناع المحتوى في العالم العربي، مصنفة بعناية لضمان وصول حملتك للجمهور المناسب.</p>
+</header>
+<!-- Filter Bar -->
+<div class="bg-white/5 border border-white/10 rounded-xl p-4 mb-10 flex flex-wrap gap-4 items-center backdrop-blur-sm">
+<div class="flex-1 min-w-[150px]">
+<label class="block text-xs text-white/50 mb-1 font-label">المنصة</label>
+<select class="w-full bg-[#0E0A16] border border-white/20 rounded-lg py-2 px-3 text-white text-sm focus:border-[#4C0192] focus:ring-1 focus:ring-[#4C0192] appearance-none cursor-pointer">
+<option>الكل</option>
+<option>Snapchat</option>
+<option>TikTok</option>
+<option>Instagram</option>
+<option>YouTube</option>
+</select>
+</div>
+<div class="flex-1 min-w-[150px]">
+<label class="block text-xs text-white/50 mb-1 font-label">الفئة</label>
+<select class="w-full bg-[#0E0A16] border border-white/20 rounded-lg py-2 px-3 text-white text-sm focus:border-[#4C0192] focus:ring-1 focus:ring-[#4C0192] appearance-none cursor-pointer">
+<option>الكل</option>
+<option>شباب</option>
+<option>أمهات</option>
+<option>رياضة</option>
+<option>سفر</option>
+</select>
+</div>
+<div class="flex-1 min-w-[150px]">
+<label class="block text-xs text-white/50 mb-1 font-label">المدينة</label>
+<select class="w-full bg-[#0E0A16] border border-white/20 rounded-lg py-2 px-3 text-white text-sm focus:border-[#4C0192] focus:ring-1 focus:ring-[#4C0192] appearance-none cursor-pointer">
+<option>الكل</option>
+<option>الرياض</option>
+<option>جدة</option>
+<option>دبي</option>
+</select>
+</div>
+<div class="flex-none pt-5">
+<button class="bg-white/10 hover:bg-white/20 border border-white/20 text-white rounded-lg px-6 py-2 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+<span>تصفية</span>
+</button>
+</div>
+</div>
+<!-- Influencer Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Card 1 -->
+<div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-[#4C0192]/50 transition-all duration-300 group relative overflow-hidden backdrop-blur-sm flex flex-col">
+<div class="absolute top-0 right-0 w-32 h-32 bg-[#4C0192]/20 rounded-full blur-3xl -z-10 group-hover:bg-[#4C0192]/40 transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="relative">
+<img class="w-20 h-20 rounded-full object-cover border-2 border-[#4C0192] p-1" data-alt="A portrait of a trendy Arab lifestyle influencer, male, wearing modern casual attire. Shot with a shallow depth of field in a stylish urban cafe setting at night. Cool color palette with subtle violet neon accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBFskJhtxQ8oB84Novm7hzEmfxtU58b9kOnrLpk9X26vjIIZ1uEoH6meuFqVaMqhrME_c_T8Fz5SYV34JPzhmswwi8sMoxUjs4l6rY1PQkZs52n4P4b8v74AOjlcqqS5q1qH5I37DgNFFbZVeVJ7uFsSggy04U1RfRcLq93TJVh-m8EpXI4fNTZaNi9tCXbNJYyFfOLxQq0UjUwyq_oLGsvqJWzWYph31JfP1Tk4dWFf5O7Xup_KjsWn1tdgcXMmEyloGgfnKwvsHP"/>
+<div class="absolute -bottom-2 -left-2 bg-[#0E0A16] rounded-full p-1 border border-white/10">
+<span class="material-symbols-outlined text-yellow-400 text-sm">star</span>
+</div>
+</div>
+<span class="bg-[#FFFC00]/10 text-[#FFFC00] text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
+                            Snapchat
+                        </span>
+</div>
+<h3 class="font-headline text-xl font-bold text-white mb-1">خالد الدوسري</h3>
+<p class="font-body text-sm text-white/60 mb-4 line-clamp-2">صانع محتوى يوميات وأسلوب حياة، مهتم بالتكنولوجيا والسيارات.</p>
+<div class="grid grid-cols-2 gap-2 mb-6">
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">المتابعين</span>
+<span class="block text-sm font-bold text-white">1.2M</span>
+</div>
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">التفاعل</span>
+<span class="block text-sm font-bold text-emerald-400">5.4%</span>
+</div>
+</div>
+<button class="mt-auto w-full bg-white/10 hover:bg-[#4C0192] border border-white/20 hover:border-[#4C0192] text-white font-medium py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-[0_0_15px_rgba(76,1,146,0.5)]">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>إضافة للسلة</span>
+</button>
+</div>
+<!-- Card 2 -->
+<div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-[#4C0192]/50 transition-all duration-300 group relative overflow-hidden backdrop-blur-sm flex flex-col">
+<div class="absolute top-0 right-0 w-32 h-32 bg-[#4C0192]/20 rounded-full blur-3xl -z-10 group-hover:bg-[#4C0192]/40 transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="relative">
+<img class="w-20 h-20 rounded-full object-cover border-2 border-[#4C0192] p-1" data-alt="A bright, energetic portrait of an Arab female beauty influencer. She is wearing elegant makeup and a stylish hijab. Studio lighting with a sleek, modern aesthetic, featuring dark backgrounds and a touch of deep purple rim light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkIwwH5tdVDgUWzEbyMb4hP-2y8v_x2NFXHvQNXTgY5roLvttPeyIZcUslaqLegy5VgxiqdJcCjwt-yGAfSg72rWbR1Mr4U6TBrdaWn8-5q_7sT8YE5L3jd-SFZbJbL390GV3gn6RchDrJngHht98Wy5Fx4i0UfsGw5H4TuG1vutBwAW65GhgXc-2pS1gWobcePLoZH4eoJJFCdBGCCMeqOwuV714k3Wgheh7C2a3cg3GEmj_avcMRemRa6aKyH3DYRPIIbJVubxy6"/>
+</div>
+<span class="bg-[#FE2C55]/10 text-[#FE2C55] text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
+                            TikTok
+                        </span>
+</div>
+<h3 class="font-headline text-xl font-bold text-white mb-1">نورة الفهد</h3>
+<p class="font-body text-sm text-white/60 mb-4 line-clamp-2">نصائح تجميل وموضة، أسلوب حياة عصري للمرأة العربية.</p>
+<div class="grid grid-cols-2 gap-2 mb-6">
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">المتابعين</span>
+<span class="block text-sm font-bold text-white">3.4M</span>
+</div>
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">التفاعل</span>
+<span class="block text-sm font-bold text-emerald-400">8.1%</span>
+</div>
+</div>
+<button class="mt-auto w-full bg-[#4C0192] text-white font-medium py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 cursor-default">
+<span class="material-symbols-outlined text-sm">check</span>
+<span>تمت الإضافة</span>
+</button>
+</div>
+<!-- Card 3 -->
+<div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-[#4C0192]/50 transition-all duration-300 group relative overflow-hidden backdrop-blur-sm flex flex-col">
+<div class="absolute top-0 right-0 w-32 h-32 bg-[#4C0192]/20 rounded-full blur-3xl -z-10 group-hover:bg-[#4C0192]/40 transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="relative">
+<img class="w-20 h-20 rounded-full object-cover border-2 border-[#4C0192] p-1" data-alt="A portrait of a sporty Arab male fitness influencer in an upscale dark gym environment. Atmospheric dramatic lighting emphasizing physique and athletic wear. Deep shadows with purple neon accents in the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwaHox5i9VMIqMNsRt_uQ8Cxa8Dia9neWsf-eTxTTHSvhztb2MtLZaSie332D6PKWQ_OlamIqXm9tlWdGURU3FmnjiIJKPznmYIAlO3ZhmGYsTnLTLia9piGeUmAbGcqWOLaS0-naI-gP9voe3X3b51rCh4kF3qfzYVXX5wywM6FtOJHGTXKdagabYusxnIUiuYrjGUlh15RpeMqacdToSToHnEk2KuWzNiFAA790ZyblVFuki_uGWyMcJmP8_yR0uEaOrqQG6wE9C"/>
+</div>
+<span class="bg-[#E1306C]/10 text-[#E1306C] text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
+                            Instagram
+                        </span>
+</div>
+<h3 class="font-headline text-xl font-bold text-white mb-1">فهد الرياضي</h3>
+<p class="font-body text-sm text-white/60 mb-4 line-clamp-2">مدرب لياقة بدنية، تغذية صحية وتحفيز رياضي يومي.</p>
+<div class="grid grid-cols-2 gap-2 mb-6">
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">المتابعين</span>
+<span class="block text-sm font-bold text-white">850K</span>
+</div>
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">التفاعل</span>
+<span class="block text-sm font-bold text-emerald-400">4.2%</span>
+</div>
+</div>
+<button class="mt-auto w-full bg-white/10 hover:bg-[#4C0192] border border-white/20 hover:border-[#4C0192] text-white font-medium py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-[0_0_15px_rgba(76,1,146,0.5)]">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>إضافة للسلة</span>
+</button>
+</div>
+<!-- Card 4 -->
+<div class="bg-white/5 border border-white/10 rounded-2xl p-5 hover:border-[#4C0192]/50 transition-all duration-300 group relative overflow-hidden backdrop-blur-sm flex flex-col">
+<div class="absolute top-0 right-0 w-32 h-32 bg-[#4C0192]/20 rounded-full blur-3xl -z-10 group-hover:bg-[#4C0192]/40 transition-colors"></div>
+<div class="flex justify-between items-start mb-4">
+<div class="relative">
+<img class="w-20 h-20 rounded-full object-cover border-2 border-[#4C0192] p-1" data-alt="A portrait of an adventurous Arab travel vlogger, male, holding a high-end camera. Shot against a dramatic night cityscape with bokeh lights. Cinematic styling with deep blacks and vibrant violet color grading." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABrkpcroTK3UaVMb_K1XdUQqIAzOjQdbyx0U8gY7TCpybUElA-RxqSjA0LhmQOiC6zwdbRWbFgFiy81MxMS4OxKvUSlc7IO_Pyysr0YxsoFI_0aK3JBwhYGipAHmWj-iTwQnjYqfDsGB51pQrYQny4zlBY0XolBs4BHrL7_r_x9b-UjKnNc3KaDijEzfdgzuc8wGfCRGPYNp0_oUL7Fb42j3e31ZfE9g96VlG_xwQPBHUwqfzLpfEUtxAXOz3nKZECpqf-t-lokAbV"/>
+</div>
+<span class="bg-[#FF0000]/10 text-[#FF0000] text-xs font-bold px-2 py-1 rounded-md flex items-center gap-1">
+                            YouTube
+                        </span>
+</div>
+<h3 class="font-headline text-xl font-bold text-white mb-1">سالم ترافل</h3>
+<p class="font-body text-sm text-white/60 mb-4 line-clamp-2">تغطيات سياحية حول العالم، مراجعات فنادق وتجارب سفر فريدة.</p>
+<div class="grid grid-cols-2 gap-2 mb-6">
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">المشتركين</span>
+<span class="block text-sm font-bold text-white">2.1M</span>
+</div>
+<div class="bg-white/5 rounded-lg p-2 text-center border border-white/5">
+<span class="block text-xs text-white/50 mb-1">التفاعل</span>
+<span class="block text-sm font-bold text-emerald-400">9.5%</span>
+</div>
+</div>
+<button class="mt-auto w-full bg-white/10 hover:bg-[#4C0192] border border-white/20 hover:border-[#4C0192] text-white font-medium py-2.5 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 group-hover:shadow-[0_0_15px_rgba(76,1,146,0.5)]">
+<span class="material-symbols-outlined text-sm">add</span>
+<span>إضافة للسلة</span>
+</button>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<button class="bg-white/5 hover:bg-white/10 border border-white/20 text-white font-medium py-3 px-8 rounded-full transition-colors flex items-center gap-2">
+<span>تحميل المزيد</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+<!-- Padding for bottom scrolling -->
+<div class="h-16"></div>
+</main>
+</div>
+</body></html>

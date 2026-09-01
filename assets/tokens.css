@@ -1,0 +1,127 @@
+/* ============================================================
+   AHDAF Design Tokens v1.0
+   مصدر واحد للحقيقة: الألوان والخطوط والمسافات لموقع أهداف
+   ============================================================ */
+
+@font-face{font-family:'Saudi Serif';src:url('fonts/SaudiSerif-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:'Saudi Serif';src:url('fonts/SaudiSerif-Medium.ttf') format('truetype');font-weight:500;font-display:swap}
+@font-face{font-family:'Saudi Serif';src:url('fonts/SaudiSerif-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+
+:root{
+  /* ---------- Primary / بنفسجي أهداف ---------- */
+  --p-50:#F4F0F8;  --p-100:#E6DBF0; --p-200:#CDB8E0; --p-300:#AE8DCE; --p-400:#8552B5;
+  --p-500:#4C0192; --p-600:#40027A; --p-700:#340462; --p-800:#280549; --p-900:#1B0630;
+
+  /* ---------- Secondary / بنفسجي مضيء ---------- */
+  --s-50:#F8F4FE;  --s-100:#EEE6FC; --s-200:#DCCDF9; --s-300:#C7AFF6; --s-400:#AA86F1;
+  --s-500:#824DEB; --s-600:#6C41C3; --s-700:#57349B; --s-800:#402771; --s-900:#291A47;
+
+  /* ---------- Tertiary / فحمي أهداف ---------- */
+  --t-50:#F3F3F4;  --t-100:#E3E4E4; --t-200:#C6C9CA; --t-300:#A4A9A9; --t-400:#767C7D;
+  --t-500:#353F40; --t-600:#2D3537; --t-700:#262B2E; --t-800:#1D2124; --t-900:#15161B;
+
+  /* ---------- Neutral / رمادي ---------- */
+  --n-50:#F6F7F7;  --n-100:#EAEBED; --n-200:#D6D8DB; --n-300:#BCC0C6; --n-400:#9A9FA9;
+  --n-500:#6B7280; --n-600:#5A5F6B; --n-700:#484C57; --n-800:#363841; --n-900:#23242C;
+
+  /* ---------- Gold / لمسة ---------- */
+  --g-300:#EDDDB5; --g-400:#E4CC8F; --g-500:#D8B45A; --g-600:#B3954C; --g-700:#8E763F;
+
+  /* ---------- أدوار ---------- */
+  --brand:var(--p-500);
+  --brand-soft:var(--s-500);
+  --ink:var(--t-900);
+  --ink-2:var(--n-600);
+  --paper:#FFFFFF;
+  --paper-2:var(--n-50);
+  --line:rgba(21,22,27,.10);
+  --line-dark:rgba(255,255,255,.12);
+  --dark:#0E0A16;
+  --dark-2:#171029;
+
+  /* ---------- خطوط ---------- */
+  --font-display:'Saudi Serif','Playfair Display',Georgia,serif;
+  --font-body:'IBM Plex Sans Arabic','Inter',-apple-system,'Segoe UI',sans-serif;
+  --font-label:'Inter','IBM Plex Sans Arabic',sans-serif;
+
+  /* ---------- سلم الحجم (clamp = يستجيب للشاشة) ---------- */
+  --fs-display:clamp(2.6rem,6.4vw,5.6rem);
+  --fs-h1:clamp(2.1rem,4.4vw,3.6rem);
+  --fs-h2:clamp(1.7rem,3vw,2.6rem);
+  --fs-h3:clamp(1.25rem,2vw,1.6rem);
+  --fs-lead:clamp(1.05rem,1.5vw,1.25rem);
+  --fs-body:1rem;
+  --fs-sm:.875rem;
+  --fs-label:.75rem;
+
+  /* ---------- مسافات (سلم 4) ---------- */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px;
+  --sp-6:32px; --sp-7:48px; --sp-8:64px; --sp-9:96px; --sp-10:128px;
+
+  /* ---------- زوايا وظلال وحركة ---------- */
+  --r-sm:8px; --r-md:14px; --r-lg:22px; --r-xl:32px; --r-full:999px;
+  --sh-1:0 1px 2px rgba(21,22,27,.06),0 1px 3px rgba(21,22,27,.05);
+  --sh-2:0 4px 12px rgba(21,22,27,.07),0 2px 4px rgba(21,22,27,.04);
+  --sh-3:0 18px 40px rgba(76,1,146,.14),0 4px 12px rgba(21,22,27,.06);
+  --sh-brand:0 14px 34px rgba(76,1,146,.32);
+  --ease:cubic-bezier(.22,.9,.28,1);
+  --dur:.35s;
+
+  --maxw:1220px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--paper);
+     font-size:var(--fs-body);line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--font-display);line-height:1.18;margin:0;font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--s-400);outline-offset:3px;border-radius:6px}
+
+/* ---------- مكوّنات مشتركة ---------- */
+.wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(18px,4vw,32px)}
+.label{font-family:var(--font-label);font-size:var(--fs-label);letter-spacing:.14em;
+       text-transform:uppercase;color:var(--n-500);font-weight:600}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+     font-family:var(--font-body);font-size:var(--fs-sm);font-weight:600;
+     padding:13px 24px;border-radius:var(--r-full);border:1.5px solid transparent;
+     cursor:pointer;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),
+     background var(--dur) var(--ease),color var(--dur) var(--ease)}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--brand);color:#fff;box-shadow:var(--sh-brand)}
+.btn-primary:hover{background:var(--p-600)}
+.btn-secondary{background:var(--p-50);color:var(--p-600);border-color:var(--p-100)}
+.btn-inverted{background:var(--t-900);color:#fff}
+.btn-outlined{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn-ghost{background:transparent;color:var(--p-500);padding-inline:8px}
+.btn-sm{padding:9px 16px;font-size:.8rem}
+.btn-lg{padding:17px 34px;font-size:1rem}
+
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 15px;border-radius:var(--r-full);
+      background:var(--p-50);color:var(--p-600);font-size:var(--fs-sm);font-weight:600;
+      border:1px solid var(--p-100);cursor:pointer;transition:all var(--dur) var(--ease)}
+.chip[aria-pressed="true"],.chip.is-on{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+/* شارة «مقترح»: كل فكرة أو محتوى غير مؤكد لازم تكون عليها شارة ظاهرة */
+.badge-idea{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:var(--r-full);
+      background:var(--g-500);color:#2a2210;font-size:.7rem;font-weight:700;letter-spacing:.02em;
+      font-family:var(--font-label)}
+
+.field{display:flex;align-items:center;gap:10px;background:var(--paper);border:1.5px solid var(--line);
+       border-radius:var(--r-full);padding:12px 20px;transition:border-color var(--dur) var(--ease)}
+.field:focus-within{border-color:var(--s-400)}
+.field input{border:0;outline:0;background:transparent;font:inherit;width:100%;color:inherit}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r-lg);
+      box-shadow:var(--sh-1);transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+
+.iconbtn{width:44px;height:44px;border-radius:var(--r-full);display:grid;place-items:center;
+         border:0;cursor:pointer;background:var(--p-50);color:var(--p-600)}
+.iconbtn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;
+             stroke-linecap:round;stroke-linejoin:round}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

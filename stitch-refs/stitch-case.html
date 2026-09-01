@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>دراسة حالة | أهداف</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&amp;family=Be+Vietnam+Pro:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed-dim": "#ffb68b",
+                      "on-tertiary-fixed-variant": "#70380f",
+                      "on-surface-variant": "#4b4452",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f3f3f3",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#d8b9ff",
+                      "on-primary-container": "#b985ff",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-on-surface": "#f1f1f1",
+                      "outline-variant": "#cdc3d4",
+                      "secondary": "#7c3fb6",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#e2e2e2",
+                      "primary-fixed": "#eedcff",
+                      "on-secondary-container": "#52088c",
+                      "error": "#ba1a1a",
+                      "on-background": "#1a1c1c",
+                      "surface-container-high": "#e8e8e8",
+                      "on-error-container": "#93000a",
+                      "text-main": "#1A1A1A",
+                      "secondary-container": "#c284ff",
+                      "on-secondary": "#ffffff",
+                      "surface-dim": "#dadada",
+                      "on-surface": "#1a1c1c",
+                      "primary-container": "#4c0192",
+                      "on-error": "#ffffff",
+                      "primary-fixed-dim": "#d8b9ff",
+                      "border-subtle": "#E5E5E5",
+                      "secondary-fixed": "#f0dbff",
+                      "on-tertiary-container": "#d88c5d",
+                      "on-secondary-fixed": "#2c0051",
+                      "background": "#f9f9f9",
+                      "surface-container": "#eeeeee",
+                      "surface-tint": "#7740bd",
+                      "on-secondary-fixed-variant": "#63239c",
+                      "on-tertiary-fixed": "#321300",
+                      "tertiary-fixed": "#ffdbc8",
+                      "tertiary-container": "#5a2700",
+                      "surface": "#F9F9F9",
+                      "inverse-surface": "#2f3131",
+                      "surface-bright": "#f9f9f9",
+                      "secondary-fixed-dim": "#ddb8ff",
+                      "on-primary-fixed-variant": "#5e23a4",
+                      "primary": "#300060",
+                      "text-muted": "#666666",
+                      "outline": "#7c7484",
+                      "tertiary": "#391600",
+                      "on-primary-fixed": "#290054",
+                      "surface-variant": "#e2e2e2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "container-max": "1280px",
+                      "margin-desktop": "64px",
+                      "section-gap": "120px",
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "stack-lg": "32px",
+                      "stack-md": "16px"
+              },
+              "fontFamily": {
+                      "body-md": [
+                              "IBM Plex Sans Arabic"
+                      ],
+                      "body-lg": [
+                              "IBM Plex Sans Arabic"
+                      ],
+                      "headline-sm": [
+                              "IBM Plex Sans Arabic"
+                      ],
+                      "headline-md": [
+                              "IBM Plex Sans Arabic"
+                      ],
+                      "label-numeric": [
+                              "Be Vietnam Pro"
+                      ],
+                      "label-caps": [
+                              "IBM Plex Sans Arabic"
+                      ],
+                      "display-lg": [
+                              "IBM Plex Sans Arabic"
+                      ],
+                      "display-lg-mobile": [
+                              "IBM Plex Sans Arabic"
+                      ]
+              },
+              "fontSize": {
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-sm": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "42px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-numeric": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.1em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "60px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+      </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased selection:bg-primary-container selection:text-white">
+<!-- TopNavBar from JSON -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md text-primary dark:text-primary-fixed-dim font-body-md text-body-md fixed top-0 w-full z-50 border-b border-border-subtle dark:border-outline-variant shadow-sm">
+<div class="flex flex-row-reverse justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-20">
+<div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed-dim cursor-pointer hover:opacity-90 transition-opacity active:scale-95 duration-150">
+                Ahdaf
+            </div>
+<ul class="hidden md:flex gap-8 flex-row-reverse items-center">
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-90" href="#">الرئيسية</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-90" href="#">الخدمات</a></li>
+<li><a class="text-primary font-bold border-b-2 border-primary pb-1 hover:opacity-90 transition-opacity" href="#">دراسات الحالة</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-colors hover:opacity-90" href="#">من نحن</a></li>
+</ul>
+<button class="bg-primary-container text-white px-6 py-2 rounded-full font-body-md hover:opacity-90 transition-opacity active:scale-95 duration-150 shadow-[0px_4px_20px_rgba(76,1,146,0.2)]">
+                اتصل بنا
+            </button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative h-[614px] min-h-[500px] w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center w-full h-full" data-alt="A modern, high-end professional marketing office environment shot in bright, high-key light mode aesthetics. The scene features sleek glass surfaces, clean minimal architecture, and subtle digital marketing visualizations on screens in the background. The color palette is predominantly pristine white, soft greys, and pale architectural concrete, accented with deep luxurious Amethyst (#4C0192) tones in subtle furniture details or neon glows. The mood is corporate, authoritative, and sophisticated, reflecting a premium digital agency executing high-performance campaigns." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDpA1wn3e8M77n8fFqKo0AAaMz1jxXv_ghgGisBWyXK3mrS8Wx4sC4m4k9FUTMRb_MeD4JrcwFs3ytS665oMHOypGBb3tp4Qbp-ZtQoL5s23pS5A5YgFAKfyXbOjQHMZMVPiptwuOnvJ42lKEeVfNWjnYd-DvHkbD0070L3i-x3zMeeRzm2st4FWsph5Kgqmpw2o7LeDDm9ytI0qPo2bTd0J9UbWxWU9nisqPL4A4XGdq8PTAyi4Btn6VeIXlvZMBI0IcV2dluIn5k8')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"></div>
+<div class="relative z-10 text-center max-w-4xl px-margin-mobile md:px-margin-desktop flex flex-col items-center">
+<div class="w-32 h-32 bg-white rounded-2xl shadow-[0px_4px_20px_rgba(0,0,0,0.04)] mb-8 flex items-center justify-center border border-border-subtle">
+<span class="material-symbols-outlined text-primary-container text-6xl">storefront</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-primary mb-4 drop-shadow-md">نمو رقمي</h1>
+</div>
+</section>
+<!-- Data Bar -->
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop -mt-12 relative z-20">
+<div class="bg-white rounded-xl shadow-[0px_12px_30px_rgba(76,1,146,0.08)] p-8 flex flex-col md:flex-row-reverse justify-between items-center gap-6 border border-border-subtle/50 backdrop-blur-sm">
+<div class="flex items-center gap-4 w-full md:w-auto flex-row-reverse">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">corporate_fare</span>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-outline mb-1">العميل</p>
+<p class="font-body-md text-body-md font-bold text-on-surface">مجموعة ألفا</p>
+</div>
+</div>
+<div class="hidden md:block w-px h-12 bg-border-subtle"></div>
+<div class="flex items-center gap-4 w-full md:w-auto flex-row-reverse">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">category</span>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-outline mb-1">القطاع</p>
+<p class="font-body-md text-body-md font-bold text-on-surface">التجارة الإلكترونية</p>
+</div>
+</div>
+<div class="hidden md:block w-px h-12 bg-border-subtle"></div>
+<div class="flex items-center gap-4 w-full md:w-auto flex-row-reverse">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">schedule</span>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-outline mb-1">المدة</p>
+<p class="font-body-md text-body-md font-bold text-on-surface">6 أشهر</p>
+</div>
+</div>
+<div class="hidden md:block w-px h-12 bg-border-subtle"></div>
+<div class="flex items-center gap-4 w-full md:w-auto flex-row-reverse">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-outline mb-1">الخدمات</p>
+<p class="font-body-md text-body-md font-bold text-on-surface">تسويق رقمي شامل</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap">
+<!-- Challenge -->
+<section class="mb-section-gap">
+<div class="max-w-3xl mr-auto">
+<h2 class="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-4 flex-row-reverse">
+<span class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">problem</span>
+</span>
+                        التحدي
+                    </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        واجهت مجموعة ألفا تحدياً كبيراً في زيادة حصتها السوقية في قطاع التجارة الإلكترونية المزدحم. كان معدل التحويل منخفضاً، وتكلفة الاستحواذ على العميل (CAC) مرتفعة بشكل غير مستدام. احتاجوا إلى استراتيجية شاملة لإعادة هيكلة رحلة العميل الرقمية، وتحسين العائد على الإنفاق الإعلاني (ROAS)، وبناء ولاء طويل الأمد للعلامة التجارية في سوق سريع التغير.
+                    </p>
+</div>
+</section>
+<!-- Execution Steps -->
+<section class="mb-section-gap">
+<h2 class="font-headline-md text-headline-md text-primary mb-12 text-center">مراحل التنفيذ</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Step 1 -->
+<div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_12px_30px_rgba(76,1,146,0.08)] transition-all duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-2 h-full bg-border-subtle group-hover:bg-primary-container transition-colors"></div>
+<div class="font-label-numeric text-[64px] leading-none font-bold text-primary-container/20 mb-4 text-right">01</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 text-right">التحليل والتدقيق</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-right">مراجعة شاملة للأداء الحالي، وتحديد الثغرات في رحلة المستخدم، وتحليل بيانات المنافسين لبناء أساس استراتيجي قوي.</p>
+</div>
+<!-- Step 2 -->
+<div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_12px_30px_rgba(76,1,146,0.08)] transition-all duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-2 h-full bg-border-subtle group-hover:bg-primary-container transition-colors"></div>
+<div class="font-label-numeric text-[64px] leading-none font-bold text-primary-container/20 mb-4 text-right">02</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 text-right">تطوير الاستراتيجية</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-right">صياغة خطة تسويقية متعددة القنوات تركز على شرائح محددة من الجمهور، مع رسائل مخصصة لزيادة التفاعل.</p>
+</div>
+<!-- Step 3 -->
+<div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_12px_30px_rgba(76,1,146,0.08)] transition-all duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-2 h-full bg-border-subtle group-hover:bg-primary-container transition-colors"></div>
+<div class="font-label-numeric text-[64px] leading-none font-bold text-primary-container/20 mb-4 text-right">03</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 text-right">التنفيذ الإبداعي</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-right">إطلاق حملات إعلانية بتصاميم بصرية مبتكرة ونصوص مقنعة، مع التركيز على منصات التواصل الاجتماعي الرئيسية.</p>
+</div>
+<!-- Step 4 -->
+<div class="bg-white p-8 rounded-lg shadow-[0px_4px_20px_rgba(0,0,0,0.04)] hover:shadow-[0px_12px_30px_rgba(76,1,146,0.08)] transition-all duration-300 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-2 h-full bg-border-subtle group-hover:bg-primary-container transition-colors"></div>
+<div class="font-label-numeric text-[64px] leading-none font-bold text-primary-container/20 mb-4 text-right">04</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 text-right">التحسين المستمر</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-right">مراقبة الأداء في الوقت الفعلي، وإجراء اختبارات A/B، وتعديل الميزانيات لضمان تحقيق أعلى عائد على الاستثمار.</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer from JSON -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim border-t border-border-subtle dark:border-outline-variant w-full mt-section-gap">
+<div class="flex flex-col md:flex-row-reverse justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto py-stack-lg gap-stack-md">
+<div class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed-dim hover:underline decoration-2 underline-offset-4 cursor-pointer opacity-100 hover:opacity-80 transition-all">
+                Ahdaf
+            </div>
+<ul class="flex flex-wrap gap-6 justify-center flex-row-reverse">
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md hover:underline decoration-2 underline-offset-4 opacity-100 hover:opacity-80 transition-all" href="#">سياسة الخصوصية</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md hover:underline decoration-2 underline-offset-4 opacity-100 hover:opacity-80 transition-all" href="#">الشروط والأحكام</a></li>
+<li><a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors font-body-md text-body-md hover:underline decoration-2 underline-offset-4 opacity-100 hover:opacity-80 transition-all" href="#">خريطة الموقع</a></li>
+</ul>
+<div class="text-primary dark:text-primary-fixed-dim font-body-md text-body-md">
+                © 2024 أهداف. جميع الحقوق محفوظة.
+            </div>
+</div>
+</footer>
+</body></html>

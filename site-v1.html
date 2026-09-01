@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>أهداف · نربط الإبداع بالهدف</title>
+<link rel="icon" href="assets/ahdaf-logo-sm.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tokens.css">
+<style>
+/* ================= أساسيات ================= */
+body{background:var(--paper)}
+section{position:relative}
+.sec{padding:clamp(64px,9vw,120px) 0}
+.dark-sec{background:var(--dark);color:#fff;overflow:hidden}
+/* هالة بنفسجية محيطة، مستوحاة من مخرجات Stitch */
+.dark-sec::before{content:'';position:absolute;width:640px;height:640px;border-radius:50%;
+  top:-260px;inset-inline-end:-200px;pointer-events:none;
+  background:radial-gradient(circle,rgba(76,1,146,.42) 0%,rgba(14,10,22,0) 70%)}
+.dark-sec::after{content:'';position:absolute;width:520px;height:520px;border-radius:50%;
+  bottom:-240px;inset-inline-start:-180px;pointer-events:none;
+  background:radial-gradient(circle,rgba(130,77,235,.24) 0%,rgba(14,10,22,0) 70%)}
+.dark-sec .wrap{position:relative;z-index:1}
+.dark-sec .label{color:rgba(255,255,255,.45)}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:var(--r-full);
+  border:1px solid var(--line);font-size:.78rem;font-weight:600;color:var(--p-600);background:var(--p-50)}
+.dark-sec .eyebrow{background:rgba(130,77,235,.14);border-color:rgba(130,77,235,.32);color:#C7AFF6}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--s-500);display:block}
+.sec-head{max-width:720px;margin-bottom:clamp(32px,5vw,56px)}
+.sec-head h2{font-size:var(--fs-h1);margin:16px 0 14px}
+.sec-head p{color:var(--ink-2);font-size:var(--fs-lead)}
+.dark-sec .sec-head p{color:rgba(255,255,255,.62)}
+.grad-text{background:linear-gradient(115deg,var(--s-400),var(--p-400) 55%,var(--g-500));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ================= الهيدر ================= */
+header{position:sticky;top:0;z-index:60;background:rgba(14,10,22,.72);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,.08)}
+header.scrolled{background:rgba(14,10,22,.94)}
+.nav{display:flex;align-items:center;gap:22px;height:74px}
+.nav .logo img{height:30px;width:auto}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;margin-inline-start:18px}
+.nav a{color:rgba(255,255,255,.78);font-size:.9rem;font-weight:500;transition:color .25s}
+.nav a:hover{color:#fff}
+.nav .spacer{flex:1}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.lang{background:transparent;border:1px solid rgba(255,255,255,.24);color:#fff;border-radius:var(--r-full);
+  padding:8px 15px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:var(--font-label);letter-spacing:.06em}
+.lang:hover{background:rgba(255,255,255,.1)}
+.burger{display:none;background:none;border:0;color:#fff;cursor:pointer}
+@media(max-width:1000px){
+  .nav ul{display:none}
+  .burger{display:block}
+  .nav-actions .btn-outlined{display:none}
+}
+.mobile-menu{display:none;border-top:1px solid rgba(255,255,255,.08);padding:14px 0 22px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:rgba(255,255,255,.85);padding:11px 0;font-size:1rem;
+  border-bottom:1px solid rgba(255,255,255,.06)}
+
+/* ================= البطل ================= */
+.hero{background:var(--dark);color:#fff;overflow:hidden;padding:clamp(56px,8vw,104px) 0 clamp(48px,7vw,88px)}
+.hero::before{content:'';position:absolute;inset:-30% -10% auto -10%;height:120%;pointer-events:none;
+  background:
+    radial-gradient(46% 40% at 78% 12%,rgba(130,77,235,.42),transparent 62%),
+    radial-gradient(40% 44% at 12% 8%,rgba(76,1,146,.55),transparent 64%),
+    radial-gradient(34% 32% at 52% 96%,rgba(216,180,90,.14),transparent 66%)}
+.hero::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.16;
+  background-image:radial-gradient(rgba(255,255,255,.55) .5px,transparent .5px);background-size:4px 4px}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,4vw,56px);align-items:center}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(3.6rem,10vw,8.6rem);margin:18px 0 24px;letter-spacing:-.03em;line-height:.98}
+.hero p.lead{font-size:var(--fs-lead);color:rgba(255,255,255,.7);max-width:56ch}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-cta .btn-outlined{color:#fff;border-color:rgba(255,255,255,.26)}
+.hero-cta .btn-outlined:hover{background:rgba(255,255,255,.08)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(38px,5vw,60px);
+  border-top:1px solid rgba(255,255,255,.12);padding-top:26px}
+.stats>div{padding-inline:18px;border-inline-start:1px solid rgba(255,255,255,.1)}
+.stats>div:first-child{border:0;padding-inline-start:0}
+@media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr);row-gap:20px}
+  .stats>div:nth-child(3){border-inline-start:0;padding-inline-start:0}}
+.stats b{display:block;font-family:var(--font-display);font-size:clamp(1.7rem,3.4vw,2.7rem);line-height:1}
+.stats span{font-size:.82rem;color:rgba(255,255,255,.55)}
+
+/* بطاقات البطل العائمة */
+.float-stack{position:relative;min-height:430px}
+@media(max-width:980px){.float-stack{min-height:340px;margin-top:16px}}
+.fcard{position:absolute;background:rgba(23,16,41,.92);border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-lg);padding:18px;backdrop-filter:blur(8px);box-shadow:0 26px 60px rgba(0,0,0,.45)}
+.fcard-1{inset-inline-start:0;top:8px;width:min(300px,86%);animation:float1 7s ease-in-out infinite}
+.fcard-2{inset-inline-end:0;top:150px;width:min(280px,80%);animation:float2 9s ease-in-out infinite}
+.fcard-3{inset-inline-start:26px;bottom:0;width:min(290px,84%);animation:float1 8s ease-in-out infinite .6s}
+@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
+.fcard .row{display:flex;align-items:center;gap:10px}
+.fcard .k{font-family:var(--font-display);font-size:1.9rem;line-height:1}
+.fcard .t{font-size:.78rem;color:rgba(255,255,255,.55)}
+.avatars{display:flex}
+.avatars img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid #171029;margin-inline-start:-11px}
+.avatars img:first-child{margin:0}
+.spark{display:flex;align-items:flex-end;gap:4px;height:44px;margin-top:10px}
+.spark i{flex:1;background:linear-gradient(180deg,var(--s-400),rgba(130,77,235,.25));border-radius:3px}
+
+/* ================= شريط العملاء ================= */
+.marquee{overflow:hidden;border-block:1px solid var(--line);padding:28px 0;background:#fff}
+.marquee-track{display:flex;gap:64px;width:max-content;animation:slide 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee img{height:44px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.62;
+  transition:filter .3s,opacity .3s}
+.marquee img:hover{filter:none;opacity:1}
+
+/* ================= الخدمات ================= */
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media(max-width:860px){.svc-grid{grid-template-columns:1fr}}
+.svc{padding:28px;border-radius:var(--r-lg);border:1px solid var(--line);background:var(--paper);
+  position:relative;overflow:hidden;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.svc:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+.svc::before{content:'';position:absolute;inset-inline-start:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(180deg,var(--p-500),var(--s-500))}
+.svc .no{font-family:var(--font-label);font-size:.72rem;color:var(--n-400);letter-spacing:.14em}
+.svc h3{font-size:var(--fs-h3);margin:8px 0 10px}
+.svc p{color:var(--ink-2);font-size:.94rem;margin-bottom:16px}
+.svc ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.svc li{font-size:.83rem;background:var(--p-50);color:var(--p-700);border:1px solid var(--p-100);
+  padding:6px 13px;border-radius:var(--r-full)}
+
+/* ================= الشوريل ================= */
+.reel{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:16/9;
+  border:1px solid rgba(255,255,255,.14);background:#171029}
+.reel img{width:100%;height:100%;object-fit:cover;opacity:.55}
+.reel .play{position:absolute;inset:0;display:grid;place-items:center}
+.reel .play button{width:88px;height:88px;border-radius:50%;border:0;cursor:pointer;background:#fff;
+  color:var(--p-600);display:grid;place-items:center;box-shadow:0 20px 50px rgba(0,0,0,.5);
+  transition:transform var(--dur) var(--ease)}
+.reel .play button:hover{transform:scale(1.08)}
+.reel .tag{position:absolute;inset-block-start:18px;inset-inline-start:18px}
+.reel-note{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px;color:rgba(255,255,255,.6);font-size:.88rem}
+
+/* ================= الأعمال ================= */
+.work-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.work{grid-column:span 2;border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);
+  background:var(--paper);display:flex;flex-direction:column;
+  transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.work:hover{transform:translateY(-5px);box-shadow:var(--sh-3)}
+.work.wide{grid-column:span 3}
+@media(max-width:900px){.work,.work.wide{grid-column:span 6}}
+.work .ph{aspect-ratio:16/10;overflow:hidden;background:var(--n-100);position:relative}
+.work .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.work:hover .ph img{transform:scale(1.05)}
+.work .brand{position:absolute;inset-block-end:12px;inset-inline-start:12px;background:#fff;border-radius:var(--r-sm);
+  padding:7px 11px;box-shadow:var(--sh-2)}
+.work .brand img{height:22px;width:auto;object-fit:contain}
+.work .body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.work h3{font-size:1.15rem}
+.work .metric{font-family:var(--font-display);font-size:1.7rem;color:var(--p-600);line-height:1}
+.work .desc{font-size:.88rem;color:var(--ink-2)}
+.work .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:10px}
+.work .tags span{font-size:.72rem;color:var(--n-500);border:1px solid var(--line);padding:4px 10px;border-radius:var(--r-full)}
+
+/* ================= المؤثرون ================= */
+.inf-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:26px}
+.dark-sec .chip{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:rgba(255,255,255,.8)}
+.dark-sec .chip.is-on{background:#fff;color:var(--p-700);border-color:#fff}
+.dark-sec .field{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#fff}
+.dark-sec .field input::placeholder{color:rgba(255,255,255,.4)}
+.inf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:14px}
+.inf{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);
+  padding:16px;text-align:center;transition:transform var(--dur) var(--ease),background var(--dur) var(--ease)}
+.inf:hover{transform:translateY(-4px);background:rgba(130,77,235,.16);
+  box-shadow:0 0 40px rgba(76,1,146,.5)}
+.inf img{width:76px;height:76px;border-radius:50%;object-fit:cover;margin:0 auto 12px;
+  border:2px solid rgba(255,255,255,.18)}
+.inf .nm{font-weight:600;font-size:.94rem;margin-bottom:6px}
+.inf .pf{font-family:var(--font-label);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:var(--r-full)}
+.pf.snap{background:#FFFC00;color:#1a1a00}
+.pf.tiktok{background:#fff;color:#111}
+.inf-more{text-align:center;margin-top:30px}
+
+/* ================= المنظومة ================= */
+.eco-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:980px){.eco-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.eco-grid{grid-template-columns:1fr}}
+.eco{border:1px solid var(--line);border-radius:var(--r-lg);padding:22px;background:var(--paper);
+  display:flex;flex-direction:column;gap:10px;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.eco:hover{transform:translateY(-4px);box-shadow:var(--sh-3)}
+.eco .mark{height:52px;display:flex;align-items:center}
+.eco .mark img{max-height:46px;width:auto;object-fit:contain}
+.eco h3{font-size:1.05rem}
+.eco p{font-size:.86rem;color:var(--ink-2)}
+.eco a{font-size:.8rem;color:var(--p-600);font-weight:600;margin-top:auto;padding-top:8px}
+
+/* ================= المنهجية ================= */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.step{position:relative;padding:26px 22px;border-radius:var(--r-lg);background:var(--p-50);
+  border:1px solid var(--p-100)}
+.step::before{counter-increment:s;content:'0' counter(s);font-family:var(--font-display);font-size:2.6rem;
+  color:var(--p-200);line-height:1;display:block;margin-bottom:10px}
+.step h3{font-size:1.05rem;margin-bottom:8px}
+.step p{font-size:.87rem;color:var(--ink-2)}
+
+/* ================= شريط الأرقام ================= */
+.band{background:linear-gradient(120deg,var(--p-700),var(--p-500) 45%,var(--s-500));color:#fff;
+  border-radius:var(--r-xl);padding:clamp(30px,4vw,52px);display:grid;
+  grid-template-columns:repeat(4,1fr);gap:22px;box-shadow:var(--sh-brand)}
+@media(max-width:820px){.band{grid-template-columns:repeat(2,1fr)}}
+.band b{display:block;font-family:var(--font-display);font-size:clamp(1.9rem,3.6vw,3rem);line-height:1}
+.band span{font-size:.85rem;color:rgba(255,255,255,.75)}
+
+/* ================= لماذا أهداف ================= */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.why-grid{grid-template-columns:1fr}}
+.why{padding:26px;border-radius:var(--r-lg);border:1px solid var(--line)}
+.why .ic{width:46px;height:46px;border-radius:var(--r-md);background:var(--p-50);color:var(--p-600);
+  display:grid;place-items:center;margin-bottom:14px}
+.why .ic svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.why h3{font-size:1.05rem;margin-bottom:8px}
+.why p{font-size:.9rem;color:var(--ink-2)}
+
+/* ================= تواصل ================= */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,54px);align-items:start}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form .full{grid-column:span 2}
+@media(max-width:560px){.form{grid-template-columns:1fr}.form .full{grid-column:span 1}}
+.form label{display:block;font-size:.78rem;color:rgba(255,255,255,.55);margin-bottom:7px}
+.form input,.form select,.form textarea{width:100%;background:rgba(255,255,255,.06);color:#fff;
+  border:1px solid rgba(255,255,255,.14);border-radius:var(--r-md);padding:13px 16px;font:inherit;outline:0}
+.form textarea{min-height:110px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--s-400)}
+.form option{color:#111}
+.contact-info li{list-style:none;display:flex;gap:12px;align-items:flex-start;padding:14px 0;
+  border-bottom:1px solid rgba(255,255,255,.1)}
+.contact-info{padding:0;margin:22px 0 0}
+.contact-info .k{font-size:.78rem;color:rgba(255,255,255,.5)}
+.contact-info .v{font-weight:600}
+
+/* ================= الفوتر ================= */
+footer.site{background:#0B0813;color:rgba(255,255,255,.62);padding:clamp(40px,6vw,72px) 0 26px;
+  border-top:1px solid rgba(255,255,255,.08)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px}
+@media(max-width:860px){.foot-grid{grid-template-columns:1fr 1fr}}
+footer.site h4{font-family:var(--font-label);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(255,255,255,.42);margin-bottom:14px;font-weight:600}
+footer.site ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;font-size:.88rem}
+footer.site a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.08);margin-top:36px;padding-top:20px;font-size:.8rem}
+
+/* ================= خريطة الصفحات ================= */
+.map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.map-grid{grid-template-columns:1fr}}
+.map{border:1px dashed var(--p-200);background:var(--p-50);border-radius:var(--r-lg);padding:22px}
+.map h3{font-size:1.02rem;margin-bottom:10px}
+.map ol{margin:0;padding-inline-start:18px;font-size:.86rem;color:var(--ink-2);display:grid;gap:6px}
+
+/* ظهور تدريجي */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ============================ الهيدر ============================ -->
+<header id="hdr">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="logo" href="#top"><img src="assets/ahdaf-logo-white.png" alt="أهداف"></a>
+      <ul>
+        <li><a href="#services" data-en="Services">خدماتنا</a></li>
+        <li><a href="#work" data-en="Work">أعمالنا</a></li>
+        <li><a href="#influencers" data-en="Influencers">المؤثرون</a></li>
+        <li><a href="#ecosystem" data-en="Ecosystem">منظومتنا</a></li>
+        <li><a href="#about" data-en="About">عن أهداف</a></li>
+      </ul>
+      <span class="spacer"></span>
+      <div class="nav-actions">
+        <button class="lang" id="langBtn">EN</button>
+        <a class="btn btn-outlined btn-sm" style="color:#fff;border-color:rgba(255,255,255,.24)"
+           href="#" data-en="Client Login">نظام أهداف</a>
+        <a class="btn btn-primary btn-sm" href="#contact" data-en="Book a consultation">احجز استشارة</a>
+        <button class="burger" id="burger" aria-label="القائمة">
+          <svg width="26" height="26" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#services" data-en="Services">خدماتنا</a>
+      <a href="#work" data-en="Work">أعمالنا</a>
+      <a href="#influencers" data-en="Influencers">المؤثرون</a>
+      <a href="#ecosystem" data-en="Ecosystem">منظومتنا</a>
+      <a href="#about" data-en="About">عن أهداف</a>
+      <a href="#contact" data-en="Contact">تواصل معنا</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============================ البطل ============================ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow"><i></i><span data-en="Performance-driven growth agency">وكالة نمو تعتمد على الأداء</span></span>
+        <h1><span data-en="Real">نمو</span> <span class="grad-text" data-en="growth.">حقيقي.</span></h1>
+        <p class="lead" data-en="We run paid campaigns, a network of 3,700+ influencers, and full creative production. From Riyadh, for five years.">
+          ندير الحملات المدفوعة، وشبكة تتجاوز 3,700 مؤثر، وإنتاجاً إبداعياً كاملاً. من الرياض، منذ خمس سنوات.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#contact" data-en="Start your project">ابدأ مشروعك</a>
+          <a class="btn btn-outlined btn-lg" href="#work" data-en="See our work">شاهد أعمالنا</a>
+        </div>
+        <div class="stats">
+          <div><b>+740</b><span data-en="Clients">عميل</span></div>
+          <div><b>+400</b><span data-en="Projects">مشروع</span></div>
+          <div><b>+3,700</b><span data-en="Influencers in network">مؤثر في الشبكة</span></div>
+          <div><b>+250M</b><span data-en="Views delivered">مشاهدة محقّقة</span></div>
+        </div>
+      </div>
+
+      <div class="float-stack" aria-hidden="true">
+        <div class="fcard fcard-1">
+          <div class="t" data-en="Live campaign">حملة قيد التشغيل</div>
+          <div class="row" style="justify-content:space-between;align-items:flex-end;margin-top:6px">
+            <div class="k">25.8M</div>
+            <div class="t" style="color:#7DD87D">▲ 18%</div>
+          </div>
+          <div class="spark">
+            <i style="height:30%"></i><i style="height:48%"></i><i style="height:38%"></i><i style="height:62%"></i>
+            <i style="height:54%"></i><i style="height:78%"></i><i style="height:66%"></i><i style="height:100%"></i>
+          </div>
+          <div class="t" data-en="Views across Snapchat and TikTok">مشاهدة عبر سناب شات وتيك توك</div>
+        </div>
+
+        <div class="fcard fcard-2">
+          <div class="t" data-en="Influencer network">شبكة المؤثرين</div>
+          <div class="avatars" style="margin:10px 0">
+            <img src="assets/avatars/az_binfahad.jpg" alt=""><img src="assets/avatars/hind_alfawzan.jpg" alt="">
+            <img src="assets/avatars/e5bll.jpg" alt=""><img src="assets/avatars/arwa_naseer.jpg" alt="">
+            <img src="assets/avatars/ibrahimbasha.jpg" alt="">
+          </div>
+          <div class="row" style="justify-content:space-between">
+            <div class="k" style="font-size:1.4rem">+3,700</div>
+            <div class="t" data-en="ready to brief">جاهزون للتكليف</div>
+          </div>
+        </div>
+
+        <div class="fcard fcard-3">
+          <div class="row" style="justify-content:space-between">
+            <div>
+              <div class="t" data-en="Cost per view">تكلفة المشاهدة</div>
+              <div class="k" style="font-size:1.5rem">0.011 <span style="font-size:.8rem">SAR</span></div>
+            </div>
+            <div>
+              <div class="t" data-en="Engagement rate">معدل التفاعل</div>
+              <div class="k" style="font-size:1.5rem;color:var(--g-500)">7.4%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ شريط العملاء ============================ -->
+<div class="marquee">
+  <div class="marquee-track">
+    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي">
+    <img src="assets/logos/mos.png" alt="وزارة الرياضة">
+    <img src="assets/logos/momah.svg" alt="وزارة الشؤون البلدية والقروية والإسكان">
+    <img src="assets/logos/sama.png" alt="البنك المركزي السعودي">
+    <img src="assets/logos/qemah.png" alt="قمة للمزادات">
+    <img src="assets/logos/mojaz.png" alt="موجز">
+    <img src="assets/logos/culinary.png" alt="">
+    <img src="assets/logos/mos.png" alt="">
+    <img src="assets/logos/momah.svg" alt="">
+    <img src="assets/logos/sama.png" alt="">
+    <img src="assets/logos/qemah.png" alt="">
+    <img src="assets/logos/mojaz.png" alt="">
+  </div>
+</div>
+
+<!-- ============================ الخدمات ============================ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i></i><span data-en="Services">الخدمات</span></span>
+      <h2 data-en="Four divisions">أربع إدارات</h2>
+      <p data-en="Strategy, media buying, influencers, production and events in one place, with one plan and one report.">
+        الاستراتيجية والشراء الإعلامي والمؤثرون والإنتاج والفعاليات في مكان واحد، بخطة واحدة وتقرير واحد.
+      </p>
+    </div>
+
+    <div class="svc-grid">
+      <article class="svc reveal">
+        <div class="no">01</div>
+        <h3 data-en="Digital Growth">النمو الرقمي</h3>
+        <p data-en="We set the metric before the first riyal is spent, and read performance weekly.">
+          نحدّد المؤشر قبل صرف أول ريال، ونقرأ الأداء أسبوعياً.
+        </p>
+        <ul>
+          <li data-en="Paid campaign management">إدارة الحملات المدفوعة</li>
+          <li data-en="SEO">تحسين محركات البحث</li>
+          <li data-en="Social media management">إدارة السوشال ميديا</li>
+          <li data-en="Marketing strategy">الاستراتيجية التسويقية</li>
+          <li data-en="Account verification">توثيق الحسابات</li>
+          <li data-en="Websites & e-commerce">المواقع والمتاجر الإلكترونية</li>
+          <li data-en="WhatsApp automation">أتمتة واتساب</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <div class="no">02</div>
+        <h3 data-en="Influencer Impact">تأثير المؤثرين</h3>
+        <p data-en="3,700+ creators. We shortlist, contract, run the campaign and issue the report.">
+          شبكة تتجاوز 3,700 صانع محتوى. نرشّح، نتعاقد، نشغّل، ونصدر التقرير.
+        </p>
+        <ul>
+          <li data-en="Influencer campaigns">إدارة حملات المؤثرين</li>
+          <li data-en="Exclusive contracts">عقود الحصرية</li>
+          <li data-en="Product sponsorships">رعايات المنتجات</li>
+          <li data-en="UGC creators">صنّاع محتوى UGC</li>
+          <li data-en="Affiliate marketing">التسويق بالعمولة</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <div class="no">03</div>
+        <h3 data-en="Creative Production">الإنتاج الإبداعي</h3>
+        <p data-en="An in-house studio: idea, script, shoot, edit, design.">
+          استوديو داخلي: الفكرة، السكربت، التصوير، المونتاج، التصميم.
+        </p>
+        <ul>
+          <li data-en="Creative concepts">الأفكار الإبداعية</li>
+          <li data-en="Scriptwriting">كتابة السكربت</li>
+          <li data-en="Long & short video">إنتاج الفيديو الطويل والقصير</li>
+          <li data-en="Drone">التصوير الجوي</li>
+          <li data-en="Photography">التصوير الفوتوغرافي</li>
+          <li data-en="Motion graphics">الموشن جرافيك</li>
+          <li data-en="AI-generated content">المحتوى بالذكاء الاصطناعي</li>
+          <li data-en="Web design">تصميم المواقع</li>
+          <li data-en="Branding">الهوية البصرية</li>
+          <li data-en="3D design">التصميم ثلاثي الأبعاد</li>
+          <li data-en="Post design">تصميم البوستات</li>
+          <li data-en="Invitation design">تصميم الدعوات</li>
+        </ul>
+      </article>
+
+      <article class="svc reveal">
+        <div class="no">04</div>
+        <h3 data-en="Events">الفعاليات</h3>
+        <p data-en="From the concept to the last guest: build, hospitality, coverage, report.">
+          من الفكرة إلى آخر ضيف: التنفيذ، الضيافة، التغطية، التقرير.
+        </p>
+        <ul>
+          <li data-en="Event planning">تخطيط الفعاليات</li>
+          <li data-en="Creative concepts">الأفكار الإبداعية</li>
+          <li data-en="Screens & décor">الشاشات والديكور</li>
+          <li data-en="Hospitality">الضيافة</li>
+          <li data-en="Creative invitations">الدعوات الإبداعية</li>
+          <li data-en="Gifts & giveaways">الهدايا والتوزيعات</li>
+          <li data-en="Logistics">اللوجستيات</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ الشوريل ============================ -->
+<section class="sec dark-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i></i><span data-en="Showreel">الشوريل</span></span>
+      <h2 data-en="Watch">شاهد</h2>
+    </div>
+    <div class="reel reveal">
+      <img src="assets/works/momah-event.jpg" alt="">
+      <div class="tag"><span class="badge-idea">◆ <span data-en="Slot: agency showreel video">مكان فيديو الشوريل</span></span></div>
+      <div class="play">
+        <button aria-label="تشغيل"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></button>
+      </div>
+    </div>
+    <div class="reel-note">
+      <span data-en="Recommended: 60 to 90 seconds, muted autoplay, 1080p, under 6 MB, with a still poster for slow connections.">
+        المقترح: من 60 إلى 90 ثانية، تشغيل تلقائي صامت، جودة 1080p، حجم أقل من 6 ميجابايت، مع صورة ثابتة للاتصال البطيء.
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ الأعمال ============================ -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i></i><span data-en="Selected work">مختارات</span></span>
+      <h2 data-en="Our work">أعمالنا</h2>
+      <p data-en="Each case carries the number it was judged by.">
+        كل عمل ومعه الرقم الذي حُكم به.
+      </p>
+    </div>
+
+    <div class="work-grid">
+      <article class="work wide reveal">
+        <div class="ph"><img src="assets/works/walimah-cover.jpg" alt="">
+          <div class="brand"><img src="assets/logos/culinary.png" alt="هيئة فنون الطهي"></div></div>
+        <div class="body">
+          <h3 data-en="Al Walimah Festival">مهرجان الوليمة</h3>
+          <div class="metric">+13,067,000 <span style="font-size:.8rem;color:var(--ink-2)" data-en="views">مشاهدة</span></div>
+          <p class="desc" data-en="Content coverage and an influencer wave across the festival days, with a closing report per platform.">
+            تغطية بالمحتوى وموجة مؤثرين على مدى أيام المهرجان، مع تقرير ختامي لكل منصة.
+          </p>
+          <div class="tags"><span data-en="Influencers">مؤثرون</span><span data-en="Coverage">تغطية</span><span data-en="Report">تقرير</span></div>
+        </div>
+      </article>
+
+      <article class="work wide reveal">
+        <div class="ph"><img src="assets/works/mos-content.jpg" alt="">
+          <div class="brand"><img src="assets/logos/mos.png" alt="وزارة الرياضة"></div></div>
+        <div class="body">
+          <h3 data-en="Sports campaign">حملة رياضية</h3>
+          <div class="metric">25.8M <span style="font-size:.8rem;color:var(--ink-2)" data-en="views: 16.2M Snapchat + 9.6M TikTok">مشاهدة: 16.2 مليون سناب شات + 9.6 مليون تيك توك</span></div>
+          <p class="desc" data-en="Creator selection by audience segment, unified creative direction, and daily performance tracking.">
+            اختيار صنّاع المحتوى حسب شرائح الجمهور، وتوجيه إبداعي موحّد، ومتابعة أداء يومية.
+          </p>
+          <div class="tags"><span>Snapchat</span><span>TikTok</span><span data-en="UGC">محتوى صنّاع</span></div>
+        </div>
+      </article>
+
+      <article class="work reveal">
+        <div class="ph"><img src="assets/works/sama-a.jpg" alt="">
+          <div class="brand"><img src="assets/logos/sama.png" alt="البنك المركزي السعودي"></div></div>
+        <div class="body">
+          <h3 data-en="Conference build">تجهيز مؤتمر</h3>
+          <p class="desc" data-en="Booth design and build, printed conference program, signage and on-site coordination.">
+            تصميم وتنفيذ الجناح، وبرنامج المؤتمر المطبوع، واللوحات الإرشادية، والتنسيق الميداني.
+          </p>
+          <div class="tags"><span data-en="Events">فعاليات</span><span data-en="Print">مطبوعات</span><span>3D</span></div>
+        </div>
+      </article>
+
+      <article class="work reveal">
+        <div class="ph"><img src="assets/works/qemah-event.jpg" alt="">
+          <div class="brand"><img src="assets/logos/qemah.png" alt="قمة للمزادات"></div></div>
+        <div class="body">
+          <h3 data-en="Auction night">ليلة مزاد</h3>
+          <p class="desc" data-en="Concept, invitations, hosting, screens and content coverage of the auction evening.">
+            الفكرة والدعوات والاستضافة والشاشات وتغطية أمسية المزاد بالمحتوى.
+          </p>
+          <div class="tags"><span data-en="Events">فعاليات</span><span data-en="Coverage">تغطية</span><span data-en="Hosting">استضافة</span></div>
+        </div>
+      </article>
+
+      <article class="work reveal">
+        <div class="ph"><img src="assets/works/mojaz1.jpg" alt="">
+          <div class="brand"><img src="assets/logos/mojaz.png" alt="موجز"></div></div>
+        <div class="body">
+          <h3 data-en="UGC series">سلسلة UGC</h3>
+          <p class="desc" data-en="Short vertical films shot with creators in everyday settings.">
+            أفلام قصيرة عمودية صوّرناها مع صنّاع محتوى في مواقف يومية.
+          </p>
+          <div class="tags"><span>UGC</span><span data-en="Vertical video">فيديو عمودي</span><span data-en="Script">سكربت</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ المؤثرون ============================ -->
+<section class="sec dark-sec" id="influencers">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i></i><span data-en="Influencer network">شبكة المؤثرين</span></span>
+      <h2 data-en="Our network">شبكتنا</h2>
+      <p data-en="A live sample. Filter by segment or platform, and the full sheet with rates arrives within 24 hours.">
+        عيّنة حيّة من الشبكة. صفِّ حسب الفئة أو المنصة، ويصلك الملف الكامل بالأسعار خلال 24 ساعة.
+      </p>
+    </div>
+
+    <div class="inf-toolbar reveal">
+      <span class="chip is-on" data-cat="all" data-en="All">الكل</span>
+      <span class="chip" data-cat="الفئة الشبابية" data-en="Youth">الفئة الشبابية</span>
+      <span class="chip" data-cat="فئة الأمهات" data-en="Mothers">فئة الأمهات</span>
+      <span class="chip" data-cat="فئات عمرية مختلفة" data-en="Mixed ages">فئات عمرية مختلفة</span>
+      <span style="flex:1"></span>
+      <div class="field" style="max-width:260px">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:.5"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg>
+        <input id="infSearch" placeholder="ابحث باسم المؤثر…" data-en-ph="Search by name…">
+      </div>
+    </div>
+
+    <div class="inf-grid" id="infGrid"></div>
+    <div class="inf-more">
+      <span class="badge-idea">◆ <span data-en="Sample of 41 of 3,700+ profiles">عيّنة 41 من أكثر من 3,700 ملف</span></span>
+      <div style="margin-top:16px">
+        <a class="btn btn-primary" href="#contact" data-en="Request the full list">اطلب القائمة الكاملة</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ المنظومة ============================ -->
+<section class="sec" id="ecosystem">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i></i><span data-en="The Ahdaf ecosystem">منظومة أهداف</span></span>
+      <h2 data-en="Our platforms">منصاتنا</h2>
+      <p data-en="Products we own and operate, where we test what we recommend.">
+        منتجات نملكها ونشغّلها، وفيها نجرّب ما نوصي به.
+      </p>
+    </div>
+
+    <div class="eco-grid">
+      <article class="eco reveal">
+        <div class="mark"><img src="assets/platforms/koorashow.png" alt="كورة شو"></div>
+        <h3 data-en="Koora Show">كورة شو</h3>
+        <p data-en="A Saudi sports media platform with its own audience and creators.">منصة إعلام رياضي سعودية بجمهورها وصنّاع محتواها.</p>
+        <a href="#" data-en="Visit platform ←">زيارة المنصة ←</a>
+      </article>
+
+      <article class="eco reveal">
+        <div class="mark"><img src="assets/platforms/matchesgoals.png" alt="Matches Goals"></div>
+        <h3>Matches Goals</h3>
+        <p data-en="Match data and highlights for football fans.">بيانات المباريات وأبرز اللقطات لجمهور كرة القدم.</p>
+        <a href="#" data-en="Visit platform ←">زيارة المنصة ←</a>
+      </article>
+
+      <article class="eco reveal">
+        <div class="mark"><img src="assets/platforms/jawlah.png" alt="جولة"></div>
+        <h3 data-en="Jawlah">جولة</h3>
+        <p data-en="Sports rounds and coverage in short-form video.">جولات وتغطيات رياضية بصيغة الفيديو القصير.</p>
+        <a href="#" data-en="Visit platform ←">زيارة المنصة ←</a>
+      </article>
+
+      <article class="eco reveal">
+        <div class="mark"><img src="assets/platforms/midrab.png" alt="مضرب"></div>
+        <h3 data-en="Midrab">مضرب</h3>
+        <p data-en="A community platform around racket sports.">منصة مجتمعية حول رياضات المضرب.</p>
+        <a href="#" data-en="Visit platform ←">زيارة المنصة ←</a>
+      </article>
+
+      <article class="eco reveal">
+        <div class="mark"><img src="assets/platforms/dakkah.png" alt="دكة"></div>
+        <h3 data-en="Dakkah">دكة</h3>
+        <p data-en="Fan conversation and opinion content.">محتوى الرأي وحوار الجماهير.</p>
+        <a href="#" data-en="Visit platform ←">زيارة المنصة ←</a>
+      </article>
+
+      <article class="eco reveal">
+        <div class="mark"><img src="assets/platforms/hankah.png" alt="حنكة"></div>
+        <h3 data-en="Hankah">حنكة</h3>
+        <p data-en="Entertainment content with a competitive edge.">محتوى ترفيهي بطابع تنافسي.</p>
+        <a href="#" data-en="Visit platform ←">زيارة المنصة ←</a>
+      </article>
+
+      <article class="eco reveal">
+        <div class="mark"><img src="assets/platforms/ratm.png" alt="رتم"></div>
+        <h3 data-en="Ratm">رتم</h3>
+        <p data-en="Culture and lifestyle content for a younger audience.">محتوى ثقافي ومعاصر لجمهور أصغر سناً.</p>
+        <a href="#" data-en="Visit platform ←">زيارة المنصة ←</a>
+      </article>
+
+      <article class="eco reveal" style="background:var(--p-50);border-color:var(--p-100)">
+        <div class="mark" style="font-family:var(--font-display);font-size:1.5rem;color:var(--p-600)">والي جوجل</div>
+        <h3 data-en="Wali Google">إدارة الحضور على خرائط جوجل</h3>
+        <p data-en="A platform that manages your Google Maps presence: reviews, data accuracy and local ranking.">
+          منصة تدير حضورك على خرائط جوجل: التقييمات ودقّة البيانات والترتيب المحلي.
+        </p>
+        <a href="https://ahdaf-maps.com/" target="_blank" rel="noopener" data-en="ahdaf-maps.com ←">ahdaf-maps.com ←</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ المنهجية ============================ -->
+<section class="sec" id="about" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow"><i></i><span data-en="How we work">كيف نشتغل</span></span>
+      <h2 data-en="How we work">طريقتنا</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><h3 data-en="Measure">نقيس</h3>
+        <p data-en="We open the accounts, read the data, and write down where you stand today.">
+          نفتح الحسابات، ونقرأ البيانات، ونكتب أين تقف اليوم.</p></div>
+      <div class="step reveal"><h3 data-en="Plan">نخطّط</h3>
+        <p data-en="One plan: message, channels, creators, budget, target metric.">
+          خطة واحدة: الرسالة، القنوات، صنّاع المحتوى، الميزانية، المؤشر.</p></div>
+      <div class="step reveal"><h3 data-en="Execute">ننفّذ</h3>
+        <p data-en="Production, media buying and influencers run in parallel under one project manager.">
+          الإنتاج والشراء الإعلامي والمؤثرون بالتوازي، تحت مدير مشروع واحد.</p></div>
+      <div class="step reveal"><h3 data-en="Optimize">نحسّن</h3>
+        <p data-en="Weekly reading, budget shifted toward what works, closing report with the real numbers.">
+          قراءة أسبوعية، ونقل الميزانية نحو ما ينجح، وتقرير ختامي بالأرقام.</p></div>
+    </div>
+
+    <div class="why-grid reveal" style="margin-top:26px">
+      <div class="why" style="background:#fff">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15V9m4 6V6m4 9v-4"/></svg></div>
+        <h3 data-en="Measured">قياس أولاً</h3>
+        <p data-en="We start from a baseline, and publish a live dashboard the client can open any day.">
+          نبدأ من خط أساس نقارن عليه، وننشر لوحة أداء يفتحها العميل في أي يوم.</p>
+      </div>
+      <div class="why" style="background:#fff">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c0-3.6 3-5.6 6.5-5.6s6.5 2 6.5 5.6M17 11.5a3 3 0 1 0 0-6M18 20c0-2.4-.9-4-2.4-5"/></svg></div>
+        <h3 data-en="One team">فريق واحد</h3>
+        <p data-en="Strategy, production, influencers and events under one roof, with one project manager.">
+          الاستراتيجية والإنتاج والمؤثرون والفعاليات تحت سقف واحد، بمدير مشروع واحد.</p>
+      </div>
+      <div class="why" style="background:#fff">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l7-5 7 5v8l-7 5-7-5z"/></svg></div>
+        <h3 data-en="Saudi">سعوديون</h3>
+        <p data-en="Creators, dialect, timing and platforms chosen for this market, by a team that lives in it.">
+          صنّاع المحتوى واللهجة والتوقيت والمنصات مختارة لهذا السوق، من فريق يعيش فيه.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ شريط الأرقام ============================ -->
+<section style="padding:0 0 clamp(56px,8vw,96px)">
+  <div class="wrap">
+    <div class="band reveal">
+      <div><b>+740</b><span data-en="Clients since 2020">عميل منذ 2020</span></div>
+      <div><b>+400</b><span data-en="Delivered projects">مشروع منفّذ</span></div>
+      <div><b>+3,700</b><span data-en="Creators in network">صانع محتوى في الشبكة</span></div>
+      <div><b>+250M</b><span data-en="Views delivered">مشاهدة محقّقة</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ تواصل ============================ -->
+<section class="sec dark-sec" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <span class="eyebrow"><i></i><span data-en="Start here">ابدأ من هنا</span></span>
+        <h2 style="font-size:var(--fs-h1);margin:16px 0 14px"
+            data-en="Talk to us">كلّمنا</h2>
+        <p style="color:rgba(255,255,255,.62);font-size:var(--fs-lead)"
+           data-en="A 30-minute call, then a written proposal with the plan, the timeline and the expected numbers within three working days.">
+          مكالمة 30 دقيقة، ثم عرض مكتوب بالخطة والجدول والأرقام خلال ثلاثة أيام عمل.
+        </p>
+        <ul class="contact-info">
+          <li><div><div class="k" data-en="Phone">الجوال</div><div class="v" dir="ltr">+966 53 909 0452</div></div></li>
+          <li><div><div class="k" data-en="Email">البريد</div><div class="v" dir="ltr">info@ahdaf.co</div></div></li>
+          <li><div><div class="k" data-en="Address">العنوان</div><div class="v" data-en="Al Sahafa, King Abdulaziz Road, Riyadh">الصحافة، طريق الملك عبدالعزيز، الرياض</div></div></li>
+          <li style="border:0"><div><div class="k" data-en="Working hours">أوقات العمل</div><div class="v" data-en="Sunday to Thursday, 9:00 to 18:00">الأحد إلى الخميس، 9:00 إلى 18:00</div></div></li>
+        </ul>
+      </div>
+
+      <form class="form reveal" onsubmit="event.preventDefault();alert('نموذج تجريبي في التصوّر، يُربط بنظام أهداف عند التنفيذ.')">
+        <div><label data-en="Full name">الاسم</label><input required placeholder="اسمك" data-en-ph="Your name"></div>
+        <div><label data-en="Company">الجهة</label><input placeholder="اسم الشركة" data-en-ph="Company name"></div>
+        <div><label data-en="Mobile">الجوال</label><input dir="ltr" required placeholder="05xxxxxxxx"></div>
+        <div><label data-en="Email">البريد</label><input dir="ltr" type="email" placeholder="name@company.com"></div>
+        <div><label data-en="Service">الخدمة المطلوبة</label>
+          <select>
+            <option data-en="Paid campaigns">الحملات المدفوعة</option>
+            <option data-en="Influencer campaign">حملة مؤثرين</option>
+            <option data-en="Creative production">إنتاج إبداعي</option>
+            <option data-en="Event">فعالية</option>
+            <option data-en="Full annual account">إدارة حساب سنوية</option>
+          </select>
+        </div>
+        <div><label data-en="Approximate budget">الميزانية التقريبية</label>
+          <select>
+            <option data-en="Under 50,000 SAR">أقل من 50,000 ريال</option>
+            <option data-en="50,000 to 150,000 SAR">50,000 إلى 150,000 ريال</option>
+            <option data-en="150,000 to 500,000 SAR">150,000 إلى 500,000 ريال</option>
+            <option data-en="Above 500,000 SAR">أكثر من 500,000 ريال</option>
+          </select>
+        </div>
+        <div class="full"><label data-en="Tell us about the goal">اكتب لنا عن الهدف</label>
+          <textarea placeholder="ما الذي تريد تحقيقه، ومتى؟" data-en-ph="What do you want to achieve, and by when?"></textarea></div>
+        <div class="full"><button class="btn btn-primary btn-lg" style="width:100%" data-en="Send the brief">أرسل الطلب</button></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ خريطة الصفحات ============================ -->
+<section class="sec" style="background:var(--paper-2)">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="badge-idea">◆ <span data-en="Proposal: inner pages">مقترح: الصفحات الداخلية</span></span>
+      <h2 style="margin-top:14px" data-en="Inner pages">الصفحات الداخلية</h2>
+      <p data-en="The homepage is the window. These pages carry the detail, each one written before it is designed.">
+        الرئيسية واجهة العرض. هذه الصفحات تحمل التفاصيل، كل واحدة يُكتب محتواها قبل أن تُصمَّم.
+      </p>
+    </div>
+    <div class="map-grid">
+      <div class="map reveal"><h3 data-en="Service page (×4)">صفحة خدمة (×4)</h3>
+        <ol>
+          <li data-en="The problem the service solves">المشكلة التي تحلّها الخدمة</li>
+          <li data-en="What is included, item by item">ما يشمله العمل بنداً بنداً</li>
+          <li data-en="Deliverables and timeline">المخرجات والجدول الزمني</li>
+          <li data-en="Two case studies from the same service">حالتان من نفس الخدمة</li>
+          <li data-en="Pricing model">نموذج التسعير</li>
+          <li data-en="FAQ, six questions">أسئلة شائعة، ستة أسئلة</li>
+        </ol></div>
+
+      <div class="map reveal"><h3 data-en="Case study page">صفحة عمل</h3>
+        <ol>
+          <li data-en="Client, sector, duration, team">العميل والقطاع والمدة والفريق</li>
+          <li data-en="The challenge in three lines">التحدي في ثلاثة أسطر</li>
+          <li data-en="What we did, in phases">ما فعلناه، على مراحل</li>
+          <li data-en="Gallery: photos and vertical video">معرض: صور وفيديو عمودي</li>
+          <li data-en="Results with the numbers">النتائج بالأرقام</li>
+          <li data-en="Client quote, if approved">اقتباس العميل، إن اعتُمد</li>
+        </ol></div>
+
+      <div class="map reveal"><h3 data-en="Influencers page">صفحة المؤثرين</h3>
+        <ol>
+          <li data-en="Filter: segment, platform, city, category">فلترة: الشريحة والمنصة والمدينة والفئة</li>
+          <li data-en="Profile card: photo, reach, engagement">كرت الملف: صورة، وصول، تفاعل</li>
+          <li data-en="Shortlist builder the client can send">سلة ترشيح يرسلها العميل</li>
+          <li data-en="How we contract and report">كيف نتعاقد ونصدر التقرير</li>
+          <li data-en="Join as a creator, form">انضم كصانع محتوى، نموذج</li>
+        </ol></div>
+
+      <div class="map reveal"><h3 data-en="About page">عن أهداف</h3>
+        <ol>
+          <li data-en="The story in one screen">القصة في شاشة واحدة</li>
+          <li data-en="Leadership and team photos">القيادة وصور الفريق</li>
+          <li data-en="Numbers and timeline">الأرقام والخط الزمني</li>
+          <li data-en="Clients wall">جدار العملاء</li>
+          <li data-en="Careers, open roles">الوظائف، الشواغر</li>
+        </ol></div>
+
+      <div class="map reveal"><h3 data-en="Ecosystem page">منظومة أهداف</h3>
+        <ol>
+          <li data-en="Platform card for each product">كرت لكل منتج</li>
+          <li data-en="Audience size per platform">حجم الجمهور لكل منصة</li>
+          <li data-en="Advertise with us, media kit">أعلن معنا، الملف الإعلاني</li>
+          <li data-en="Mamar and Wali Google as tools">ممر ووالي جوجل كأدوات</li>
+        </ol></div>
+
+      <div class="map reveal"><h3 data-en="Content hub">مركز المحتوى</h3>
+        <ol>
+          <li data-en="Articles: the Saudi market, monthly">مقالات: السوق السعودي، شهرياً</li>
+          <li data-en="Platform reports and benchmarks">تقارير المنصات والمعايير</li>
+          <li data-en="Downloadable templates for clients">قوالب قابلة للتحميل للعملاء</li>
+          <li data-en="Content that lifts search visibility">محتوى يرفع الظهور في البحث</li>
+        </ol></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ الفوتر ============================ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="assets/ahdaf-logo-white.png" alt="أهداف" style="height:34px;margin-bottom:16px">
+        <p style="font-size:.9rem;max-width:34ch" data-en="We connect creativity to results and turn marketing into real growth.">
+          نربط الإبداع بالنتائج، ونحوّل التسويق إلى نمو حقيقي.
+        </p>
+      </div>
+      <div>
+        <h4 data-en="Services">الخدمات</h4>
+        <ul>
+          <li><a href="#services" data-en="Digital growth">النمو الرقمي</a></li>
+          <li><a href="#services" data-en="Influencer impact">تأثير المؤثرين</a></li>
+          <li><a href="#services" data-en="Creative production">الإنتاج الإبداعي</a></li>
+          <li><a href="#services" data-en="Events">الفعاليات</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="Ecosystem">المنظومة</h4>
+        <ul>
+          <li><a href="#ecosystem" data-en="Koora Show">كورة شو</a></li>
+          <li><a href="#ecosystem">Matches Goals</a></li>
+          <li><a href="https://ahdaf-maps.com/" target="_blank" rel="noopener" data-en="Wali Google">والي جوجل</a></li>
+          <li><a href="#ecosystem" data-en="Mamar, internal system">ممر، النظام الداخلي</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-en="Company">الشركة</h4>
+        <ul>
+          <li><a href="#about" data-en="About Ahdaf">عن أهداف</a></li>
+          <li><a href="#work" data-en="Work">الأعمال</a></li>
+          <li><a href="#contact" data-en="Contact">تواصل معنا</a></li>
+          <li><a href="#" data-en="Careers">الوظائف</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-en="© 2026 Ahdaf Marketing Solutions. All rights reserved.">© 2026 أهداف لحلول التسويق. جميع الحقوق محفوظة.</span>
+      <span><a href="#" data-en="Privacy policy">سياسة الخصوصية</a> · <a href="#" data-en="Terms">الشروط والأحكام</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- بيانات المؤثرين ---------- */
+const INF = [
+{
+"name": "عز بن فهد",
+"platform": "snap",
+"url": "https://www.snapchat.com/@az_binfahad?locale=ar",
+"handle": "az_binfahad",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/az_binfahad.jpg"
+},
+{
+"name": "ابراهيم باشا",
+"platform": "snap",
+"url": "https://www.snapchat.com/@ibrahimbasha?locale=ar",
+"handle": "ibrahimbasha",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/ibrahimbasha.jpg"
+},
+{
+"name": "بشاير ام ثموري",
+"platform": "snap",
+"url": "https://www.snapchat.com/@bshaeer_al",
+"handle": "bshaeer_al",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/bshaeer_al.jpg"
+},
+{
+"name": "ابراهيم سعود",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@e5bll?lang=ar",
+"handle": "e5bll",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/e5bll.jpg"
+},
+{
+"name": "عبدالله السبع",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@7alsabe?lang=ar",
+"handle": "7alsabe",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/7alsabe.jpg"
+},
+{
+"name": "عبدالله الخريف",
+"platform": "snap",
+"url": "https://snapchat.com/t/IrGcGxMA",
+"handle": "abdullahk5",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/abdullahk5.jpg"
+},
+{
+"name": "محمد الحاجي",
+"platform": "snap",
+"url": "https://snapchat.com/t/1cib6MIh",
+"handle": "midoalhajji",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/midoalhajji.jpg"
+},
+{
+"name": "سلمان بن حثلين",
+"platform": "snap",
+"url": "https://www.snapchat.com/@salman1dh?locale=ar",
+"handle": "salman1dh",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/salman1dh.jpg"
+},
+{
+"name": "عبير الغيث",
+"platform": "snap",
+"url": "https://www.snapchat.com/@abeeralghaith91?locale=ar",
+"handle": "abeeralghaith91",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/abeeralghaith91.jpg"
+},
+{
+"name": "افنان الباتل",
+"platform": "snap",
+"url": "https://www.snapchat.com/@iafnanalbatel?locale=ar",
+"handle": "iafnanalbatel",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/iafnanalbatel.jpg"
+},
+{
+"name": "ترند نيوز",
+"platform": "snap",
+"url": "https://www.snapchat.com/@trendnews24?locale=ar",
+"handle": "trendnews24",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/trendnews24.jpg"
+},
+{
+"name": "سعودي بانثر",
+"platform": "snap",
+"url": "https://www.snapchat.com/@saudi.panther?locale=ar",
+"handle": "saudi.panther",
+"cat": "فئات عمرية مختلفة",
+"img": "assets/avatars/saudi.panther.jpg"
+},
+{
+"name": "هند الفوزان",
+"platform": "snap",
+"url": "https://www.snapchat.com/@hind_alfawzan",
+"handle": "hind_alfawzan",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/hind_alfawzan.jpg"
+},
+{
+"name": "محمد النحيت",
+"platform": "snap",
+"url": "https://www.snapchat.com/@m_alnhet",
+"handle": "m_alnhet",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/m_alnhet.jpg"
+},
+{
+"name": "اروى الناصر ( ام نوره )",
+"platform": "snap",
+"url": "https://snapchat.com/t/r3lapvuO",
+"handle": "arwa_naseer",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/arwa_naseer.jpg"
+},
+{
+"name": "غرفه معلمات",
+"platform": "snap",
+"url": "https://www.snapchat.com/@teachers_room",
+"handle": "teachers_room",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/teachers_room.jpg"
+},
+{
+"name": "ندى العلي",
+"platform": "snap",
+"url": "https://www.snapchat.com/@nada_ali667?locale=ar",
+"handle": "nada_ali667",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/nada_ali667.jpg"
+},
+{
+"name": "اروى التركي",
+"platform": "snap",
+"url": "https://www.snapchat.com/@arwa.homaidan?locale=ar",
+"handle": "arwa.homaidan",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/arwa.homaidan.jpg"
+},
+{
+"name": "ريقيرو",
+"platform": "snap",
+"url": "https://www.snapchat.com/@reegero?locale=ar",
+"handle": "reegero",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/reegero.jpg"
+},
+{
+"name": "حمدي الفريدي",
+"platform": "snap",
+"url": "https://www.snapchat.com/@hamdy_ss",
+"handle": "hamdy_ss",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/hamdy_ss.jpg"
+},
+{
+"name": "وليد الدواس",
+"platform": "snap",
+"url": "https://www.snapchat.com/@iwaled575?locale=ar",
+"handle": "iwaled575",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/iwaled575.jpg"
+},
+{
+"name": "عبدالمجيد الفوزان",
+"platform": "snap",
+"url": "https://www.snapchat.com/@mjeedalfawzan",
+"handle": "mjeedalfawzan",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/mjeedalfawzan.jpg"
+},
+{
+"name": "ام جمعان",
+"platform": "snap",
+"url": "https://www.snapchat.com/@ash.06a",
+"handle": "ash.06a",
+"cat": "فئة الأمهات",
+"img": "assets/avatars/ash.06a.jpg"
+},
+{
+"name": "شونق",
+"platform": "snap",
+"url": "https://www.snapchat.com/@shongxbong_yt",
+"handle": "shongxbong_yt",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/shongxbong_yt.jpg"
+},
+{
+"name": "مجرم قيمز",
+"platform": "snap",
+"url": "https://www.snapchat.com/@mjrmgems",
+"handle": "mjrmgems",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/mjrmgems.jpg"
+},
+{
+"name": "محمد اودن",
+"platform": "snap",
+"url": "https://www.snapchat.com/@mohammed_oden?locale=ar",
+"handle": "mohammed_oden",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/mohammed_oden.jpg"
+},
+{
+"name": "في وار",
+"platform": "snap",
+"url": "https://www.snapchat.com/@osvwar",
+"handle": "osvwar",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/osvwar.jpg"
+},
+{
+"name": "عزيز",
+"platform": "snap",
+"url": "https://www.snapchat.com/@azizsamily",
+"handle": "azizsamily",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/azizsamily.jpg"
+},
+{
+"name": "دحومي 999",
+"platform": "snap",
+"url": "https://www.snapchat.com/@d7oomysnap?locale=ar",
+"handle": "d7oomysnap",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/d7oomysnap.jpg"
+},
+{
+"name": "طلال فايروس",
+"platform": "snap",
+"url": "https://www.snapchat.com/@virussyyy/spotlight/W7_EDlXWTBiXAEEniNoMPwAAYYXB2Ym5rZnVyAZK2v8VpAZK2v4RDAAAAAQ",
+"handle": "virussyyy",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/virussyyy.jpg"
+},
+{
+"name": "سناب فيرفول",
+"platform": "snap",
+"url": "https://www.snapchat.com/@ffearfful?locale=ar",
+"handle": "ffearfful",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/ffearfful.jpg"
+},
+{
+"name": "ابو عابد باور",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@xabo3abd1?lang=ar",
+"handle": "xabo3abd1",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/xabo3abd1.jpg"
+},
+{
+"name": "مشعل بن خالد",
+"platform": "snap",
+"url": "https://www.snapchat.com/@i_m4l?locale=ar",
+"handle": "i_m4l",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/i_m4l.jpg"
+},
+{
+"name": "طارق الحربي",
+"platform": "snap",
+"url": "https://www.snapchat.com/@tariq_alharbi80",
+"handle": "tariq_alharbi80",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/tariq_alharbi80.jpg"
+},
+{
+"name": "إلياس السته",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@elias_setta?lang=ar",
+"handle": "elias_setta",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/elias_setta.jpg"
+},
+{
+"name": "فيصل الشهري",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@faisal_alshehri7?lang=ar",
+"handle": "faisal_alshehri7",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/faisal_alshehri7.jpg"
+},
+{
+"name": "فيصل الشثري",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@faisxal33?lang=ar",
+"handle": "faisxal33",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/faisxal33.jpg"
+},
+{
+"name": "ابو داحم",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@9.um?lang=ar",
+"handle": "9.um",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/9.um.jpg"
+},
+{
+"name": "فراس المباركي",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@ferasjtl?lang=ar",
+"handle": "ferasjtl",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/ferasjtl.jpg"
+},
+{
+"name": "باسل الفرد",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@saybasl?lang=ar",
+"handle": "saybasl",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/saybasl.jpg"
+},
+{
+"name": "فارس",
+"platform": "tiktok",
+"url": "https://www.tiktok.com/@frs97_/video/7341373806939835650?_r=1&_t=ZS-98ivxhgu49A",
+"handle": "frs97_",
+"cat": "الفئة الشبابية",
+"img": "assets/avatars/frs97_.jpg"
+}
+];
+
+const grid = document.getElementById('infGrid');
+let state = {cat:'all', q:''};
+
+function render(){
+  const q = state.q.trim();
+  const items = INF.filter(x =>
+    (state.cat === 'all' || x.cat === state.cat) &&
+    (!q || x.name.includes(q) || (x.handle||'').toLowerCase().includes(q.toLowerCase()))
+  );
+  grid.innerHTML = items.map(x => `
+    <a class="inf" href="${x.url}" target="_blank" rel="noopener">
+      <img src="${x.img}" alt="${x.name}" loading="lazy">
+      <div class="nm">${x.name}</div>
+      <span class="pf ${x.platform}">${x.platform === 'snap' ? 'Snapchat' : 'TikTok'}</span>
+    </a>`).join('') ||
+    `<div style="grid-column:1/-1;opacity:.6;padding:26px 0">لا توجد نتائج مطابقة.</div>`;
+}
+
+document.querySelectorAll('.inf-toolbar .chip').forEach(c => c.addEventListener('click', () => {
+  document.querySelectorAll('.inf-toolbar .chip').forEach(o => o.classList.remove('is-on'));
+  c.classList.add('is-on');
+  state.cat = c.dataset.cat;
+  render();
+}));
+document.getElementById('infSearch').addEventListener('input', e => { state.q = e.target.value; render(); });
+render();
+
+/* ---------- تبديل اللغة ---------- */
+const langBtn = document.getElementById('langBtn');
+let lang = 'ar';
+langBtn.addEventListener('click', () => {
+  lang = lang === 'ar' ? 'en' : 'ar';
+  const html = document.documentElement;
+  html.lang = lang;
+  html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  langBtn.textContent = lang === 'ar' ? 'EN' : 'ع';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if(!el.dataset.ar) el.dataset.ar = el.textContent.trim();
+    el.textContent = lang === 'en' ? el.dataset.en : el.dataset.ar;
+  });
+  document.querySelectorAll('[data-en-ph]').forEach(el => {
+    if(!el.dataset.arPh) el.dataset.arPh = el.placeholder;
+    el.placeholder = lang === 'en' ? el.dataset.enPh : el.dataset.arPh;
+  });
+  document.body.style.fontFamily = lang === 'en'
+    ? "'Inter',var(--font-body)" : 'var(--font-body)';
+});
+
+/* ---------- قائمة الجوال والهيدر ---------- */
+document.getElementById('burger').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+document.querySelectorAll('#mobileMenu a').forEach(a =>
+  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
+addEventListener('scroll', () =>
+  document.getElementById('hdr').classList.toggle('scrolled', scrollY > 40));
+
+/* ---------- الظهور التدريجي ---------- */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
