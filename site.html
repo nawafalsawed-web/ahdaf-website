@@ -210,8 +210,8 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 @media(max-width:900px){#wprev{display:none}}
 
 /* ================= المؤثرون: المحور والمدارات ================= */
-.hubwrap{position:relative;height:min(800px,92vw);display:grid;place-items:center;margin-top:10px}
-.hub{position:relative;width:min(760px,90vw);height:min(760px,90vw);display:grid;place-items:center}
+.hubwrap{position:relative;height:min(900px,98vw);display:grid;place-items:center;margin-top:10px}
+.hub{position:relative;width:min(860px,92vw);height:min(860px,92vw);display:grid;place-items:center}
 .rings{position:absolute;inset:0;pointer-events:none}
 .rings i{position:absolute;inset:0;margin:auto;border-radius:50%;border:1px dashed rgba(255,255,255,.14)}
 .rings i:nth-child(1){width:46%;height:46%;animation:spin 34s linear infinite}
@@ -1492,7 +1492,7 @@ $$('#panels .panel').forEach(p => {
     .concat(INF.filter(x => x.img)))].slice(0, innerWidth < 700 ? 9 : innerWidth < 1100 ? 14 : 20);
   const R = () => hub.clientWidth * (innerWidth < 560 ? .40 : .44);
   // ثلاثة مدارات: الداخلي أكبر حجماً، والخارجي أصغر، لإحساس بالعمق
-  const RINGS = [{r:.52, size:96, sp:.00016}, {r:.76, size:74, sp:-.00011}, {r:.98, size:56, sp:.00008}];
+  const RINGS = [{r:.44, size:92, sp:.00016}, {r:.78, size:72, sp:-.00011}, {r:1.10, size:56, sp:.00008}];
   const perRing = [[], [], []];
   picks.forEach((p, i) => perRing[i % 3].push(p));
   const nodes = [];
@@ -1501,7 +1501,7 @@ $$('#panels .panel').forEach(p => {
     const el = document.createElement('a');
     el.className = 'node'; el.href = p.url; el.target = '_blank'; el.rel = 'noopener';
     el.innerHTML = `<img src="${p.img}" alt="${p.name}"><span class="nm">${p.name}</span>`;
-    const size = ring.size + ((j % 3) - 1) * 8;            // تفاوت داخل المدار نفسه
+    const size = ring.size + ((j % 3) - 1) * 7;            // تفاوت داخل المدار نفسه
     el.style.cssText += `position:absolute;left:0;top:0;right:auto;margin:0;width:${size}px;height:${size}px`;
     hub.appendChild(el);
     nodes.push({el, a0: (j / list.length) * Math.PI * 2 + ri * .5, sp: ring.sp, r: ring.r});
