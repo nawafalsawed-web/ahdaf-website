@@ -231,7 +231,7 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .hubbtn span{font-size:.84rem;color:rgba(255,255,255,.85);display:block;margin:0;font-weight:600}
 .hubbtn::after{content:'';position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(130,77,235,.5);
   animation:ring 3s ease-out infinite}
-.node{position:absolute;z-index:2;width:74px;height:74px;border-radius:50%;overflow:hidden;
+.node{position:absolute;z-index:2;border-radius:50%;overflow:hidden;
   border:2px solid rgba(255,255,255,.22);box-shadow:0 12px 34px rgba(0,0,0,.5);
   transition:transform .4s var(--ease),border-color .3s;background:#171029}
 .node img{width:100%;height:100%;object-fit:cover}
@@ -239,7 +239,7 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .node .nm{position:absolute;inset-block-end:-26px;inset-inline-start:50%;transform:translateX(50%);
   font-size:.7rem;color:rgba(255,255,255,.7);white-space:nowrap;opacity:0;transition:opacity .3s}
 .node:hover .nm{opacity:1}
-@media(max-width:560px){.node{width:56px;height:56px}}
+
 
 /* لوحة القائمة */
 .roster{position:fixed;inset:0;z-index:80;background:rgba(10,7,17,.92);backdrop-filter:blur(18px);
@@ -1528,17 +1528,23 @@ $$('#panels .panel').forEach(p => {
   const TOP = ['d7oomysnap','mjrmgems','az_binfahad','ibrahimbasha','abdullahk5','salman1dh','hind_alfawzan'];
   const byHandle = Object.fromEntries(INF.map(x => [x.handle, x]));
   const picks = [...new Set(TOP.map(hh => byHandle[hh]).filter(Boolean)
-    .concat(INF.filter(x => x.img)))].slice(0, innerWidth < 700 ? 7 : 10);
-  const R = () => hub.clientWidth * (innerWidth < 560 ? .42 : .46);
-  const nodes = picks.map((p, i) => {
+    .concat(INF.filter(x => x.img)))].slice(0, innerWidth < 700 ? 9 : innerWidth < 1100 ? 14 : 20);
+  const R = () => hub.clientWidth * (innerWidth < 560 ? .40 : .44);
+  // ثلاثة مدارات: الداخلي أكبر حجماً، والخارجي أصغر، لإحساس بالعمق
+  const RINGS = [{r:.52, size:96, sp:.00016}, {r:.76, size:74, sp:-.00011}, {r:.98, size:56, sp:.00008}];
+  const perRing = [[], [], []];
+  picks.forEach((p, i) => perRing[i % 3].push(p));
+  const nodes = [];
+  perRing.forEach((list, ri) => list.forEach((p, j) => {
+    const ring = RINGS[ri];
     const el = document.createElement('a');
     el.className = 'node'; el.href = p.url; el.target = '_blank'; el.rel = 'noopener';
     el.innerHTML = `<img src="${p.img}" alt="${p.name}"><span class="nm">${p.name}</span>`;
-    // مواضع فيزيائية صريحة: inset-inline في RTL يعاكس الحساب
-    el.style.cssText += 'position:absolute;left:0;top:0;right:auto;margin:0';
+    const size = ring.size + ((j % 3) - 1) * 8;            // تفاوت داخل المدار نفسه
+    el.style.cssText += `position:absolute;left:0;top:0;right:auto;margin:0;width:${size}px;height:${size}px`;
     hub.appendChild(el);
-    return {el, a0: (i / picks.length) * Math.PI * 2, sp: .00011 + (i % 3) * .00004, r: .74 + (i % 3) * .19};
-  });
+    nodes.push({el, a0: (j / list.length) * Math.PI * 2 + ri * .5, sp: ring.sp, r: ring.r});
+  }));
   const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
   svg.appendChild(path);
   let spread = 0;   // العقد تنطلق من المركز عند أول ظهور
@@ -1552,7 +1558,7 @@ $$('#panels .panel').forEach(p => {
     const cx = W / 2, cy = H / 2, base = R();
     let d = '';
     nodes.forEach(n => {
-      const a = n.a0 + t * n.sp * (n.r > 1.05 ? -1 : 1);
+      const a = n.a0 + t * n.sp;
       const rr = (base * n.r + Math.sin(t * .0009 + n.a0) * 12) * spread;
       const x = cx + Math.cos(a) * rr, y = cy + Math.sin(a) * rr;
       n.el.style.left = (x - n.el.offsetWidth / 2) + 'px';
