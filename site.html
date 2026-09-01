@@ -168,19 +168,28 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   transition:transform .7s var(--ease)}
 .panel.open::after{transform:scaleX(1)}
 
-/* ================= الشوريل ================= */
-.reel{position:relative;border-radius:var(--r-xl);overflow:hidden;aspect-ratio:16/9;
-  border:1px solid rgba(255,255,255,.14);background:#171029}
-.reel img{width:100%;height:100%;object-fit:cover;opacity:.5;transform:scale(1.04);
-  transition:transform 1.4s var(--ease),opacity .6s}
-.reel:hover img{transform:scale(1);opacity:.62}
-.reel .play{position:absolute;inset:0;display:grid;place-items:center}
-.reel .play button{width:96px;height:96px;border-radius:50%;border:0;cursor:pointer;background:#fff;
-  color:var(--p-600);display:grid;place-items:center;box-shadow:0 20px 60px rgba(0,0,0,.55)}
-.reel .play button::before{content:'';position:absolute;width:96px;height:96px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.5);animation:ring 2.6s ease-out infinite}
-@keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.9);opacity:0}}
-.reel .tag{position:absolute;inset-block-start:18px;inset-inline-start:18px;z-index:2}
+/* ================= الشوريل: شبكة مقاطع ================= */
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.reels{grid-template-columns:1fr}}
+.reel{position:relative;display:block;border-radius:var(--r-lg);overflow:hidden;aspect-ratio:16/10;
+  border:1px solid rgba(255,255,255,.14);background:#171029;
+  transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s}
+.reel:hover{transform:translateY(-6px);border-color:rgba(130,77,235,.6);
+  box-shadow:0 26px 70px rgba(76,1,146,.5)}
+.reel img{width:100%;height:100%;object-fit:cover;opacity:.5;transform:scale(1.06);
+  transition:transform 1.2s var(--ease),opacity .5s}
+.reel:hover img{transform:scale(1);opacity:.68}
+.reel .play{position:absolute;inset-block-start:50%;inset-inline-start:50%;transform:translate(50%,-50%);
+  width:66px;height:66px;border-radius:50%;background:#fff;color:var(--p-600);display:grid;place-items:center;
+  box-shadow:0 16px 40px rgba(0,0,0,.5);transition:transform .45s var(--ease)}
+[dir=ltr] .reel .play{transform:translate(-50%,-50%)}
+.reel:hover .play{transform:translate(50%,-50%) scale(1.12)}
+[dir=ltr] .reel:hover .play{transform:translate(-50%,-50%) scale(1.12)}
+.reel .cap{position:absolute;inset-block-end:0;inset-inline:0;padding:16px 18px;display:flex;
+  align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  background:linear-gradient(0deg,rgba(10,7,17,.92),transparent)}
+.reel .cap b{font-family:var(--font-display);font-size:1.05rem;font-weight:700}
+.reel .cap i{font-style:normal}
 .reel-note{margin-top:18px;color:rgba(255,255,255,.55);font-size:.88rem}
 
 /* ================= الأعمال: قائمة بمعاينة تتبع المؤشر ================= */
@@ -711,14 +720,40 @@ footer.site a:hover{color:#fff}
     <div class="sec-head rv">
       <span class="eyebrow"><i></i><span data-en="Showreel">الشوريل</span></span>
       <h2 data-en="Watch">شاهد</h2>
+      <p data-en="Our reel, and coverage of the Qimmah auction galas.">شوريل أهداف، وتغطية حفلي قمة للمزادات.</p>
     </div>
-    <div class="reel rv">
-      <img src="assets/works/momah-event.jpg" alt="">
-      <div class="tag"><span class="badge-idea">◆ <span data-en="Slot: agency showreel">مكان فيديو الشوريل</span></span></div>
-      <div class="play"><button aria-label="تشغيل"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></button></div>
+
+    <div class="reels rv" id="reels">
+      <a class="reel" href="#" data-title="شوريل أهداف" data-en-title="Ahdaf showreel">
+        <img src="assets/works/momah-event.jpg" alt="">
+        <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+        <span class="cap">
+          <b data-en="Ahdaf showreel">شوريل أهداف</b>
+          <i class="badge-idea">◆ <span data-en="File pending">بانتظار الملف</span></i>
+        </span>
+      </a>
+
+      <a class="reel" href="#" data-title="حفل قمة الأول">
+        <img src="assets/works/qemah-event.jpg" alt="">
+        <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+        <span class="cap">
+          <b data-en="Qimmah gala, first edition">حفل قمة الأول</b>
+          <i class="badge-idea">◆ <span data-en="File pending">بانتظار الملف</span></i>
+        </span>
+      </a>
+
+      <a class="reel" href="#" data-title="حفل قمة الثاني">
+        <img src="assets/works/qemah-event.jpg" alt="">
+        <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
+        <span class="cap">
+          <b data-en="Qimmah gala, second edition">حفل قمة الثاني</b>
+          <i class="badge-idea">◆ <span data-en="File pending">بانتظار الملف</span></i>
+        </span>
+      </a>
     </div>
-    <div class="reel-note rv" data-en="Recommended: 60 to 90 seconds, muted autoplay, 1080p, under 6 MB, with a still poster for slow connections.">
-      المقترح: من 60 إلى 90 ثانية، تشغيل تلقائي صامت، جودة 1080p، أقل من 6 ميجابايت، مع صورة ثابتة للاتصال البطيء.
+
+    <div class="reel-note rv" data-en="Each clip: 60 to 90 seconds, 1080p, with a still poster for slow connections.">
+      لكل مقطع: من 60 إلى 90 ثانية، جودة 1080p، مع صورة ثابتة للاتصال البطيء.
     </div>
   </div>
 </section>
@@ -1686,12 +1721,12 @@ document.body.dataset.scene = 'hero';
 
 /* ================= الشوريل يتمدّد مع النزول ================= */
 (function reelZoom(){
-  const r = $('.reel'); if (!r || reduce) return;
+  const r = $('#reels'); if (!r || reduce) return;
   r.style.transformOrigin = 'center';
   const upd = () => {
     const b = r.getBoundingClientRect();
     const p = Math.max(0, Math.min(1, (innerHeight - b.top) / (innerHeight * .9)));
-    r.style.transform = `scale(${(.88 + p * .12).toFixed(3)})`;
+    r.style.transform = `scale(${(.94 + p * .06).toFixed(3)})`;
   };
   addEventListener('scroll', upd, {passive:true}); upd();
 })();
