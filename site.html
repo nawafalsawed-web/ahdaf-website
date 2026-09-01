@@ -571,7 +571,7 @@ footer.site a:hover{color:#fff}
       </div>
 
       <div class="float-stack" aria-hidden="true">
-        <div class="fcard fcard-1" data-depth="26">
+        <div class="fcard fcard-1" data-depth="14">
           <div class="t" data-en="Live campaign">حملة قيد التشغيل</div>
           <div class="row" style="justify-content:space-between;align-items:flex-end;margin-top:6px">
             <div class="k">25.8M</div><div class="t" style="color:#7DD87D">▲ 18%</div>
@@ -584,7 +584,7 @@ footer.site a:hover{color:#fff}
           </div>
           <div class="t" data-en="Views across Snapchat and TikTok">مشاهدة عبر سناب شات وتيك توك</div>
         </div>
-        <div class="fcard fcard-2" data-depth="44">
+        <div class="fcard fcard-2" data-depth="22">
           <div class="t" data-en="Influencer network">شبكة المؤثرين</div>
           <div class="avatars" style="margin:10px 0">
             <img src="assets/avatars/az_binfahad.jpg" alt=""><img src="assets/avatars/hind_alfawzan.jpg" alt="">
@@ -596,7 +596,7 @@ footer.site a:hover{color:#fff}
             <div class="t" data-en="ready to brief">جاهزون للتكليف</div>
           </div>
         </div>
-        <div class="fcard fcard-3" data-depth="18">
+        <div class="fcard fcard-3" data-depth="10">
           <div class="row" style="justify-content:space-between">
             <div><div class="t" data-en="Cost per view">تكلفة المشاهدة</div>
               <div class="k" style="font-size:1.5rem">0.011 <span style="font-size:.8rem">SAR</span></div></div>
@@ -1491,11 +1491,23 @@ $$('.cnt').forEach(el => cio.observe(el));
 (function parallax(){
   const stack = $('.float-stack'); if (!stack || reduce) return;
   const cards = $$('.fcard', stack);
+  let tx = 0, ty = 0, cx = 0, cy = 0, active = true;
+  // تُقاس نسبة الماوس مرة واحدة، ثم تُلاحق بنعومة بدل القفز مع كل حركة
   addEventListener('mousemove', e => {
-    const nx = (e.clientX / innerWidth - .5), ny = (e.clientY / innerHeight - .5);
-    cards.forEach(c => { const d = +c.dataset.depth;
-      c.style.transform = `translate3d(${-nx*d}px,${-ny*d}px,0) rotateX(${ny*4}deg) rotateY(${-nx*4}deg)`; });
-  });
+    tx = e.clientX / innerWidth - .5;
+    ty = e.clientY / innerHeight - .5;
+  }, {passive:true});
+  new IntersectionObserver(es => es.forEach(e => active = e.isIntersecting), {threshold:.05})
+    .observe(stack);
+  (function loop(){
+    if (active) {
+      cx = lerp(cx, tx, .06); cy = lerp(cy, ty, .06);   // ملاحقة بطيئة تلغي القفزة
+      cards.forEach(c => { const d = +c.dataset.depth;
+        c.style.transform = `translate3d(${(-cx*d).toFixed(2)}px,${(-cy*d).toFixed(2)}px,0)`
+          + ` rotateX(${(cy*2.5).toFixed(2)}deg) rotateY(${(-cx*2.5).toFixed(2)}deg)`; });
+    }
+    requestAnimationFrame(loop);
+  })();
 })();
 
 /* ================= أزرار مغناطيسية ================= */
