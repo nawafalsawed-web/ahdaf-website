@@ -148,7 +148,6 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   border:1px solid var(--line);background:var(--paper-2);
   transition:flex 1s var(--ease),box-shadow .6s var(--ease)}
 .panel.open{flex:2.9;box-shadow:var(--sh-3)}
-@media(max-width:900px){.panel{flex:none;min-height:96px}.panel.open{flex:none}}
 .panel .inner{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
 .panel .no{font-family:var(--font-display);font-size:clamp(2.6rem,4vw,4.4rem);line-height:1;color:var(--p-100);
   transition:color .6s var(--ease)}
@@ -166,6 +165,13 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   background:linear-gradient(90deg,var(--p-500),var(--s-500));transform:scaleX(0);transform-origin:right;
   transition:transform .7s var(--ease)}
 .panel.open::after{transform:scaleX(1)}
+@media(max-width:900px){
+  .panel{flex:none;min-height:0}
+  .panel .inner{position:relative;inset:auto;padding:20px 22px;justify-content:flex-start}
+  .panel .no{font-size:2rem}
+  .panel h3{font-size:1.2rem;margin:4px 0 0}
+  .panel.open .body{max-height:520px}
+}
 
 /* ================= الشوريل: شبكة مقاطع ================= */
 .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -201,11 +207,10 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   border-radius:50%;border:1px solid rgba(255,255,255,.24);background:transparent;color:#fff;
   font-size:1.2rem;cursor:pointer}
 #lb .x:hover{background:rgba(255,255,255,.12)}
-.reel-note{margin-top:18px;color:rgba(255,255,255,.55);font-size:.88rem}
 
 /* ================= الأعمال: قائمة بمعاينة تتبع المؤشر ================= */
 .worklist{border-top:1px solid var(--line)}
-.workrow{display:flex;align-items:center;gap:20px;padding:clamp(20px,3vw,34px) 0;
+.workrow{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:clamp(20px,3vw,34px) 0;
   border-bottom:1px solid var(--line);position:relative;cursor:pointer}
 .workrow .idx{font-family:var(--font-label);font-size:.72rem;color:var(--n-400);width:34px;flex:none}
 .workrow h3{font-size:clamp(1.5rem,4vw,3.1rem);letter-spacing:-.02em;transition:transform .5s var(--ease),color .3s;
@@ -222,6 +227,17 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   transition:opacity .3s}
 .workrow:hover .cbrand{opacity:1}
 @media(max-width:720px){.workrow .cbrand{display:none}.workrow .meta{margin-inline-start:auto}}
+.wshot{display:none}
+@media(max-width:900px){
+  .wshot{display:block;flex:0 0 100%;max-height:0;overflow:hidden;
+    transition:max-height .65s var(--ease)}
+  .workrow.open .wshot{max-height:240px}
+  .wshot img{width:100%;height:196px;object-fit:cover;border-radius:var(--r-md);margin-top:14px;
+    transform:translateX(-46px);opacity:0;
+    transition:transform .65s var(--ease) .05s,opacity .5s .05s}
+  .workrow.open .wshot img{transform:none;opacity:1}
+  .workrow.open h3{color:var(--p-600)}
+}
 #wprev{position:fixed;right:auto;width:min(360px,32vw);aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;
   pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.9);
   transition:opacity .35s var(--ease),transform .35s var(--ease);box-shadow:0 30px 70px rgba(0,0,0,.4)}
@@ -761,9 +777,6 @@ footer.site a:hover{color:#fff}
       </a>
     </div>
 
-    <div class="reel-note rv" data-en="Each clip: 60 to 90 seconds, 1080p, with a still poster for slow connections.">
-      لكل مقطع: من 60 إلى 90 ثانية، جودة 1080p، مع صورة ثابتة للاتصال البطيء.
-    </div>
   </div>
 </section>
 
@@ -782,30 +795,35 @@ footer.site a:hover{color:#fff}
         <img class="cbrand" src="assets/logos/culinary.png" alt="">
         <h3 data-en="Al Walimah Festival">مهرجان الوليمة</h3>
         <div class="meta"><div class="metric">+13,067,000</div><div class="tags" data-en="Views · Influencers · Coverage">مشاهدة · مؤثرون · تغطية</div></div>
+        <div class="wshot"><img src="assets/works/walimah-cover.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/mos-content.jpg">
         <span class="idx">02</span>
         <img class="cbrand" src="assets/logos/mos.png" alt="">
         <h3 data-en="Sports campaign">حملة رياضية</h3>
         <div class="meta"><div class="metric">25.8M</div><div class="tags" data-en="Snapchat 16.2M · TikTok 9.6M">سناب 16.2M · تيك توك 9.6M</div></div>
+        <div class="wshot"><img src="assets/works/mos-content.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/sama-a.jpg">
         <span class="idx">03</span>
         <img class="cbrand" src="assets/logos/sama.png" alt="">
         <h3 data-en="Conference build">تجهيز مؤتمر</h3>
         <div class="meta"><div class="metric" data-en="Booth + program">جناح + برنامج</div><div class="tags" data-en="Events · Print · 3D">فعاليات · مطبوعات · 3D</div></div>
+        <div class="wshot"><img src="assets/works/sama-a.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/qemah-event.jpg">
         <span class="idx">04</span>
         <img class="cbrand" src="assets/logos/qemah.png" alt="">
         <h3 data-en="Auction night">ليلة مزاد</h3>
         <div class="meta"><div class="metric" data-en="Full production">تنفيذ كامل</div><div class="tags" data-en="Concept · Hosting · Coverage">فكرة · استضافة · تغطية</div></div>
+        <div class="wshot"><img src="assets/works/qemah-event.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/mojaz1.jpg">
         <span class="idx">05</span>
         <img class="cbrand" src="assets/logos/mojaz.png" alt="">
         <h3 data-en="UGC series">سلسلة UGC</h3>
         <div class="meta"><div class="metric" data-en="12 vertical films">12 فيلماً عمودياً</div><div class="tags" data-en="Script · Creators · Edit">سكربت · صنّاع · مونتاج</div></div>
+        <div class="wshot"><img src="assets/works/mojaz1.jpg" alt="" loading="lazy"></div>
       </div>
     </div>
   </div>
@@ -1505,6 +1523,13 @@ $$('#panels .panel').forEach(p => {
   if (!list) return;
   let px = 0, py = 0, tx = 0, ty = 0, on = false;
   list.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
+  list.addEventListener('click', e => {
+    if (innerWidth > 900) return;
+    const row = e.target.closest('.workrow'); if (!row) return;
+    const was = row.classList.contains('open');
+    $$('.workrow', list).forEach(r => r.classList.remove('open'));
+    if (!was) row.classList.add('open');
+  });
   $$('.workrow', list).forEach(row => {
     row.addEventListener('mouseenter', () => { img.src = row.dataset.img; on = true; prev.classList.add('on'); });
     row.addEventListener('mouseleave', () => { on = false; prev.classList.remove('on'); });
