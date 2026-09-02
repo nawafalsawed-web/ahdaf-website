@@ -219,7 +219,14 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .worklist{border-top:1px solid var(--line)}
 .workrow{display:flex;flex-wrap:wrap;align-items:center;gap:20px;padding:clamp(20px,3vw,34px) 0;
   border-bottom:1px solid var(--line);position:relative;cursor:pointer}
-.workrow .idx{font-family:var(--font-label);font-size:.72rem;color:var(--n-400);width:34px;flex:none}
+.workrow .idx{display:none}
+/* العنوان أولاً ملتصقاً باليمين، ثم الشعار، والإشارة في الطرف المقابل */
+.workrow h3{order:1}
+.workrow .cbrand{order:2}
+.workrow .wdesc{order:3}
+.workrow .meta{order:4}
+.workrow .cue{order:5}
+.workrow .wshot{order:6}
 .workrow h3{font-size:clamp(1.5rem,4vw,3.1rem);letter-spacing:-.02em;transition:transform .5s var(--ease),color .3s;
   transform-origin:right}
 .workrow:hover h3{transform:translateX(-18px);color:var(--p-600)}
