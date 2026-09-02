@@ -26,13 +26,7 @@ section{position:relative}
 #bar{position:fixed;inset-block-start:0;inset-inline-start:0;height:3px;width:0;z-index:99;
   background:linear-gradient(90deg,var(--p-500),var(--s-400),var(--g-500))}
 
-.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:var(--r-full);
-  background:rgba(130,77,235,.14);border:1px solid rgba(130,77,235,.32);color:#C7AFF6;
-  font-size:.78rem;font-weight:600}
-.light .eyebrow{background:var(--p-50);border-color:var(--p-100);color:var(--p-600)}
-.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--s-400);display:block;
-  animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
+.light @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.7)}}
 
 .sec-head{max-width:760px;margin-bottom:clamp(34px,5vw,60px)}
 .sec-head h2{font-size:clamp(2.6rem,6vw,5rem);margin:18px 0 16px;letter-spacing:-.03em;line-height:1}
@@ -137,9 +131,10 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .marquee-track{display:flex;gap:66px;width:max-content;animation:slide 34s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee img{height:46px;width:auto;object-fit:contain;opacity:.62;
-  filter:brightness(0) invert(1);transition:filter .4s var(--ease),opacity .4s,transform .4s var(--ease)}
-.marquee img:hover{filter:none;opacity:1;transform:scale(1.12)}
+.marquee img{height:36px;width:auto;object-fit:contain;background:#fff;padding:11px 18px;
+  border-radius:14px;box-sizing:content-box;opacity:.92;
+  transition:opacity .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease)}
+.marquee img:hover{opacity:1;transform:translateY(-4px);box-shadow:0 14px 34px rgba(76,1,146,.45)}
 
 /* ================= الخدمات: ألواح تتمدّد ================= */
 .panels{display:flex;gap:14px;height:min(560px,72vh)}
@@ -148,10 +143,10 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   border:1px solid var(--line);background:var(--paper-2);
   transition:flex 1s var(--ease),box-shadow .6s var(--ease)}
 .panel.open{flex:2.9;box-shadow:var(--sh-3)}
-.panel .inner{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:space-between}
-.panel .no{font-family:var(--font-display);font-size:clamp(2.6rem,4vw,4.4rem);line-height:1;color:var(--p-100);
+.panel .inner{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:flex-end}
+.panel .no{font-family:var(--font-label);font-size:.72rem;letter-spacing:.16em;color:var(--n-400);
   transition:color .6s var(--ease)}
-.panel.open .no{color:var(--p-200)}
+.panel.open .no{color:var(--p-500)}
 .panel .grow-wrap{margin-top:auto}
 .panel h3{font-size:clamp(1.05rem,1.5vw,1.4rem);margin:10px 0 0;line-height:1.25}
 .panel.open h3{font-size:clamp(1.4rem,2.6vw,2.2rem)}
@@ -172,6 +167,20 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   .panel h3{font-size:1.2rem;margin:4px 0 0}
   .panel.open .body{max-height:520px}
 }
+
+/* إشارة «اضغط» — العميل ما يعرف إن العنصر تفاعلي إلا إذا شفناه له */
+.cue{width:34px;height:34px;flex:none;border-radius:50%;border:1.5px solid var(--p-200);
+  color:var(--p-600);display:grid;place-items:center;font-size:1.15rem;line-height:1;
+  transition:transform .45s var(--ease),background .35s,color .35s,border-color .35s}
+.workrow:hover .cue,.panel:hover .cue{background:var(--p-500);color:#fff;border-color:var(--p-500)}
+.workrow.open .cue,.panel.open .cue{background:var(--p-500);color:#fff;border-color:var(--p-500);
+  transform:rotate(45deg)}
+.panel .cue{position:absolute;inset-block-start:24px;inset-inline-start:24px;z-index:2}
+.hint{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;color:var(--p-600);
+  background:var(--p-50);border:1px solid var(--p-100);padding:8px 15px;border-radius:var(--r-full);
+  margin-top:14px}
+.hint svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round}
 
 /* ================= الشوريل: شبكة مقاطع ================= */
 .reels{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -227,16 +236,16 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   transition:opacity .3s}
 .workrow:hover .cbrand{opacity:1}
 @media(max-width:720px){.workrow .cbrand{display:none}.workrow .meta{margin-inline-start:auto}}
-.wshot{display:none}
+.wshot{flex:0 0 100%;max-height:0;overflow:hidden;transition:max-height .7s var(--ease)}
+.workrow.open .wshot{max-height:340px}
+.wshot img{width:100%;height:300px;object-fit:cover;border-radius:var(--r-md);margin-top:16px;
+  transform:translateX(-56px);opacity:0;
+  transition:transform .7s var(--ease) .05s,opacity .55s .05s}
+.workrow.open .wshot img{transform:none;opacity:1}
+.workrow.open h3{color:var(--p-600)}
 @media(max-width:900px){
-  .wshot{display:block;flex:0 0 100%;max-height:0;overflow:hidden;
-    transition:max-height .65s var(--ease)}
   .workrow.open .wshot{max-height:240px}
-  .wshot img{width:100%;height:196px;object-fit:cover;border-radius:var(--r-md);margin-top:14px;
-    transform:translateX(-46px);opacity:0;
-    transition:transform .65s var(--ease) .05s,opacity .5s .05s}
-  .workrow.open .wshot img{transform:none;opacity:1}
-  .workrow.open h3{color:var(--p-600)}
+  .wshot img{height:196px;transform:translateX(-46px)}
 }
 #wprev{position:fixed;right:auto;width:min(360px,32vw);aspect-ratio:4/3;border-radius:var(--r-lg);overflow:hidden;
   pointer-events:none;z-index:40;opacity:0;transform:translate(-50%,-50%) scale(.9);
@@ -575,7 +584,6 @@ footer.site a:hover{color:#fff}
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <span class="eyebrow"><i></i><span data-en="Performance-driven growth agency">وكالة نمو تعتمد على الأداء</span></span>
         <h1><span class="word"><b data-en="We connect creativity">نربط الإبداع</b></span> <span class="word"><b class="grad-text" data-en="to purpose">بالهدف</b></span></h1>
         <p class="lead" data-en="We run paid campaigns, a network of 3,788+ influencers, and full creative production. From Riyadh, for five years.">
           ندير الحملات المدفوعة، وشبكة تتجاوز 3,788 مؤثراً، وإنتاجاً إبداعياً كاملاً. من الرياض، منذ خمس سنوات.
@@ -625,38 +633,38 @@ footer.site a:hover{color:#fff}
 <!-- ============================ العملاء ============================ -->
 <div class="marquee">
   <div class="marquee-track">
-    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي" loading="lazy">
-    <img src="assets/logos/mos.png" alt="وزارة الرياضة" loading="lazy">
-    <img src="assets/logos/momah.svg" alt="وزارة البلديات والإسكان" loading="lazy">
-    <img src="assets/logos/sama.png" alt="البنك المركزي السعودي" loading="lazy">
-    <img src="assets/logos/gea.svg" alt="الهيئة العامة للترفيه" loading="lazy">
-    <img src="assets/logos/elm.svg" alt="علم" loading="lazy">
-    <img src="assets/logos/qemah.png" alt="قمة للمزادات" loading="lazy">
-    <img src="assets/logos/cocacola.svg" alt="كوكاكولا" loading="lazy">
-    <img src="assets/logos/lays.svg" alt="ليز" loading="lazy">
-    <img src="assets/logos/mcdonalds.svg" alt="ماكدونالدز" loading="lazy">
-    <img src="assets/logos/adidas.svg" alt="أديداس" loading="lazy">
-    <img src="assets/logos/newbalance.svg" alt="نيو بالانس" loading="lazy">
-    <img src="assets/logos/ikea.svg" alt="إيكيا" loading="lazy">
-    <img src="assets/logos/dominos.svg" alt="دومينوز" loading="lazy">
-    <img src="assets/logos/jahez.svg" alt="جاهز" loading="lazy">
-    <img src="assets/logos/rollsroyce.svg" alt="رولز رويس" loading="lazy">
-    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي" loading="lazy">
-    <img src="assets/logos/mos.png" alt="وزارة الرياضة" loading="lazy">
-    <img src="assets/logos/momah.svg" alt="وزارة البلديات والإسكان" loading="lazy">
-    <img src="assets/logos/sama.png" alt="البنك المركزي السعودي" loading="lazy">
-    <img src="assets/logos/gea.svg" alt="الهيئة العامة للترفيه" loading="lazy">
-    <img src="assets/logos/elm.svg" alt="علم" loading="lazy">
-    <img src="assets/logos/qemah.png" alt="قمة للمزادات" loading="lazy">
-    <img src="assets/logos/cocacola.svg" alt="كوكاكولا" loading="lazy">
-    <img src="assets/logos/lays.svg" alt="ليز" loading="lazy">
-    <img src="assets/logos/mcdonalds.svg" alt="ماكدونالدز" loading="lazy">
-    <img src="assets/logos/adidas.svg" alt="أديداس" loading="lazy">
-    <img src="assets/logos/newbalance.svg" alt="نيو بالانس" loading="lazy">
-    <img src="assets/logos/ikea.svg" alt="إيكيا" loading="lazy">
-    <img src="assets/logos/dominos.svg" alt="دومينوز" loading="lazy">
-    <img src="assets/logos/jahez.svg" alt="جاهز" loading="lazy">
-    <img src="assets/logos/rollsroyce.svg" alt="رولز رويس" loading="lazy">
+    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي">
+    <img src="assets/logos/mos.png" alt="وزارة الرياضة">
+    <img src="assets/logos/momah.svg" alt="وزارة البلديات والإسكان">
+    <img src="assets/logos/sama.png" alt="البنك المركزي السعودي">
+    <img src="assets/logos/gea.svg" alt="الهيئة العامة للترفيه">
+    <img src="assets/logos/elm.svg" alt="علم">
+    <img src="assets/logos/qemah.png" alt="قمة للمزادات">
+    <img src="assets/logos/cocacola.svg" alt="كوكاكولا">
+    <img src="assets/logos/lays.svg" alt="ليز">
+    <img src="assets/logos/mcdonalds.svg" alt="ماكدونالدز">
+    <img src="assets/logos/adidas.svg" alt="أديداس">
+    <img src="assets/logos/newbalance.svg" alt="نيو بالانس">
+    <img src="assets/logos/ikea.svg" alt="إيكيا">
+    <img src="assets/logos/dominos.svg" alt="دومينوز">
+    <img src="assets/logos/jahez.svg" alt="جاهز">
+    <img src="assets/logos/rollsroyce.svg" alt="رولز رويس">
+    <img src="assets/logos/culinary.png" alt="هيئة فنون الطهي">
+    <img src="assets/logos/mos.png" alt="وزارة الرياضة">
+    <img src="assets/logos/momah.svg" alt="وزارة البلديات والإسكان">
+    <img src="assets/logos/sama.png" alt="البنك المركزي السعودي">
+    <img src="assets/logos/gea.svg" alt="الهيئة العامة للترفيه">
+    <img src="assets/logos/elm.svg" alt="علم">
+    <img src="assets/logos/qemah.png" alt="قمة للمزادات">
+    <img src="assets/logos/cocacola.svg" alt="كوكاكولا">
+    <img src="assets/logos/lays.svg" alt="ليز">
+    <img src="assets/logos/mcdonalds.svg" alt="ماكدونالدز">
+    <img src="assets/logos/adidas.svg" alt="أديداس">
+    <img src="assets/logos/newbalance.svg" alt="نيو بالانس">
+    <img src="assets/logos/ikea.svg" alt="إيكيا">
+    <img src="assets/logos/dominos.svg" alt="دومينوز">
+    <img src="assets/logos/jahez.svg" alt="جاهز">
+    <img src="assets/logos/rollsroyce.svg" alt="رولز رويس">
   </div>
 </div>
 
@@ -664,14 +672,14 @@ footer.site a:hover{color:#fff}
 <section class="sec light" id="services">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow"><i></i><span data-en="Services">الخدمات</span></span>
       <h2 data-en="Four divisions">أربع إدارات</h2>
-      <p data-en="Hover a division to open it.">مرّر على أي إدارة لتفتح.</p>
+      <p class="hint" data-en="Tap any division to see its services"><svg viewBox="0 0 24 24"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg><span data-en="Tap any division to see its services">اضغط أي إدارة لعرض خدماتها</span></p>
     </div>
 
     <div class="panels rv" id="panels">
       <article class="panel open">
         <div class="inner">
+          <span class="cue">+</span>
           <div class="no">01</div>
           <h3 data-en="Digital Growth">النمو الرقمي</h3>
           <div class="body">
@@ -688,6 +696,7 @@ footer.site a:hover{color:#fff}
 
       <article class="panel">
         <div class="inner">
+          <span class="cue">+</span>
           <div class="no">02</div>
           <h3 data-en="Influencers">تأثير المؤثرين</h3>
           <div class="body">
@@ -703,6 +712,7 @@ footer.site a:hover{color:#fff}
 
       <article class="panel">
         <div class="inner">
+          <span class="cue">+</span>
           <div class="no">03</div>
           <h3 data-en="Production">الإنتاج الإبداعي</h3>
           <div class="body">
@@ -720,6 +730,7 @@ footer.site a:hover{color:#fff}
 
       <article class="panel">
         <div class="inner">
+          <span class="cue">+</span>
           <div class="no">04</div>
           <h3 data-en="Events">الفعاليات</h3>
           <div class="body">
@@ -741,7 +752,6 @@ footer.site a:hover{color:#fff}
 <section class="sec" data-scene="reel">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow"><i></i><span data-en="Showreel">الشوريل</span></span>
       <h2 data-en="Watch">شاهد</h2>
       <p data-en="Coverage of the Municipalities event and the two Qimmah auction galas.">تغطية فعالية البلديات وحفلي قمة للمزادات.</p>
     </div>
@@ -762,7 +772,7 @@ footer.site a:hover{color:#fff}
         <img src="assets/works/qemah-event.jpg" alt="">
         <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
         <span class="cap">
-          <b data-en="Qimmah at Four Seasons">قمة · الفورسيزن</b>
+          <b data-en="Qimmah at The Ritz-Carlton">قمة · الريتز</b>
           <i class="go" data-en="Play ←">تشغيل ←</i>
         </span>
       </a>
@@ -772,7 +782,7 @@ footer.site a:hover{color:#fff}
         <img src="assets/works/qemah-ritz.jpg" alt="">
         <span class="play"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span>
         <span class="cap">
-          <b data-en="Qimmah at The Ritz-Carlton">قمة · الريتز</b>
+          <b data-en="Qimmah at Four Seasons">قمة · الفورسيزن</b>
           <i class="go" data-en="Open the album ←">افتح الألبوم ←</i>
         </span>
       </a>
@@ -785,13 +795,14 @@ footer.site a:hover{color:#fff}
 <section class="sec light" id="work">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow"><i></i><span data-en="Selected work">مختارات</span></span>
       <h2 data-en="Our work">أعمالنا</h2>
       <p data-en="Each case carries the number it was judged by.">كل عمل ومعه الرقم الذي حُكم به.</p>
+      <p class="hint"><svg viewBox="0 0 24 24"><path d="M14 4.1 12 6"/><path d="m5.1 8-2.9-.8"/><path d="m6 12-1.9 2"/><path d="M7.2 2.2 8 5.1"/><path d="M9.037 9.69a.498.498 0 0 1 .653-.653l11 4.5a.5.5 0 0 1-.074.949l-4.349 1.041a1 1 0 0 0-.74.739l-1.04 4.35a.5.5 0 0 1-.95.074z"/></svg><span data-en="Tap any project to see its photo">اضغط أي عمل لعرض صورته</span></p>
     </div>
 
     <div class="worklist rv" id="worklist">
       <div class="workrow" data-img="assets/works/walimah-cover.jpg">
+        <span class="cue">+</span>
         <span class="idx">01</span>
         <img class="cbrand" src="assets/logos/culinary.png" alt="">
         <h3 data-en="Al Walimah Festival">مهرجان الوليمة</h3>
@@ -799,6 +810,7 @@ footer.site a:hover{color:#fff}
         <div class="wshot"><img src="assets/works/walimah-cover.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/mos-content.jpg">
+        <span class="cue">+</span>
         <span class="idx">02</span>
         <img class="cbrand" src="assets/logos/mos.png" alt="">
         <h3 data-en="Sports campaign">حملة رياضية</h3>
@@ -806,6 +818,7 @@ footer.site a:hover{color:#fff}
         <div class="wshot"><img src="assets/works/mos-content.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/sama-a.jpg">
+        <span class="cue">+</span>
         <span class="idx">03</span>
         <img class="cbrand" src="assets/logos/sama.png" alt="">
         <h3 data-en="Conference build">تجهيز مؤتمر</h3>
@@ -813,6 +826,7 @@ footer.site a:hover{color:#fff}
         <div class="wshot"><img src="assets/works/sama-a.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/qemah-event.jpg">
+        <span class="cue">+</span>
         <span class="idx">04</span>
         <img class="cbrand" src="assets/logos/qemah.png" alt="">
         <h3 data-en="Auction night">ليلة مزاد</h3>
@@ -820,6 +834,7 @@ footer.site a:hover{color:#fff}
         <div class="wshot"><img src="assets/works/qemah-event.jpg" alt="" loading="lazy"></div>
       </div>
       <div class="workrow" data-img="assets/works/mojaz1.jpg">
+        <span class="cue">+</span>
         <span class="idx">05</span>
         <img class="cbrand" src="assets/logos/mojaz.png" alt="">
         <h3 data-en="UGC series">سلسلة UGC</h3>
@@ -835,7 +850,6 @@ footer.site a:hover{color:#fff}
 <section class="sec" id="influencers" data-scene="inf">
   <div class="wrap">
     <div class="sec-head rv" style="text-align:center;margin-inline:auto">
-      <span class="eyebrow"><i></i><span data-en="Influencer network">شبكة المؤثرين</span></span>
       <h2 data-en="Our network">شبكتنا</h2>
       <p style="margin-inline:auto" data-en="Press the centre to open the full list, filtered by segment and platform.">
         اضغط المركز لتفتح القائمة كاملة، مصنّفة بالفئة والمنصة.</p>
@@ -964,7 +978,6 @@ footer.site a:hover{color:#fff}
 <section class="sec" id="ecosystem" data-scene="plat">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow"><i></i><span data-en="The Ahdaf ecosystem">منظومة أهداف</span></span>
       <h2 data-en="Our platforms">منصاتنا</h2>
       <p data-en="Products we own and operate, where we test what we recommend.">منتجات نملكها ونشغّلها، وفيها نجرّب ما نوصي به.</p>
     </div>
@@ -978,7 +991,6 @@ footer.site a:hover{color:#fff}
 <section class="sec light" id="about">
   <div class="wrap">
     <div class="sec-head rv">
-      <span class="eyebrow"><i></i><span data-en="How we work">كيف نشتغل</span></span>
       <h2 data-en="How we work">طريقتنا</h2>
     </div>
 
@@ -1029,7 +1041,6 @@ footer.site a:hover{color:#fff}
   <div class="wrap">
     <div class="contact-grid">
       <div class="rv">
-        <span class="eyebrow"><i></i><span data-en="Start here">ابدأ من هنا</span></span>
         <h2 style="font-size:clamp(2.6rem,6vw,5rem);margin:18px 0 16px;letter-spacing:-.03em" data-en="Talk to us">كلّمنا</h2>
         <p style="color:rgba(255,255,255,.62);font-size:var(--fs-lead)"
            data-en="A 30-minute call, then a written proposal with the plan, the timeline and the expected numbers within three working days.">
@@ -1037,7 +1048,10 @@ footer.site a:hover{color:#fff}
         <ul class="contact-info">
           <li><div class="k" data-en="Phone">الجوال</div><div class="v" dir="ltr">+966 53 909 0452</div></li>
           <li><div class="k" data-en="Email">البريد</div><div class="v" dir="ltr">info@ahdaf.co</div></li>
-          <li><div class="k" data-en="Address">العنوان</div><div class="v" data-en="Al Sahafa, King Abdulaziz Road, Riyadh">الصحافة، طريق الملك عبدالعزيز، الرياض</div></li>
+          <li><div class="k" data-en="Address">العنوان</div><a class="v" href="https://maps.app.goo.gl/eMw1kQA67LTWmj5M7" target="_blank" rel="noopener"
+                 style="display:inline-flex;align-items:center;gap:7px;color:#C7AFF6"
+                 data-en="Al Sahafa, King Abdulaziz Road, Riyadh">الصحافة، طريق الملك عبدالعزيز، الرياض
+                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></a></li>
           <li style="border:0"><div class="k" data-en="Hours">أوقات العمل</div><div class="v" data-en="Sunday to Thursday, 9:00 to 18:00">الأحد إلى الخميس، 9:00 إلى 18:00</div></li>
         </ul>
       </div>
@@ -1525,7 +1539,6 @@ $$('#panels .panel').forEach(p => {
   let px = 0, py = 0, tx = 0, ty = 0, on = false;
   list.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; });
   list.addEventListener('click', e => {
-    if (innerWidth > 900) return;
     const row = e.target.closest('.workrow'); if (!row) return;
     const was = row.classList.contains('open');
     $$('.workrow', list).forEach(r => r.classList.remove('open'));
