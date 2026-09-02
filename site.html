@@ -131,10 +131,9 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
 .marquee-track{display:flex;gap:66px;width:max-content;animation:slide 34s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee img{height:36px;width:auto;object-fit:contain;background:#fff;padding:11px 18px;
-  border-radius:14px;box-sizing:content-box;opacity:.92;
-  transition:opacity .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease)}
-.marquee img:hover{opacity:1;transform:translateY(-4px);box-shadow:0 14px 34px rgba(76,1,146,.45)}
+.marquee img{height:46px;width:auto;object-fit:contain;opacity:.62;
+  filter:brightness(0) invert(1);transition:filter .4s var(--ease),opacity .4s,transform .4s var(--ease)}
+.marquee img:hover{filter:none;opacity:1;transform:scale(1.12)}
 
 /* ================= الخدمات: ألواح تتمدّد ================= */
 .panels{display:flex;gap:14px;height:min(560px,72vh)}
@@ -143,7 +142,7 @@ header.solid{background:rgba(14,10,22,.82);backdrop-filter:blur(16px);border-col
   border:1px solid var(--line);background:var(--paper-2);
   transition:flex 1s var(--ease),box-shadow .6s var(--ease)}
 .panel.open{flex:2.9;box-shadow:var(--sh-3)}
-.panel .inner{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:flex-end}
+.panel .inner{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:center}
 .panel .no{font-family:var(--font-label);font-size:.72rem;letter-spacing:.16em;color:var(--n-400);
   transition:color .6s var(--ease)}
 .panel.open .no{color:var(--p-500)}
